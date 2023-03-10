@@ -6,17 +6,13 @@
       <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-100 p-6 sm:h-40 sm:content-evenly md:grid-cols-2">
         <!-- logo - start -->
         <div class="flex justify-center text-gray-400">
-          <NuxtLink target="_blank" to="https://www.ukri.org/councils/ahrc/">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Arts_and_Humanities_Research_Council_logo.svg">
-          </NuxtLink>
+          <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Arts_and_Humanities_Research_Council_logo.svg">
         </div>
         <!-- logo - end -->
 
         <!-- logo - start -->
         <div class="flex justify-center text-gray-400">
-          <NuxtLink target="_blank" to="https://www.dfg.de//">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/DFG-logo-blau.svg">
-          </NuxtLink>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/DFG-logo-blau.svg">
         </div>
         <!-- logo - end -->
       </div>
