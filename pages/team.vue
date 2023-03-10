@@ -227,7 +227,7 @@
           </div>
 
           <div>
-            <div class="font-bold text-indigo-500 md:text-lg">Xxx</div>
+            <div class="font-bold text-indigo-500 md:text-lg">TBA</div>
             <p class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base">Project Masters Student, Würzburg</p>
 
             <!-- social - start -->
@@ -277,7 +277,7 @@
           </div>
 
           <div>
-            <div class="font-bold text-indigo-500 md:text-lg">XX</div>
+            <div class="font-bold text-indigo-500 md:text-lg">TBA</div>
             <p class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base">Postdoctoral Research Assistant, St Andrews</p>
 
             <!-- social - start -->
