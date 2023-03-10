@@ -6,7 +6,9 @@
       </h1>
 
       <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
-        For press and urgent matters, contact us through our individual university email addresses or Twitter accounts for a speedy response. You can find our profiles <NuxtLink to="/team">here</NuxtLink>
+        For press and urgent matters, contact us through our individual university email addresses or Twitter accounts for a speedy response. You can find our profiles <NuxtLink class="text-blue-700" to="/team">here</NuxtLink>.
+      </p>
+      <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
         For all other enquiries, please complete the form below. We would love to hear from other researchers, creatives, artists, writers and members of the public interested in the textual tradition of the Seven Sages of Rome and its many relations.
       </p>
     </div>
