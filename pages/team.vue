@@ -14,7 +14,7 @@
             <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               <div class="absolute inset-0">
                 <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                     src="http://saims.wp.st-andrews.ac.uk/files/2015/10/bettina-2.jpg" alt="" />
+                     src="/team/bettina_bildhauer.jpeg" alt="" />
               </div>
               <div class="absolute inset-0 h-full w-full rounded-sxl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div class="flex min-h-full flex-col items-center justify-center">
@@ -64,7 +64,7 @@
             <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               <div class="absolute inset-0">
                 <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                     src="https://www.geisteswissenschaften.fu-berlin.de/we04/aedls/mitarbeiter_innen/prof/eming/Jutta-Eming_Bild_hoch.jpg?width=250" alt="" />
+                     src="/team/jutta_eming.jpg" alt="" />
               </div>
               <div class="absolute inset-0 h-full w-full rounded-sxl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div class="flex min-h-full flex-col items-center justify-center">
@@ -114,7 +114,7 @@
             <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               <div class="absolute inset-0">
                 <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                     src="https://www.geisteswissenschaften.fu-berlin.de/we04/niederlandistik/mitarbeiter/literaturwissenschaft/schlusemann/foto_schlusemann.png" alt="" />
+                     src="/team/rita_schlusemann.png" alt="" />
               </div>
               <div class="absolute inset-0 h-full w-full rounded-sxl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div class="flex min-h-full flex-col items-center justify-center">
