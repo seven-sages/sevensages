@@ -20,7 +20,7 @@
         Past events
       </h2>
       <ul class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8">
-
+        <li><a href="https://medieval.ox.ac.uk/2022/11/07/the-seven-sages-of-rome-as-a-global-narrative-tradition/" target="_blank">Oxford-Berlin workshop on the Seven Sages (November 2022)</a></li>
       </ul>
     </div>
   </div>
