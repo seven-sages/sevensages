@@ -6,7 +6,7 @@
       </h1>
 
       <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
-        …
+
       </p>
     </div>
   </div>
