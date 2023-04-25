@@ -6,7 +6,8 @@
     "start": "node .output/server/index.mjs",
     "lint": "eslint --ext .ts,.js,.vue .",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "deps:update": "taze -I major"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.13",
