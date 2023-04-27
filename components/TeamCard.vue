@@ -12,7 +12,7 @@ defineProps<{
 
 <template>
   <div>
-    <div class="group mb-2 h-48 overflow-hidden rounded-lg bg-gray-100 shadow-lg sm:mb-4 sm:h-60 md:h-110 [perspective:1000px]">
+    <div class="group mb-2 h-48 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-lg sm:mb-4 sm:h-60 md:h-110 [perspective:1000px]">
       <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         <div class="absolute inset-0">
           <img
@@ -31,10 +31,10 @@ defineProps<{
       </div>
     </div>
     <div>
-      <div class="font-bold text-indigo-500 md:text-lg">
+      <div class="font-bold text-indigo-500 dark:text-gray-100 md:text-lg">
         {{ name }}
       </div>
-      <p class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base">
+      <p class="mb-3 text-sm text-gray-500 dark:text-gray-300 md:mb-4 md:text-base">
         {{ title }}
       </p>
       <div class="flex">

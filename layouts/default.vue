@@ -8,7 +8,7 @@ import Footer from '~/components/layout/Footer.vue'
 <template>
   <main>
     <Navbar />
-    <div class="min-h-screen">
+    <div class="min-h-screen dark:bg-gray-800">
       <slot />
     </div>
     <Footer />

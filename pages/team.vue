@@ -114,10 +114,10 @@ const advisoryBoardMembers = [
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-white dark:bg-gray-800 py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
-        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl">
           Our team members
         </h2>
       </div>
@@ -135,7 +135,7 @@ const advisoryBoardMembers = [
         />
       </div>
       <div class="mb-10 mt-10 md:mb-16">
-        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl">
           Advisory board members
         </h2>
       </div>
