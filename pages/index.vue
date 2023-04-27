@@ -5,14 +5,9 @@ import Funding from '~/components/Funding.vue'
 </script>
 
 <template>
-<!--  <Suspense>-->
+  <div>
     <Hero />
     <Strands />
     <Funding />
-<!--    <template #fallback>-->
-<!--      <div class="opacity-50 italic">-->
-<!--        <span class="pulse">Loading...</span>-->
-<!--      </div>-->
-<!--    </template>-->
-<!--  </Suspense>-->
+  </div>
 </template>
