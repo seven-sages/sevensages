@@ -8,19 +8,14 @@ const color = useColorMode()
       <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-8 lg:text-3xl">Funded by</h2>
 
       <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-100 dark:bg-gray-700 p-6 sm:h-40 sm:content-evenly md:grid-cols-2">
-        <!-- logo - start -->
         <div class="flex justify-center text-gray-400">
           <img v-if="color.value === 'dark'" src="/funding/dark_mode_ArtsAndHumanities.svg">
           <img v-else src="/funding/light_mode_ArtsAndHumanities.svg">
         </div>
-        <!-- logo - end -->
-
-        <!-- logo - start -->
         <div class="flex justify-center text-gray-400">
           <img v-if="color.value === 'dark'" src="/funding/dark_mode_DFG.svg">
           <img v-else src="/funding/light_mode_DFG.svg">
         </div>
-        <!-- logo - end -->
       </div>
     </div>
   </div>
