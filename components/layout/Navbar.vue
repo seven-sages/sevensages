@@ -1,3 +1,39 @@
+<script setup lang="ts">
+import NavbarLink from "~/components/layout/NavbarLink.vue";
+
+const navLinks = [
+  {
+    link: '/team',
+    name: 'Team'
+  },
+  {
+    link: '/edition',
+    name: 'Edition'
+  },
+  {
+    link: '/database',
+    name: 'Database'
+  },
+  {
+    link: '/gender',
+    name: 'Gender'
+  },
+  {
+    link: '/genre',
+    name: 'Genre'
+  },
+  {
+    link: '/events',
+    name: 'Events'
+  },
+  {
+    link: '/materials',
+    name: 'Materials'
+  }
+
+]
+</script>
+
 <template>
   <div class="bg-white dark:bg-gray-800 pb-6 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -10,13 +46,12 @@
 
         <!-- nav - start -->
         <nav class="hidden gap-12 lg:flex">
-          <NuxtLink to="/team" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Team</NuxtLink>
-          <NuxtLink to="/edition" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Dutch Edition</NuxtLink>
-          <NuxtLink to="/database" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Database</NuxtLink>
-          <NuxtLink to="/gender" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Gender</NuxtLink>
-          <NuxtLink to="/genre" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Genre</NuxtLink>
-          <NuxtLink to="/events" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</NuxtLink>
-          <NuxtLink to="/materials" class="text-lg font-semibold text-gray-600 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-700">Materials</NuxtLink>
+          <NavbarLink
+            v-for="link in navLinks"
+            :key="link.name"
+            :link="link.link"
+            :name="link.name"
+          />
           <DarkToggle />
         </nav>
         <!-- nav - end -->
