@@ -12,7 +12,12 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {}
+    extend: {
+      height: {
+        110: '28rem',
+        128: '32rem',
+      }
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
