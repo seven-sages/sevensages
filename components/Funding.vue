@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const color = useColorMode()
+import { useDark } from '@vueuse/core'
+
+const isDark = useDark()
 </script>
 
 <template>
@@ -9,11 +11,11 @@ const color = useColorMode()
 
       <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-100 dark:bg-gray-700 p-6 sm:h-40 sm:content-evenly md:grid-cols-2">
         <div class="flex justify-center text-gray-400">
-          <img v-if="color.value === 'dark'" src="/funding/dark_mode_ArtsAndHumanities.svg">
+          <img v-if="isDark" src="/funding/dark_mode_ArtsAndHumanities.svg">
           <img v-else src="/funding/light_mode_ArtsAndHumanities.svg">
         </div>
         <div class="flex justify-center text-gray-400">
-          <img v-if="color.value === 'dark'" src="/funding/dark_mode_DFG.svg">
+          <img v-if="isDark" src="/funding/dark_mode_DFG.svg">
           <img v-else src="/funding/light_mode_DFG.svg">
         </div>
       </div>
