@@ -57,11 +57,11 @@ const teamMembers = [
 ]
 const advisoryBoardMembers = [
   {
-    name: 'Ulrich Marzolph',
-    title: 'Arabic, Göttingen',
-    description: 'Ulrich Marzolph served most of his professional life as a member of the editorial committee of the German-language Enzyklopädie des Märchens and as adjunct professor of Arabic, Persian, and Islamic Studies at the Georg-August-University at Göttingen. His main area of interest is the rich field of Middle Eastern Muslim narrative culture. His last major book publication is “101 Middle Eastern Tales and Their Impact on Western Oral Tradition” (Detroit, 2020). Retired since 2019, he is currently working on fables in premodern Arabic literature.',
-    image: '/team/ulrich_marzolph.jpg',
-    alt: 'Image of Ulrich Marzolph',
+    name: 'Yasmina Foehr-Janssens',
+    title: 'French, Geneva',
+    description: 'Yasmina Foehr-Janssens is full professor of French Medieval Literature at the University of Geneva, Switzerland. Her research focuses on Gender Studies applied to Medieval French Literature. She has been the leader of an interdisciplinary research program on the history of breastfeeding and its <NuxtLink to="https://unige.ch/lactationinhistory/">cultural aspects</NuxtLink>. The Swiss National Science Foundation and the Belgian Fonds de la recherche scientifique (Wallonie) fund her present research on The Seven Sages in French Literature with a special focus on the construction of masculinity and serial writing.',
+    image: '/team/yasmina_foehr.jpg',
+    alt: 'Image of Yasmina Foehr-Janssens',
     mail: '',
     twitter: ''
   },
@@ -80,15 +80,6 @@ const advisoryBoardMembers = [
     description: 'Ulrich Marzolph served most of his professional life as a member of the editorial committee of the German-language Enzyklopädie des Märchens and as adjunct professor of Arabic, Persian, and Islamic Studies at the Georg-August-University at Göttingen. His main area of interest is the rich field of Middle Eastern Muslim narrative culture. His last major book publication is “101 Middle Eastern Tales and Their Impact on Western Oral Tradition” (Detroit, 2020). Retired since 2019, he is currently working on fables in premodern Arabic literature.',
     image: '/team/ulrich_marzolph.jpg',
     alt: 'Image of Ulrich Marzolph',
-    mail: '',
-    twitter: ''
-  },
-  {
-    name: 'Yasmina Foehr-Janssens',
-    title: 'French, Geneva',
-    description: 'Yasmina Foehr-Janssens is full professor of French Medieval Literature at the University of Geneva, Switzerland. Her research focuses on Gender Studies applied to Medieval French Literature. She has been the leader of an interdisciplinary research program on the history of breastfeeding and its <NuxtLink to="https://unige.ch/lactationinhistory/">cultural aspects</NuxtLink>. The Swiss National Science Foundation and the Belgian Fonds de la recherche scientifique (Wallonie) fund her present research on The Seven Sages in French Literature with a special focus on the construction of masculinity and serial writing.',
-    image: '/team/yasmina_foehr.jpg',
-    alt: 'Image of Yasmina Foehr-Janssens',
     mail: '',
     twitter: ''
   },
