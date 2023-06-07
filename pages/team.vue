@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { getItems } = useDirectusItems()
-const { getThumbnail: img } = useDirectusFiles();
+const { getThumbnail: img } = useDirectusFiles()
 
 interface Article {
   id?: string | number;
