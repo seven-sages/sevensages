@@ -42,7 +42,7 @@
       </div>
 
       <div class="flex items-center justify-between sm:col-span-2">
-        <button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Send</button>
+        <button disabled class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base disabled:bg-indigo-200 dark:disabled:bg-indigo-200">Send</button>
 
         <span class="text-sm text-gray-500">*Required</span>
       </div>
