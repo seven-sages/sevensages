@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    ul, ol {
+        list-style: revert;
+    }
+}
+
 .router-link-active{
     @apply text-blue-600
 }

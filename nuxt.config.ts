@@ -1,5 +1,26 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  build: {
+    transpile: ['primevue']
+  },
+  colorMode: {
+    classSuffix: ''
+  },
+  css: [
+    '~/assets/css/tailwind.css',
+    'primevue/resources/themes/saga-blue/theme.css',
+    'primevue/resources/primevue.css',
+    'primeicons/primeicons.css'
+  ],
+  devtools: {
+    vscode: {}
+  },
+  experimental: {
+    reactivityTransform: true
+  },
+  headlessui: {
+    prefix: ''
+  },
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
@@ -10,31 +31,14 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     'nuxt-directus'
   ],
-  experimental: {
-    reactivityTransform: true
+  directus: {
+    url: 'https://sevensages-cms.zpd.wiki/',
+    autoFetch: true
   },
-  build: {
-    transpile: ["primevue"]
-  },
-  css: [
-    '~/assets/css/tailwind.css',
-    'primevue/resources/themes/saga-blue/theme.css',
-    'primevue/resources/primevue.css',
-    'primeicons/primeicons.css',
-  ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}
     }
   },
-  colorMode: {
-    classSuffix: ''
-  },
-  headlessui: {
-    prefix: ''
-  },
-  devtools: {
-    vscode: {}
-  }
 })

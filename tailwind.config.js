@@ -8,22 +8,21 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
     './App.{js,ts,vue}',
-    './app.{js,ts,vue}',
+    './app.{js,ts,vue}'
   ],
   darkMode: 'class',
   theme: {
     extend: {
       height: {
         110: '28rem',
-        128: '32rem',
+        128: '32rem'
       }
     }
   },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/container-queries')
   ]
 }
