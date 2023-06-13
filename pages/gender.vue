@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { getSingletonItem } = useDirectusItems();
-interface GenderArticle {
+interface IGender {
   id?: string;
   Content: string;
   Heading: string;
 }
 
-const item = await getSingletonItem<GenderArticle>({
+const gender = await getSingletonItem<IGender>({
   collection: "Gender",
 });
 </script>
@@ -16,13 +16,13 @@ const item = await getSingletonItem<GenderArticle>({
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6"
       >
-        {{ item.Heading }}
+        {{ gender.Heading }}
       </h1>
 
       <p
         class="mb-6 text-justify text-gray-500 dark:text-gray-300 sm:text-lg md:mb-8"
       >
-        {{ item.Content }}
+        {{ gender.Content }}
       </p>
     </div>
   </div>

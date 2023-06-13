@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { getSingletonItem } = useDirectusItems();
-interface DutchEditionArticle {
+interface IDutchEdition {
   id?: string;
   Content: string;
   Heading: string;
 }
 
-const item = await getSingletonItem<DutchEditionArticle>({
+const dutchEdition = await getSingletonItem<IDutchEdition>({
   collection: "Dutch_Edition",
 });
 </script>
@@ -16,12 +16,12 @@ const item = await getSingletonItem<DutchEditionArticle>({
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6"
       >
-        {{ item.Heading }}
+        {{ dutchEdition.Heading }}
       </h1>
 
       <span
         class="mb-6 text-justify text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
-        v-html="item.Content"
+        v-html="dutchEdition.Content"
       />
     </div>
   </div>

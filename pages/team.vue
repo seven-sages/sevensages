@@ -2,7 +2,7 @@
 const { getItems } = useDirectusItems();
 const { getThumbnail: img } = useDirectusFiles();
 
-interface Article {
+interface IPerson {
   id?: string | number;
   Name: string;
   Tagline: string;
@@ -13,7 +13,7 @@ interface Article {
   Type: string;
 }
 
-const items = await getItems<Article>({
+const persons = await getItems<IPerson>({
   collection: "Person",
 });
 </script>
@@ -31,7 +31,7 @@ const items = await getItems<Article>({
       <div
         class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
-        <template v-for="item in items" :key="item.id">
+        <template v-for="item in persons" :key="item.id">
           <Suspense>
             <TeamCard
               v-if="item.Type === 'Team'"
@@ -57,7 +57,7 @@ const items = await getItems<Article>({
       <div
         class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
-        <template v-for="item in items">
+        <template v-for="item in persons">
           <TeamCard
             v-if="item.Type === 'Board'"
             :key="item.id"

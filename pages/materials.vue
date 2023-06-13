@@ -1,12 +1,11 @@
 <script setup lang="ts">
 const { getSingletonItem } = useDirectusItems();
-interface Materials {
+interface IMaterials {
   id?: string;
-  Content: string;
-  Heading: string;
+  Header: string;
 }
 
-const materials = await getSingletonItem<Materials>({
+const materials = await getSingletonItem<IMaterials>({
   collection: "Materials",
 });
 </script>

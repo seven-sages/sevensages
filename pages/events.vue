@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { getItems } = useDirectusItems();
 
-interface Event {
+interface IEvent {
   id?: string | number;
   Name: string;
   Month: string;
@@ -14,7 +14,7 @@ const now = new Date();
 const forthcomingEvents = ref([]);
 const pastEvents = ref([]);
 
-const items = await getItems<Event>({
+const items = await getItems<IEvent>({
   collection: "Event",
 });
 
