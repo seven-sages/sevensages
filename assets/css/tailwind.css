@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-    ul, ol {
-        list-style: revert;
-    }
+  ul,
+  ol {
+    list-style: revert;
+  }
 }
 
-.router-link-active{
-    @apply text-blue-600
+.router-link-active {
+  @apply text-blue-600;
 }

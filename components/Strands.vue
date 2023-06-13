@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { getSingletonItem, getItemById } = useDirectusItems()
+const { getSingletonItem, getItemById } = useDirectusItems();
 interface Strands {
   id?: string;
   Header: string;
@@ -15,24 +15,30 @@ interface Strand {
 }
 
 const strandPage = await getSingletonItem<Strands>({
-  collection: 'Strands'
-})
+  collection: "Strands",
+});
 
-const strands = []
+const strands = [];
 for (const strandId of strandPage.Strands) {
   const item = await getItemById<Strand[]>({
-    collection: 'Strand',
-    id: strandId
-  })
-  strands.push(item)
+    collection: "Strand",
+    id: strandId,
+  });
+  strands.push(item);
 }
 </script>
 <template>
   <div class="bg-white dark:bg-gray-800 py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
-        <span class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl" v-html="strandPage.Header" />
-        <span class="mx-auto max-w-screen-md text-center text-gray-500 dark:text-gray-200 md:text-lg" v-html="strandPage.Tagline" />
+        <span
+          class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl"
+          v-html="strandPage.Header"
+        />
+        <span
+          class="mx-auto max-w-screen-md text-center text-gray-500 dark:text-gray-200 md:text-lg"
+          v-html="strandPage.Tagline"
+        />
       </div>
       <div class="grid gap-4 sm:grid-cols-3">
         <NuxtLink
@@ -41,9 +47,15 @@ for (const strandId of strandPage.Strands) {
           :to="strand.Link"
           class="block max-w-md p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <span class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" v-html="strand.Header" />
+          <span
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            v-html="strand.Header"
+          />
           <br />
-          <span class="font-normal text-gray-700 dark:text-white text-justify" v-html="strand.Content" />
+          <span
+            class="font-normal text-gray-700 dark:text-white text-justify"
+            v-html="strand.Content"
+          />
         </NuxtLink>
       </div>
     </div>

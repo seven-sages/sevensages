@@ -1,28 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './components/**/*.{js,vue,ts}',
-    './composables/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-    './App.{js,ts,vue}',
-    './app.{js,ts,vue}'
+    "./components/**/*.{js,vue,ts}",
+    "./composables/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./App.{js,ts,vue}",
+    "./app.{js,ts,vue}",
   ],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       height: {
-        110: '28rem',
-        128: '32rem'
-      }
-    }
+        110: "28rem",
+        128: "32rem",
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/container-queries')
-  ]
-}
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/container-queries"),
+  ],
+};

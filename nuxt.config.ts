@@ -1,44 +1,44 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   build: {
-    transpile: ['primevue']
+    transpile: ["primevue"],
   },
   colorMode: {
-    classSuffix: ''
+    classSuffix: "",
   },
   css: [
-    '~/assets/css/tailwind.css',
-    'primevue/resources/themes/saga-blue/theme.css',
-    'primevue/resources/primevue.css',
-    'primeicons/primeicons.css'
+    "~/assets/css/tailwind.css",
+    "primevue/resources/themes/saga-blue/theme.css",
+    "primevue/resources/primevue.css",
+    "primeicons/primeicons.css",
   ],
   devtools: {
-    vscode: {}
+    vscode: {},
   },
   experimental: {
-    reactivityTransform: true
+    reactivityTransform: true,
   },
   headlessui: {
-    prefix: ''
+    prefix: "",
   },
   modules: [
-    '@vueuse/nuxt',
-    '@pinia/nuxt',
-    '@nuxtjs/color-mode',
-    'nuxt-icon',
-    'nuxt-headlessui',
-    'nuxt-vitest',
-    '@nuxt/devtools',
-    'nuxt-directus'
+    "@vueuse/nuxt",
+    "@pinia/nuxt",
+    "@nuxtjs/color-mode",
+    "nuxt-icon",
+    "nuxt-headlessui",
+    "nuxt-vitest",
+    "@nuxt/devtools",
+    "nuxt-directus",
   ],
   directus: {
-    url: 'https://sevensages-cms.zpd.wiki/',
-    autoFetch: true
+    url: "https://sevensages-cms.zpd.wiki/",
+    autoFetch: true,
   },
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {}
-    }
+      autoprefixer: {},
+    },
   },
-})
+});

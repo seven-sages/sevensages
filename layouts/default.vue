@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ScrollTop from 'primevue/scrolltop'
+import ScrollTop from "primevue/scrolltop";
 
-import Navbar from '~/components/layout/Navbar.vue'
-import Footer from '~/components/layout/Footer.vue'
+import Navbar from "~/components/layout/Navbar.vue";
+import Footer from "~/components/layout/Footer.vue";
 </script>
 
 <template>
@@ -16,6 +16,4 @@ import Footer from '~/components/layout/Footer.vue'
   </main>
 </template>
 
-<style>
-
-</style>
+<style></style>
