@@ -47,7 +47,9 @@ for (const item: Event of items) {
           v-for="event in forthcomingEvents.sort((a, b) => a.time - b.time)"
           :key="event.id"
         >
-          {{ event.Name }} ({{ event.Month }} {{ event.Year }})
+          <NuxtLink target="_blank" :to="event.Link">
+            {{ event.Name }} ({{ event.Month }} {{ event.Year }})
+          </NuxtLink>
         </li>
       </ul>
 
@@ -60,7 +62,9 @@ for (const item: Event of items) {
         class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
       >
         <li v-for="event in pastEvents" :key="event.id">
-          {{ event.Name }} ({{ event.Month }} {{ event.Year }})
+          <NuxtLink target="_blank" :to="event.Link">
+            {{ event.Name }} ({{ event.Month }} {{ event.Year }})
+          </NuxtLink>
         </li>
       </ul>
     </div>
