@@ -18,7 +18,7 @@ const item = await getSingletonItem<Funding>({
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800 py-6 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-8 lg:text-3xl"
@@ -26,7 +26,7 @@ const item = await getSingletonItem<Funding>({
       />
 
       <div
-        class="grid grid-cols-2 gap-6 rounded-lg bg-gray-100 dark:bg-gray-700 p-6 sm:h-40 sm:content-evenly md:grid-cols-2"
+        class="grid grid-cols-2 gap-6 rounded-lg bg-gray-100 p-6 dark:bg-gray-700 sm:h-40 sm:content-evenly md:grid-cols-2"
       >
         <div class="flex justify-center text-gray-400">
           <img v-if="isDark" :src="img(item.UKRI_dark)" alt="UKRI Logo" />

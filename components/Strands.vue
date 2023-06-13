@@ -28,7 +28,7 @@ for (const strandId of strandPage.Strands) {
 }
 </script>
 <template>
-  <div class="bg-white dark:bg-gray-800 py-6 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <span
@@ -45,7 +45,7 @@ for (const strandId of strandPage.Strands) {
           v-for="strand in strands"
           :key="strand.id"
           :to="strand.Link"
-          class="block max-w-md p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+          class="block max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-lg hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800"
         >
           <span
             class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -53,7 +53,7 @@ for (const strandId of strandPage.Strands) {
           />
           <br />
           <span
-            class="font-normal text-gray-700 dark:text-white text-justify"
+            class="text-justify font-normal text-gray-700 dark:text-white"
             v-html="strand.Content"
           />
         </NuxtLink>

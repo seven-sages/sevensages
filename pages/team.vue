@@ -19,7 +19,7 @@ const items = await getItems<Article>({
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800 py-6 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
@@ -31,7 +31,7 @@ const items = await getItems<Article>({
       <div
         class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
-        <template v-for="item in items">
+        <template v-for="item in items" :key="item.id">
           <Suspense>
             <TeamCard
               v-if="item.Type === 'Team'"

@@ -7,10 +7,10 @@ const toggleDark = useToggle(isDark);
 
 <template>
   <button
-    class="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200"
+    class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
     @click="toggleDark()"
   >
-    <Icon v-if="isDark" name="heroicons-outline:moon" class="w-6 h-6" />
-    <Icon v-else name="heroicons-outline:sun" class="w-6 h-6" />
+    <Icon v-if="isDark" name="heroicons-outline:moon" class="h-6 w-6" />
+    <Icon v-else name="heroicons-outline:sun" class="h-6 w-6" />
   </button>
 </template>

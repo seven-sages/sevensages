@@ -34,13 +34,13 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800 pb-6 sm:pb-8 lg:pb-12">
+  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <header class="mb-4 flex items-center justify-between py-4 md:py-8">
         <!-- logo - start -->
         <a
           href="/"
-          class="text-gray-800 dark:text-white inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl"
+          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-800 dark:text-white md:text-3xl"
           aria-label="logo"
         >
           Seven Sages of Rome

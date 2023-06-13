@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 pt-4 sm:pt-10 lg:pt-12">
+  <div class="bg-white pt-4 dark:bg-gray-800 sm:pt-10 lg:pt-12">
     <footer class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <div
-        class="flex flex-col items-center justify-between gap-4 border-t border-b py-6 md:flex-row"
+        class="flex flex-col items-center justify-between gap-4 border-b border-t py-6 md:flex-row"
       >
         <!-- nav - start -->
         <nav
@@ -10,12 +10,12 @@
         >
           <NuxtLink
             to="/contact"
-            class="text-gray-500 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+            class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
             >Contact</NuxtLink
           >
           <NuxtLink
             to="/blog"
-            class="text-gray-500 dark:text-white transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+            class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
             >Blog</NuxtLink
           >
         </nav>
@@ -26,7 +26,7 @@
           <NuxtLink
             href="#"
             target="_blank"
-            class="text-gray-400 dark:text-white transition duration-100 hover:text-gray-500 active:text-gray-600"
+            class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600 dark:text-white"
           >
             <svg
               class="h-5 w-5"
