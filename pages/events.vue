@@ -18,7 +18,7 @@ const items = await getItems<IEvent>({
   collection: "Event",
 });
 
-for (const item: Event of items) {
+for (const item: IEvent of items) {
   item.date = new Date(item.Year as Number, useMonthStringToNumber(item.Month));
   item.date.getTime() > now.getTime()
     ? forthcomingEvents.value.push(item)
