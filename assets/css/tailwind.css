@@ -10,5 +10,5 @@
 }
 
 .router-link-active {
-  @apply text-blue-600;
+  @apply text-indigo-600 dark:!text-indigo-400;
 }
