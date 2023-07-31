@@ -21,9 +21,8 @@ const gender = await getSingletonItem<IGender>({
 
       <p
         class="mb-6 text-justify text-gray-500 dark:text-gray-300 sm:text-lg md:mb-8"
-      >
-        {{ gender.Content }}
-      </p>
+        v-html="gender.Content"
+      />
     </div>
   </div>
 </template>
