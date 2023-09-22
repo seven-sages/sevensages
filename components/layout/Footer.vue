@@ -9,6 +9,11 @@
           class="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6"
         >
           <NuxtLink
+              to="/imprint"
+              class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
+          >Imprint</NuxtLink
+          >
+          <NuxtLink
             to="/contact"
             class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
             >Contact</NuxtLink
@@ -51,3 +56,5 @@
     </footer>
   </div>
 </template>
+<script setup lang="ts">
+</script>
