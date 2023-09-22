@@ -1,10 +1,12 @@
 <script setup lang="ts">
 const { getItems } = useDirectusItems();
+const { getThumbnail: img } = useDirectusFiles();
 
 interface Hero {
   id?: string | number;
   Header: string;
   Tagline: string;
+  Image: string;
 }
 
 const hero = await getItems<Hero>({
@@ -29,26 +31,16 @@ const hero = await getItems<Hero>({
           />
         </div>
 
-        <div class="mb-12 flex w-full md:mb-16 lg:w-2/3">
-          <div
-            class="group relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0"
-          >
-            <img
-              src="/img/hero_2.webp"
-              loading="lazy"
-              alt="Photo by Kaung Htet"
-              class="h-full w-full object-cover object-center"
-            />
-          </div>
-
-          <div class="group overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-            <img
-              src="/img/hero_1.webp"
-              loading="lazy"
-              alt="Photo by Manny Moreno"
-              class="h-full w-full object-cover object-center"
-            />
-          </div>
+        <!-- image - start -->
+        <div
+          class="min-h-48 overflow-hidden rounded-xl lg:h-auto xl:w-7/12"
+        >
+          <img
+            :src="img(hero.Image)"
+            loading="lazy"
+            alt=""
+            class="h-full w-full object-cover object-center"
+          />
         </div>
       </div>
     </section>
