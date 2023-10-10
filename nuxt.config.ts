@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     "nuxt-directus",
   ],
   directus: {
-    url: "https://sevensages-cms.zpd.wiki/",
+    url: "https://sevensages-cms.kallimachos.de/",
     autoFetch: true,
   },
   postcss: {
