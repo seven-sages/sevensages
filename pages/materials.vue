@@ -35,15 +35,22 @@ for (const entry of Object.values(materials.Material)) {
         {{ materials.Header }}
       </h1>
 
-      <ul
-        class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
-      >
-        <li v-for="event in material" :key="event.id">
-          <a :href="event.Link" target="_blank">
-            {{ event.Content }}
-          </a>
-        </li>
-      </ul>
+      <div v-if="material">
+        <p class="mb-4 text-center">
+          No research publication and material added yet
+        </p>
+      </div>
+      <div v-else>
+        <ul
+            class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
+        >
+          <li v-for="event in material" :key="event.id">
+            <a :href="event.Link" target="_blank">
+              {{ event.Content }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
