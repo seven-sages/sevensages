@@ -22,12 +22,12 @@
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.10",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.5",
     "@vitest/coverage-c8": "^0.33.0",
     "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "nuxt": "^3.7.4",
     "nuxt-directus": "^5.5.0",
     "nuxt-headlessui": "^1.1.4",
@@ -43,7 +43,7 @@
   "dependencies": {
     "add": "^2.0.6",
     "primeicons": "^6.0.1",
-    "primevue": "^3.35.0",
+    "primevue": "^3.36.0",
     "v-calendar": "^2.4.1",
     "yarn": "^1.22.19"
   }
