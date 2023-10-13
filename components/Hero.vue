@@ -15,34 +15,28 @@ const hero = await getItems<Hero>({
 </script>
 
 <template>
-  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
-    <section class="mx-auto max-w-screen-2xl px-4 md:px-8">
-      <div class="mb-8 flex flex-wrap justify-between md:mb-16">
-        <div
-          class="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48"
-        >
-          <span
-            class="mb-4 text-4xl font-bold text-gray-800 dark:text-white sm:text-5xl md:mb-8 md:text-6xl"
-            v-html="hero.Header"
-          />
-          <span
-            class="max-w-md text-justify leading-relaxed text-gray-700 dark:text-gray-200 xl:text-lg"
-            v-html="hero.Tagline"
-          />
-        </div>
+  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12 px-52">
+    <section class="min-h-90 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
+      <!-- image - start -->
+      <img :src="img(hero.Image)" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-center" />
+      <!-- image - end -->
 
-        <!-- image - start -->
-        <div
-          class="min-h-48 overflow-hidden rounded-xl lg:h-auto xl:w-7/12"
-        >
-          <img
-            :src="img(hero.Image)"
-            loading="lazy"
-            alt=""
-            class="h-full w-full object-cover object-center"
-          />
-        </div>
+      <!-- overlay - start -->
+      <div class="absolute inset-0 bg-slate-500 mix-blend-multiply"></div>
+      <!-- overlay - end -->
+
+      <!-- text start -->
+      <div class="relative flex flex-col items-center p-4 sm:max-w-xl xl:max-w-5xl">
+        <span
+            class="mb-8 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl"
+            v-html="hero.Header"
+        />
+        <span
+            class="text-center text-xl text-white"
+            v-html="hero.Tagline"
+        />
       </div>
+      <!-- text end -->
     </section>
   </div>
 </template>
