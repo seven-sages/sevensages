@@ -36,7 +36,7 @@ for (const entry of Object.values(materials.Material)) {
       </h1>
 
       <div v-if="material">
-        <p class="mb-4 text-center">
+        <p class="mb-4 text-center text-gray-800 dark:text-gray-200">
           No research publication and material added yet
         </p>
       </div>
