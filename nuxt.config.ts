@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
+  ssr: false,
   css: [
     "~/assets/css/tailwind.css",
     "primeicons/primeicons.css",
