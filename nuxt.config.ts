@@ -1,15 +1,10 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  build: {
-    transpile: ["primevue"],
-  },
   colorMode: {
     classSuffix: "",
   },
   css: [
     "~/assets/css/tailwind.css",
-    "primevue/resources/themes/saga-blue/theme.css",
-    "primevue/resources/primevue.css",
     "primeicons/primeicons.css",
   ],
   devtools: {
@@ -28,9 +23,34 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-headlessui",
     "nuxt-vitest",
+    "nuxt-primevue",
     "@nuxt/devtools",
     "nuxt-directus",
   ],
+  primevue: {
+    usePrimeVue: true,
+    options: {},
+    importPT: undefined,
+    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+    components: {
+      prefix: '',
+      name: undefined,
+      include: undefined,
+      exclude: undefined
+    },
+    directives: {
+      prefix: '',
+      name: undefined,
+      include: undefined,
+      exclude: undefined
+    },
+    composables: {
+      prefix: '',
+      name: undefined,
+      include: undefined,
+      exclude: undefined
+    }
+  },
   directus: {
     url: "https://sevensages-cms.kallimachos.de/",
     autoFetch: true,
