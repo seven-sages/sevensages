@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     }
   },
   directus: {
-    url: "https://sevensages-cms.kallimachos.de/",
+    url: process.env.NUXT_CMS_URL,
     autoFetch: true,
   },
   postcss: {
