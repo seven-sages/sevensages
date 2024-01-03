@@ -20,7 +20,7 @@ const dutchEdition = await getSingletonItem<IDutchEdition>({
       </h1>
 
       <span
-        class="mb-6 text-justify text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
+        class="mb-6 text-justify text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8 list-inside"
         v-html="dutchEdition.Content"
       />
     </div>
