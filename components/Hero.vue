@@ -15,14 +15,14 @@ const hero = await getItems<Hero>({
 </script>
 
 <template>
-  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12 px-52">
+  <div class="bg-white pb-6 px-4 dark:bg-gray-800 mx-auto">
     <section class="min-h-90 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
       <!-- image - start -->
       <img :src="img(hero.Image)" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-center" />
       <!-- image - end -->
 
       <!-- overlay - start -->
-      <div class="absolute inset-0 bg-slate-500 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-slate-700 mix-blend-multiply"></div>
       <!-- overlay - end -->
 
       <!-- text start -->
