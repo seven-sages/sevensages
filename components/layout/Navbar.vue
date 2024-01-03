@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import NavbarLink from "~/components/layout/NavbarLink.vue";
 
+const visible = ref(false);
+
 const navLinks = [
   {
     link: "/team",
@@ -34,6 +36,29 @@ const navLinks = [
 </script>
 
 <template>
+  <Sidebar
+    v-model:visible="visible"
+    header="Mobile Sidebar"
+    position="right"
+    class="p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 brightness-100">
+    <div class="pt-6 h-full grid grid-cols-1 content-between blur-none">
+      <ul class="space-y-2 font-medium">
+        <li
+          v-for="link in navLinks"
+          :key="link.name">
+          <NuxtLink
+            :to="link.link"
+            @click="visible = false"
+            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            {{ link.name }}
+          </NuxtLink>
+        </li>
+      </ul>
+      <div class="mx-auto">
+        <DarkToggle />
+      </div>
+    </div>
+  </Sidebar>
   <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <header class="mb-4 flex items-center justify-between py-4 md:py-8">
@@ -60,6 +85,7 @@ const navLinks = [
         <!-- nav - end -->
         <button
           type="button"
+          @click="visible = true"
           class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base xl:hidden"
         >
           <svg
@@ -74,8 +100,6 @@ const navLinks = [
               clip-rule="evenodd"
             />
           </svg>
-
-          Menu
         </button>
       </header>
     </div>
