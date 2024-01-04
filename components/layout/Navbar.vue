@@ -38,7 +38,7 @@ const navLinks = [
 <template>
   <Sidebar
     v-model:visible="visible"
-    header="Mobile Sidebar"
+    header=""
     position="right"
     :pt="{
       closeButton: {
