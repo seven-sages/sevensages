@@ -40,7 +40,12 @@ const navLinks = [
     v-model:visible="visible"
     header="Mobile Sidebar"
     position="right"
-    class="p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 brightness-100 border-l-2 border-gray-100 dark:border-gray-900">
+    :pt = "{
+      closeButton: {
+            class: 'dark:text-white'
+      }
+    }"
+    class="p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 brightness-100 border-l-2 border-gray-100 dark:border-gray-900 xl:hidden">
     <div class="pt-6 h-full grid grid-cols-1 content-between blur-none">
       <ul class="space-y-2 font-medium">
         <li

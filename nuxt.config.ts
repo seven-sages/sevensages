@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
     components: {
       exclude: ["Editor", "Chart"]
-    }
+    },
   },
   directus: {
     url: process.env.NUXT_CMS_URL,
