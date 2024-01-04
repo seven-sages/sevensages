@@ -26,7 +26,7 @@ const item = await getSingletonItem<Funding>({
       />
 
       <div
-        class="grid grid-cols-1 gap-6 rounded-lg bg-gray-100 p-6 dark:bg-gray-700 h-100 lg:h-40 content-evenly lg:grid-cols-2"
+        class="h-100 grid grid-cols-1 content-evenly gap-6 rounded-lg bg-gray-100 p-6 dark:bg-gray-700 lg:h-40 lg:grid-cols-2"
       >
         <div class="flex justify-center text-gray-400">
           <img v-if="isDark" :src="img(item.UKRI_dark)" alt="UKRI Logo" />

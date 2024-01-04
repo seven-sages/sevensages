@@ -4,10 +4,7 @@ export default defineNuxtConfig({
     classSuffix: "",
   },
   ssr: false,
-  css: [
-    "~/assets/css/tailwind.css",
-    "primeicons/primeicons.css",
-  ],
+  css: ["~/assets/css/tailwind.css", "primeicons/primeicons.css"],
   devtools: {
     vscode: {},
   },
@@ -31,7 +28,7 @@ export default defineNuxtConfig({
   primevue: {
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
     components: {
-      exclude: ["Editor", "Chart"]
+      exclude: ["Editor", "Chart"],
     },
   },
   directus: {

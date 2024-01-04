@@ -40,21 +40,21 @@ const navLinks = [
     v-model:visible="visible"
     header="Mobile Sidebar"
     position="right"
-    :pt = "{
+    :pt="{
       closeButton: {
-            class: 'dark:text-white'
-      }
+        class: 'dark:text-white',
+      },
     }"
-    class="p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 brightness-100 border-l-2 border-gray-100 dark:border-gray-900 xl:hidden">
-    <div class="pt-6 h-full grid grid-cols-1 content-between blur-none">
+    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform dark:border-gray-900 dark:bg-gray-800 xl:hidden"
+  >
+    <div class="grid h-full grid-cols-1 content-between pt-6 blur-none">
       <ul class="space-y-2 font-medium">
-        <li
-          v-for="link in navLinks"
-          :key="link.name">
+        <li v-for="link in navLinks" :key="link.name">
           <NuxtLink
             :to="link.link"
             @click="visible = false"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          >
             {{ link.name }}
           </NuxtLink>
         </li>

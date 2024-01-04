@@ -55,7 +55,7 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
     filter: {
       id: {
         _in: team.value.Advisory_Board_Members.map(
-          (advisoryBoardMember) => advisoryBoardMember.Person_id
+          (advisoryBoardMember) => advisoryBoardMember.Person_id,
         ),
       },
     },

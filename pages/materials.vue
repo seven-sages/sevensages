@@ -42,7 +42,7 @@ for (const entry of Object.values(materials.Material)) {
       </div>
       <div v-else>
         <ul
-            class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
+          class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
         >
           <li v-for="event in material" :key="event.id">
             <a :href="event.Link" target="_blank">

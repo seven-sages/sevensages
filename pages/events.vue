@@ -62,7 +62,11 @@ for (const item: IEvent of items) {
         class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
       >
         <li v-for="event in pastEvents" :key="event.id">
-          <NuxtLink target="_blank" :to="event.Link" :class="{ 'text-blue-600 hover:underline': event.Link }">
+          <NuxtLink
+            target="_blank"
+            :to="event.Link"
+            :class="{ 'text-blue-600 hover:underline': event.Link }"
+          >
             {{ event.Name }} ({{ event.Month }} {{ event.Year }})
           </NuxtLink>
         </li>
