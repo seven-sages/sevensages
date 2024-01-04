@@ -1,4 +1,4 @@
-FROM node:19 as build-stage
+FROM node:20 as build-stage
 WORKDIR /app
 COPY package.json .
 
@@ -6,7 +6,7 @@ RUN yarn
 COPY ./ .
 RUN yarn build
 
-FROM node:19 as prod-stage
+FROM node:20 as prod-stage
 WORKDIR /app
 COPY --from=build-stage /app/.output ./.output
 CMD [ "node", ".output/server/index.mjs" ]
