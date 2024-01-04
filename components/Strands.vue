@@ -40,12 +40,12 @@ for (const strandId of strandPage.Strands) {
           v-html="strandPage.Tagline"
         />
       </div>
-      <div class="grid gap-4 sm:grid-cols-3">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
         <NuxtLink
           v-for="strand in strands"
           :key="strand.id"
           :to="strand.Link"
-          class="block max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-lg hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800"
+          class="block rounded-lg border border-gray-200 bg-white p-6 shadow-lg hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800"
         >
           <span
             class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
