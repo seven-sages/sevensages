@@ -40,7 +40,7 @@ for (const strandId of strandPage.Strands) {
           v-html="strandPage.Tagline"
         />
       </div>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <NuxtLink
           v-for="strand in strands"
           :key="strand.id"
