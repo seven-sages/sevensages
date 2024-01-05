@@ -32,6 +32,10 @@ const navLinks = [
     link: "/materials",
     name: "Materials",
   },
+  {
+    link: "/news/latest",
+    name: "News",
+  },
 ];
 </script>
 
