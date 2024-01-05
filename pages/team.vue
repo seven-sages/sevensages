@@ -74,7 +74,7 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
         </h2>
       </div>
       <div
-        class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+        class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
         <Suspense>
           <TeamCard
@@ -98,7 +98,7 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
         </h2>
       </div>
       <div
-        class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+        class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
         <TeamCard
           v-for="item in advisoryBoardMembers"

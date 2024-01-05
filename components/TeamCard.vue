@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <div>
     <div
-      class="group mb-2 h-48 overflow-hidden rounded-xl bg-gray-100 shadow-lg [perspective:1000px] dark:bg-gray-800 sm:mb-4 sm:h-60 md:h-110"
+      class="group mb-2 h-110 overflow-hidden rounded-xl bg-gray-100 shadow-lg [perspective:1000px] dark:bg-gray-800"
     >
       <div
         class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
@@ -26,10 +26,10 @@ defineProps<{
           />
         </div>
         <div
-          class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-12 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
         >
           <div class="flex min-h-full flex-col items-center justify-center">
-            <p class="text-sm">
+            <p class="text-sm text-justify">
               {{ description }}
             </p>
           </div>
