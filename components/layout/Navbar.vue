@@ -46,18 +46,18 @@ const navLinks = [
     position="right"
     :pt="{
       closeButton: {
-        class: 'dark:text-white',
+        class: 'dark:text-white mx-auto',
       },
     }"
-    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform dark:border-gray-900 dark:bg-gray-800 xl:hidden"
+    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform xl:hidden dark:border-gray-900 dark:bg-gray-800"
   >
     <div class="grid h-full grid-cols-1 content-between pt-6 blur-none">
       <ul class="space-y-2 font-medium">
         <li v-for="link in navLinks" :key="link.name">
           <NuxtLink
             :to="link.link"
-            @click="visible = false"
             class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            @click="visible = false"
           >
             {{ link.name }}
           </NuxtLink>
@@ -68,13 +68,13 @@ const navLinks = [
       </div>
     </div>
   </Sidebar>
-  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
+  <div class="bg-white pb-6 sm:pb-8 lg:pb-12 dark:bg-gray-800">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <header class="mb-4 flex items-center justify-between py-4 md:py-8">
         <!-- logo - start -->
         <a
           href="/"
-          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-800 dark:text-white md:text-3xl"
+          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-800 md:text-3xl dark:text-white"
           aria-label="logo"
         >
           Seven Sages of Rome
@@ -94,8 +94,8 @@ const navLinks = [
         <!-- nav - end -->
         <button
           type="button"
-          @click="visible = true"
           class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base xl:hidden"
+          @click="visible = true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
