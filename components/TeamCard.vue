@@ -29,7 +29,7 @@ defineProps<{
           class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
         >
           <div class="flex min-h-full flex-col items-center justify-center">
-            <p class="text-sm text-justify">
+            <p class="text-justify text-sm">
               {{ description }}
             </p>
           </div>
@@ -37,11 +37,11 @@ defineProps<{
       </div>
     </div>
     <div>
-      <div class="font-bold text-indigo-500 dark:text-gray-100 md:text-lg">
+      <div class="font-bold text-indigo-500 md:text-lg dark:text-gray-100">
         {{ name }}
       </div>
       <p
-        class="mb-3 text-sm text-gray-500 dark:text-gray-300 md:mb-4 md:text-base"
+        class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base dark:text-gray-300"
       >
         {{ title }}
       </p>

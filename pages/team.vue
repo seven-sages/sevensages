@@ -64,17 +64,17 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
 </script>
 
 <template>
-  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 sm:py-8 lg:py-12 dark:bg-gray-800">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl"
+          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl dark:text-white"
         >
           {{ team.Team_Member_Title }}
         </h2>
       </div>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+        class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
         <Suspense>
           <TeamCard
@@ -92,13 +92,13 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
       </div>
       <div class="mb-10 mt-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl"
+          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl dark:text-white"
         >
           {{ team.Advisory_Board_Members_Title }}
         </h2>
       </div>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+        class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
         <TeamCard
           v-for="item in advisoryBoardMembers"
