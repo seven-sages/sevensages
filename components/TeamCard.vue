@@ -68,7 +68,7 @@ defineProps<{
           </a>
           <a
             v-show="mail"
-            :href="mail"
+            :href="`mailto:${mail}`"
             target="_blank"
             class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600"
           >
