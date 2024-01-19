@@ -65,3 +65,8 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
     </div>
   </div>
 </template>
+<style>
+img {
+  @apply rounded-lg;
+}
+</style>
