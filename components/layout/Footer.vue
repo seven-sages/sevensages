@@ -19,7 +19,7 @@
             >Contact</NuxtLink
           >
           <NuxtLink
-            to="#"
+            to=""
             class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
             >Blog</NuxtLink
           >
