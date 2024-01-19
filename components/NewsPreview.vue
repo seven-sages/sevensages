@@ -17,7 +17,7 @@ const newsLink = `/news/${props.id}`;
       <span class="title-font font-semibold text-gray-700 dark:text-gray-200"
         >{{ authorName.first_name }} {{ authorName.last_name }}</span
       >
-      <span class="mt-1 text-sm text-gray-500">{{ formattedDate }}</span>
+      <span class="mt-1 text-sm text-gray-400">{{ formattedDate }}</span>
     </div>
     <div class="md:flex-grow">
       <h2
