@@ -23,6 +23,7 @@ const hero = await getItems<Hero>({
       <img
         :src="img(hero.Image)"
         loading="lazy"
+        alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
         class="absolute inset-0 h-full w-full object-cover object-center"
       />
       <!-- image - end -->

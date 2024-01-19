@@ -1,5 +1,11 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+    },
+  },
   colorMode: {
     classSuffix: "",
   },
@@ -7,9 +13,6 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css", "primeicons/primeicons.css"],
   devtools: {
     vscode: {},
-  },
-  experimental: {
-    reactivityTransform: true,
   },
   headlessui: {
     prefix: "",

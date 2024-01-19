@@ -8,6 +8,7 @@ const toggleDark = useToggle(isDark);
 <template>
   <button
     class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"
+    aria-label="Toggle Dark Mode"
     @click="toggleDark()"
   >
     <Icon v-if="isDark" name="heroicons-outline:moon" class="h-6 w-6" />
