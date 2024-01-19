@@ -35,7 +35,7 @@ for (const item: IEvent of items) {
       </h1>
 
       <h2
-        class="mb-4 text-center text-xl font-bold text-gray-800 sm:text-3xl md:mb-6 dark:text-white"
+        class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6 dark:text-white"
       >
         Forthcoming events
       </h2>
@@ -54,7 +54,7 @@ for (const item: IEvent of items) {
       </ul>
 
       <h2
-        class="mb-4 text-center text-xl font-bold text-gray-800 sm:text-3xl md:mb-6 dark:text-white"
+        class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6 dark:text-white"
       >
         Past events
       </h2>
