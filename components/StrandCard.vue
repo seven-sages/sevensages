@@ -3,18 +3,22 @@ defineProps<{
   header?: string;
   content?: number;
   link?: string;
-  img?: img;
+  img?: string;
 }>();
 </script>
 <template>
   <div
-    class="relative mt-6 flex w-96 flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md dark:bg-gray-700 dark:text-gray-200"
+    class="relative mt-6 flex flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:shadow-xl dark:bg-gray-700 dark:text-gray-200 xl:w-96"
   >
     <div>
       <div
-        class="bg-blue-gray-500 shadow-blue-gray-500/40 relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-clip-border text-white shadow-lg"
+        class="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl shadow-lg"
       >
-        <img :src="img" alt="card-image" />
+        <img
+          :src="img"
+          class="h-full w-full xl:object-cover"
+          alt="card-image"
+        />
       </div>
       <div class="p-6">
         <h5
@@ -30,12 +34,12 @@ defineProps<{
       </div>
     </div>
     <div class="p-6 pt-0">
-      <button
+      <NuxtLink
         class="select-none rounded-lg bg-gray-900 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        type="button"
+        :to="link"
       >
         More
-      </button>
+      </NuxtLink>
     </div>
   </div>
 </template>
