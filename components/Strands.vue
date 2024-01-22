@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import StrandCard from "~/components/StrandCard.vue";
+
 const { getSingletonItem, getItemById } = useDirectusItems();
 interface Strands {
   id?: string;
@@ -41,22 +43,22 @@ for (const strandId of strandPage.Strands) {
         />
       </div>
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <NuxtLink
+        <StrandCard
           v-for="strand in strands"
           :key="strand.id"
-          :to="strand.Link"
-          class="block rounded-lg border border-gray-200 bg-white p-6 shadow-lg hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800"
-        >
-          <span
-            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            v-html="strand.Header"
-          />
-          <br />
-          <span
-            class="text-justify font-normal text-gray-700 dark:text-white"
-            v-html="strand.Content"
-          />
-        </NuxtLink>
+          :header="strand.Header"
+          :content="strand.Content"
+          :link="strand.Link"
+        />
+        <!--          <span
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          v-html="strand.Header"
+        />
+        <br />
+        <span
+          class="text-justify font-normal text-gray-700 dark:text-white"
+          v-html="strand.Content"
+        />-->
       </div>
     </div>
   </div>
