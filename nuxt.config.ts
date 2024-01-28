@@ -21,19 +21,11 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@pinia/nuxt",
     "@nuxtjs/color-mode",
-    "nuxt-icon",
     "nuxt-headlessui",
     "nuxt-vitest",
-    "nuxt-primevue",
     "@nuxt/devtools",
     "nuxt-directus",
   ],
-  primevue: {
-    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
-    components: {
-      exclude: ["Editor", "Chart"],
-    },
-  },
   directus: {
     url: process.env.NUXT_CMS_URL,
     autoFetch: true,
