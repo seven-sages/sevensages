@@ -36,8 +36,6 @@ team.value = await getSingletonItem<ITeam>({
   },
 });
 
-console.log(team.value.Team_Members);
-
 teamMembers.value = await getItems<IPerson[]>({
   collection: "Person",
   params: {
