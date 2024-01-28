@@ -36,7 +36,7 @@ team.value = await getSingletonItem<ITeam>({
   },
 });
 
-teamMembers.value = await getItems<IPerson[]>({
+getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
@@ -45,9 +45,11 @@ teamMembers.value = await getItems<IPerson[]>({
       },
     },
   },
+}).then((response) => {
+  teamMembers.value = response;
 });
 
-advisoryBoardMembers.value = await getItems<IPerson[]>({
+getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
@@ -58,6 +60,8 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
       },
     },
   },
+}).then((response) => {
+  advisoryBoardMembers.value = response;
 });
 </script>
 
@@ -74,7 +78,6 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
       <div
         class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
       >
-        <Suspense>
           <TeamCard
             v-for="item in teamMembers"
             :key="item.id"
@@ -86,7 +89,6 @@ advisoryBoardMembers.value = await getItems<IPerson[]>({
             :mail="item.Mail_Address"
             :twitter="item.Twitter_Account"
           />
-        </Suspense>
       </div>
       <div class="mb-10 mt-10 md:mb-16">
         <h2
