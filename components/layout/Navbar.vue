@@ -49,7 +49,7 @@ const navLinks = [
         class: 'dark:text-white mx-auto',
       },
     }"
-    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform xl:hidden dark:border-gray-900 dark:bg-gray-800"
+    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform dark:border-gray-900 dark:bg-gray-800 xl:hidden"
   >
     <div class="grid h-full grid-cols-1 content-between pt-6 blur-none">
       <ul class="space-y-2 font-medium">
@@ -68,13 +68,13 @@ const navLinks = [
       </div>
     </div>
   </Sidebar>
-  <div class="bg-white pb-6 sm:pb-8 lg:pb-12 dark:bg-gray-800">
+  <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <header class="mb-4 flex items-center justify-between py-4 md:py-8">
         <!-- logo - start -->
         <a
           href="/"
-          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-800 md:text-3xl dark:text-white"
+          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-800 dark:text-white md:text-3xl"
           aria-label="Seven Sages of Rome"
         >
           Seven Sages of Rome

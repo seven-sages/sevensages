@@ -1,7 +1,7 @@
 <template>
   <div
     role="status"
-    class="max-w-sm animate-pulse rounded border border-gray-200 p-4 shadow md:p-6 dark:border-gray-700"
+    class="max-w-sm animate-pulse rounded border border-gray-200 p-4 shadow dark:border-gray-700 md:p-6"
   >
     <div
       class="mb-4 flex h-48 items-center justify-center rounded bg-gray-300 dark:bg-gray-700"

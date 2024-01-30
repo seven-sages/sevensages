@@ -37,11 +37,11 @@ defineProps<{
       </div>
     </div>
     <div>
-      <div class="font-bold text-indigo-500 md:text-lg dark:text-gray-100">
+      <div class="font-bold text-indigo-500 dark:text-gray-100 md:text-lg">
         {{ name }}
       </div>
       <p
-        class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base dark:text-gray-300"
+        class="mb-3 text-sm text-gray-500 dark:text-gray-300 md:mb-4 md:text-base"
       >
         {{ title }}
       </p>

@@ -29,7 +29,7 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12 dark:bg-gray-800">
+  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-md px-4 md:px-8">
       <div class="mx-auto flex max-w-screen-xl justify-between px-4">
         <article
@@ -51,13 +51,13 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
               </div>
             </address>
             <h1
-              class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+              class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:mb-6 lg:text-4xl"
             >
               {{ news.Title }}
             </h1>
           </header>
           <span
-            class="mb-6 list-inside text-justify text-gray-500 sm:text-lg md:mb-8 dark:text-gray-200"
+            class="mb-6 list-inside text-justify text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
             v-html="news.Content"
           />
         </article>

@@ -27,10 +27,10 @@ for (const entry of Object.values(materials.Material)) {
 }
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12 dark:bg-gray-800">
+  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-md px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6 dark:text-white"
+        class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6"
       >
         {{ materials.Header }}
       </h1>
@@ -42,7 +42,7 @@ for (const entry of Object.values(materials.Material)) {
       </div>
       <div v-else>
         <ul
-          class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8 dark:text-gray-200"
+          class="mb-6 list-inside list-disc text-gray-500 dark:text-gray-200 sm:text-lg md:mb-8"
         >
           <li v-for="event in material" :key="event.id">
             <a :href="event.Link" target="_blank">
