@@ -8,7 +8,7 @@ defineProps<{
 </script>
 <template>
   <div
-    class="relative mt-6 flex flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:shadow-xl dark:bg-gray-700 dark:text-gray-200 xl:w-96"
+    class="relative group mt-6 flex flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:shadow-xl dark:bg-gray-700 dark:text-gray-200 xl:w-96"
   >
     <div>
       <div
@@ -16,7 +16,7 @@ defineProps<{
       >
         <img
           :src="img"
-          class="h-full w-full xl:object-cover"
+          class="h-full w-full xl:object-cover group-hover:scale-125 transition-all duration-500"
           alt="card-image"
         />
       </div>

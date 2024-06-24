@@ -17,14 +17,14 @@ const hero = await getItems<Hero>({
 <template>
   <div class="mx-auto max-w-screen-2xl bg-white px-4 pb-6 dark:bg-gray-800">
     <section
-      class="min-h-90 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-3xl bg-gray-100 py-16 shadow-2xl md:py-20 xl:py-48"
+      class="min-h-90 relative flex flex-1 shrink-0 group items-center justify-center overflow-hidden rounded-3xl bg-gray-100 py-16 shadow-2xl md:py-20 xl:py-48"
     >
       <!-- image - start -->
       <img
         :src="img(hero.Image)"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
-        class="absolute inset-0 h-full w-full object-cover object-center"
+        class="absolute group-hover:scale-125 transition-all duration-500 inset-0 h-full w-full object-cover object-center"
       />
       <!-- image - end -->
 
