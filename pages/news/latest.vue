@@ -22,6 +22,12 @@ const allNews = await getItems<INews>({
     filter: filters,
   },
 });
+
+const sortedNews = computed(() => {
+  return allNews.sort(function(a,b) {
+    return new Date(b.date_created) - new Date(a.date_created);
+  })
+})
 </script>
 <template>
   <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
@@ -44,7 +50,7 @@ const allNews = await getItems<INews>({
           <div class="container mx-auto px-5 py-24">
             <div class="-my-8 divide-y-2 divide-gray-100">
               <NewsPreview
-                v-for="news in allNews"
+                v-for="news in sortedNews"
                 :key="news.id"
                 :title="news.Title"
                 :abstract="news.Abstract"
