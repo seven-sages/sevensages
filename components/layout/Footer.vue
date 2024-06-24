@@ -29,7 +29,7 @@
         <!-- social - start -->
         <div class="flex gap-4">
           <NuxtLink
-            href="#"
+            href="https://x.com/7SagesResearch"
             :disabled="true"
             target="_blank"
             class="text-gray-700 transition duration-100 hover:text-gray-500 active:text-gray-600 dark:text-white"
