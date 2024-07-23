@@ -62,7 +62,7 @@ export default defineNuxtConfig({
     classSuffix: "",
   },
 
-  ssr: false,
+  ssr: true,
   css: ["~/assets/css/tailwind.css", "primeicons/primeicons.css"],
 
   devtools: {
