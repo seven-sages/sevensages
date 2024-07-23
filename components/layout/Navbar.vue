@@ -40,34 +40,37 @@ const navLinks = [
 </script>
 
 <template>
-  <Sidebar
-    v-model:visible="visible"
-    header=""
-    position="right"
-    :pt="{
-      closeButton: {
-        class: 'dark:text-white mx-auto',
-      },
-    }"
-    class="overflow-y-auto border-l-2 border-gray-100 bg-white p-4 brightness-100 transition-transform dark:border-gray-900 dark:bg-gray-800 xl:hidden"
-  >
-    <div class="grid h-full grid-cols-1 content-between pt-6 blur-none">
-      <ul class="space-y-2 font-medium">
-        <li v-for="link in navLinks" :key="link.name">
-          <NuxtLink
-            :to="link.link"
-            class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-            @click="visible = false"
-          >
-            {{ link.name }}
-          </NuxtLink>
-        </li>
-      </ul>
-      <div class="mx-auto">
-        <DarkToggle />
+  <Drawer v-model:visible="visible">
+    <template #container="{ closeCallback }">
+      <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between px-6 pt-4 shrink-0">
+                <span class="inline-flex items-center gap-2">
+                    <span class="font-semibold text-2xl text-primary">Seven Sages of Rome</span>
+                </span>
+          <span>
+              <Button type="button" @click="closeCallback" icon="pi pi-times" rounded outlined></Button>
+          </span>
+        </div>
+        <div class="overflow-y-auto">
+          <ul class="list-none p-4 m-0">
+            <li>
+              <ul class="list-none p-0 m-0 overflow-hidden">
+                <li v-for="link in navLinks" :key="link.name">
+                  <NuxtLink
+                    :to="link.link"
+                    class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    @click="visible = false"
+                  >
+                    {{ link.name }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </Sidebar>
+    </template>
+  </Drawer>
   <div class="bg-white pb-6 dark:bg-gray-800 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <header class="mb-4 flex items-center justify-between py-4 md:py-8">
