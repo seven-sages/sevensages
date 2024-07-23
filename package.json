@@ -18,6 +18,7 @@
     "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@pinia/nuxt": "^0.5.1",
+    "@primevue/nuxt-module": "^4.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
@@ -45,8 +46,10 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
+    "@primevue/themes": "^4.0.1",
     "add": "^2.0.6",
     "primeicons": "^7.0.0",
+    "primevue": "^4.0.1",
     "v-calendar": "^2.4.2",
     "yarn": "^1.22.22"
   }
