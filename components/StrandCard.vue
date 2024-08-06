@@ -1,45 +1,49 @@
 <script setup lang="ts">
 defineProps<{
   header?: string;
-  content?: number;
+  content?: string;
   link?: string;
   img?: string;
+  index: number;
 }>();
 </script>
 <template>
-  <div
-    class="relative group mt-6 flex flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:shadow-xl dark:bg-gray-700 dark:text-gray-200 xl:w-96"
-  >
-    <div>
-      <div
-        class="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl shadow-lg"
-      >
-        <img
-          :src="img"
-          class="h-full w-full xl:object-cover group-hover:scale-125 transition-all duration-500"
-          alt="card-image"
-        />
-      </div>
-      <div class="p-6">
-        <h5
-          class="text-blue-gray-900 mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal antialiased"
+  <div v-if="index % 2 == 0" class="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80 group">
+    <div class="order-first h-48 w-full bg-gray-100 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+      <img :src="img" loading="lazy" alt="Photo by Andras Vas" class="h-full w-full object-cover object-center saturate-[.75]" />
+    </div>
+    <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+      <h2 class="mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">{{ header }}</h2>
+
+      <p class="mb-8 max-w-md text-gray-600">{{ content }}</p>
+
+      <div class="mt-auto">
+        <NuxtLink
+          class="inline-block rounded-lg bg-white px-8 py-3 text-center text-sm font-semibold text-gray-800 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:text-base"
+          :to="link"
         >
-          {{ header }}
-        </h5>
-        <p
-          class="block font-sans text-base font-light leading-relaxed text-inherit antialiased"
-        >
-          {{ content }}
-        </p>
+          More
+        </NuxtLink>
       </div>
     </div>
-    <div class="p-6 pt-0">
-      <NuxtLink
-        class="select-none rounded-lg bg-gray-900 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        :to="link"
-      >
-        More
-      </NuxtLink>
+  </div>
+  <div v-else class="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
+    <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+      <h2 class="mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">{{ header }}</h2>
+
+      <p class="mb-8 max-w-md text-gray-600">{{ content }}</p>
+
+      <div class="mt-auto">
+        <NuxtLink
+          class="inline-block rounded-lg bg-white px-8 py-3 text-center text-sm font-semibold text-gray-800 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:text-base"
+          :to="link"
+        >
+          More
+        </NuxtLink>
+      </div>
+    </div>
+    <div class="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+      <img :src="img" loading="lazy" alt="Photo by Andras Vas" class="h-full w-full object-cover object-center saturate-[.75]" />
     </div>
   </div>
 </template>

@@ -2,11 +2,13 @@
 import { NewsPreview } from "#components";
 
 const { getItems } = useDirectusItems();
+const { getThumbnail: img } = useDirectusFiles();
 
 interface INews {
   id?: string;
   Title: string;
   Abstract: string;
+  Abstract_Image: string;
   Content: string;
   date_created: string;
   date_updated: string;
@@ -52,6 +54,7 @@ const sortedNews = computed(() => {
               <NewsPreview
                 v-for="news in sortedNews"
                 :key="news.id"
+                :img="img(news.Abstract_Image)"
                 :title="news.Title"
                 :abstract="news.Abstract"
                 :date="news.date_created"
