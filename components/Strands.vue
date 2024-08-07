@@ -32,23 +32,22 @@ for (const strandId of strandPage.Strands) {
 }
 </script>
 <template>
-  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
-    <div class="mx-auto px-2">
-      <div class="mb-10 md:mb-16">
-        <span
-          class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white md:mb-6 lg:text-3xl"
-          v-html="strandPage.Header"
-        />
+  <div class="bg-white flex justify-center py-6 dark:bg-gray-800 max-w-screen-2xl px-4">
+    <div>
+      <div>
+      <span
+        class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white md:mb-6 lg:text-3xl"
+        v-html="strandPage.Header"
+      />
         <span
           class="mx-auto max-w-screen-md text-center text-gray-900 dark:text-gray-200 md:text-lg"
           v-html="strandPage.Tagline"
         />
       </div>
-      <div class="flex flex-col max-w-screen-2xl mx-auto space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-2 md:gap-x-8 gap-y-2 auto-rows-fr justify-center ">
         <StrandCard
-          v-for="(strand, index) in strands"
+          v-for="strand in strands"
           :key="strand.id"
-          :index="index"
           :header="strand.Header"
           :content="strand.Content"
           :link="strand.Link"

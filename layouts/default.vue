@@ -6,7 +6,7 @@ import Footer from "~/components/layout/Footer.vue";
 <template>
   <main>
     <Navbar />
-    <div class="min-h-screen">
+    <div ref="main" class="min-h-screen">
       <slot />
     </div>
     <Footer />

@@ -17,7 +17,7 @@ const hero = await getItems<Hero>({
 </script>
 
 <template>
-  <div class="h-[90vh] group p-2 bg-white dark:bg-gray-800">
+  <div class="h-screen group p-2 bg-white dark:bg-gray-800">
     <section
       class="h-full relative shrink-0 overflow-hidden rounded-xl bg-gray-100"
     >
@@ -31,7 +31,7 @@ const hero = await getItems<Hero>({
       <!-- image - end -->
 
       <!-- overlay - start -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 from-35% via-white to-white mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-800/70 from-35% via-white to-zinc-700/70 mix-blend-multiply"></div>
       <!-- overlay - end -->
 
       <!-- text start -->
@@ -40,7 +40,7 @@ const hero = await getItems<Hero>({
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="w-full md:w-8/12 text-left text-7xl md:text-8xl font-bold text-white"
+            class="w-full md:w-8/12 text-left text-6xl md:text-7xl font-bold text-white"
             v-html="hero.Header"
           />
           <span class="text-left w-full md:w-6/12 text-md md:text-xl text-white" v-html="hero.Tagline" />
