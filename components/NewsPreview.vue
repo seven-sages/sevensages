@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDateFormat } from "../.nuxt/imports";
-const { getUserById } = useDirectusUsers();;
+const { getUserById } = useDirectusUsers();
 
 const props = defineProps(["author", "date", "title", "abstract", "img", "id"]);
 
@@ -14,25 +14,25 @@ const newsLink = `/news/${props.id}`;
 <template>
   <div class="flex flex-wrap py-8 md:flex-nowrap">
     <div class="mb-6 flex flex-shrink-0 flex-col md:mb-0 md:w-64">
-      <span class="title-font font-semibold text-gray-700 dark:text-gray-200"
+      <span class="title-font font-semibold text-gray-700"
         >{{ authorName.first_name }} {{ authorName.last_name }}</span
       >
       <span class="mt-1 text-sm text-gray-400">{{ formattedDate }}</span>
     </div>
     <div class="md:flex-grow flex space-x-4">
-      <img :src="img" class="w-64 h-64 rounded-xl">
+      <img :src="img" class="w-64 h-64 rounded-xl object-cover" alt="">
       <div>
         <h2
-          class="title-font mb-2 text-2xl font-medium text-gray-900 dark:text-gray-200"
+          class="title-font mb-2 text-2xl font-medium text-gray-900"
         >
           {{ title }}
         </h2>
         <ClientOnly>
-          <p class="leading-relaxed dark:text-gray-300" v-html="abstract" />
+          <p class="leading-relaxed" v-html="abstract" />
         </ClientOnly>
         <NuxtLink
           :to="newsLink"
-          class="mt-4 inline-flex items-center text-indigo-500 dark:text-indigo-400"
+          class="mt-4 inline-flex items-center text-indigo-500"
         >More
           <svg
             class="ml-2 h-4 w-4"

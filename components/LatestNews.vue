@@ -3,7 +3,7 @@ const { getItems } = useDirectusItems();
 const { getThumbnail: img } = useDirectusFiles();
 
 interface INews {
-  id?: string;
+  id: number;
   Title: string;
   Abstract: string;
   Abstract_Image: string;
@@ -28,17 +28,21 @@ const sortedNews = computed(() => {
     return new Date(b.date_created) - new Date(a.date_created);
   })
 })
+
+function getImage(image) {
+  if(image){
+    return img(image, { format: 'webp' })
+  }
+  return null
+}
 </script>
 <template>
-  <div class="max-w-screen-2xl px-4 mx-auto">
-    <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
+  <div class="max-w-screen-2xl flex flex-col px-4 mx-auto space-y-8">
+    <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-center">
       <h2 class="font-bold text-3xl">Latest news</h2>
-      <a class="bg-gray-200 hover:bg-blue-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
-        View all
-      </a>
     </div>
-    <div class="block space-x-0 lg:flex lg:space-x-6">
-      <NewsEntry v-for="news of sortedNews" :abstract="news.Abstract" :header="news.Title" :img="img(news.Abstract_Image)" />
+    <div class="block space-y-8 space-x-0 lg:flex lg:space-x-6">
+      <NewsEntry v-for="news of sortedNews" :id="news.id" :abstract="news.Abstract" :date="news.date_created" :header="news.Title" :img="getImage(news.Abstract_Image)" />
     </div>
   </div>
 </template>

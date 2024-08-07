@@ -5,8 +5,8 @@ import Footer from "~/components/layout/Footer.vue";
 
 <template>
   <main>
-    <Navbar :index="false" />
-    <div ref="main" class="min-h-screen bg-white pt-16">
+    <Navbar index />
+    <div ref="main" class="min-h-screen bg-white">
       <slot />
     </div>
     <Footer />

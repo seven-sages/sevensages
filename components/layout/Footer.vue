@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white pt-4 dark:bg-gray-800 sm:pt-10 lg:pt-12">
+  <div class="bg-white pt-4 sm:pt-10 lg:pt-12">
     <footer class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <div
         class="flex flex-col items-center justify-between gap-4 border-b border-t py-6 md:flex-row"
@@ -10,17 +10,17 @@
         >
           <NuxtLink
             to="/imprint"
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
+            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
             >Imprint</NuxtLink
           >
           <NuxtLink
             to="/contact"
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
+            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
             >Contact</NuxtLink
           >
           <NuxtLink
             to=""
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600 dark:text-white"
+            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
             >Blog</NuxtLink
           >
         </nav>
@@ -32,7 +32,7 @@
             href="https://x.com/7SagesResearch"
             :disabled="true"
             target="_blank"
-            class="text-gray-700 transition duration-100 hover:text-gray-500 active:text-gray-600 dark:text-white"
+            class="text-gray-700 transition duration-100 hover:text-gray-500 active:text-gray-600"
           >
             <svg
               class="h-5 w-5"
@@ -51,7 +51,7 @@
         <!-- social - end -->
       </div>
 
-      <div class="py-8 text-center text-sm text-gray-700 dark:text-white">
+      <div class="py-8 text-center text-sm text-gray-700">
         ©2023 - Present Seven Sages of Rome. All rights reserved.
       </div>
     </footer>

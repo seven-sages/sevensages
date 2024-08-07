@@ -4,6 +4,7 @@ import { useWindowScroll } from "@vueuse/core";
 defineProps<{
   name?: string;
   link?: string;
+  index: boolean
 }>();
 
 const { x, y } = useWindowScroll()
@@ -13,7 +14,7 @@ const { x, y } = useWindowScroll()
   <NuxtLink
     :to="link"
     class="text-lg font-semibold text-zinc-50 transition duration-100 hover:text-indigo-300"
-    :class="{ 'text-zinc-800 hover:text-indigo-800': y > 0 }"
+    :class="{ 'text-zinc-800 hover:text-indigo-800': y > 0 || !index }"
   >
     {{ name }}
   </NuxtLink>

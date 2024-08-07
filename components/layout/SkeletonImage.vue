@@ -1,13 +1,13 @@
 <template>
   <div
     role="status"
-    class="max-w-sm animate-pulse rounded border border-gray-200 p-4 shadow dark:border-gray-700 md:p-6"
+    class="max-w-sm animate-pulse rounded border border-gray-200 p-4 shadow md:p-6"
   >
     <div
-      class="mb-4 flex h-48 items-center justify-center rounded bg-gray-300 dark:bg-gray-700"
+      class="mb-4 flex h-48 items-center justify-center rounded bg-gray-300"
     >
       <svg
-        class="h-12 w-12 text-gray-200 dark:text-gray-600"
+        class="h-12 w-12 text-gray-200"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         fill="currentColor"

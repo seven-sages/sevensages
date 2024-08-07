@@ -1,20 +1,57 @@
 <script setup lang="ts">
 const props = defineProps<{
-  header?: string;
-  abstract?: string;
-  img: string;
+  id: number;
+  header: string;
+  abstract: string;
+  img: string | null;
+  date: string;
 }>();
+
+const link = `/news/${props.id}`
 </script>
 <template>
-  <div class="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
-    <img v-if="img != 'https://cms.seven-sages-of-rome.org/assets/null'" :src="img" class="rounded h-96" alt="technology" />
-    <img v-else src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" class="rounded h-96"  alt=""/>
-    <div class="p-4 pl-0">
-      <h2 class="font-bold text-2xl text-gray-800">{{ header }}</h2>
-      <ClientOnly>
-        <p class="text-gray-700 mt-2" v-html="abstract" />
-      </ClientOnly>
-      <a href="#" class="inline-block py-2 rounded text-green-900 mt-2 ml-auto">Read more</a>
-    </div>
-  </div>
+  <NuxtLink :href="link">
+    <article class="flex bg-white w-full transition">
+      <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+        <time
+          :datetime="date"
+          class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+        >
+          <span>{{ useDateFormat(date, 'YYYY', { locales: 'en-US' }) }}</span>
+          <span class="w-px flex-1 bg-gray-900/10"></span>
+          <span>{{ useDateFormat(date, 'MMM DD', { locales: 'en-US' }) }}</span>
+        </time>
+      </div>
+
+      <div v-show="img" class="hidden sm:block sm:basis-56">
+        <img
+          alt=""
+          :src="img"
+          class="aspect-square object-cover rounded-xl"
+        />
+      </div>
+
+      <div class="flex flex-1 flex-col justify-between">
+        <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+          <a href="#">
+            <h3 class="font-bold uppercase text-gray-900">
+              {{ header }}
+            </h3>
+          </a>
+          <ClientOnly>
+            <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700" v-html="abstract" />
+          </ClientOnly>
+        </div>
+
+        <div class="sm:flex sm:items-end sm:justify-end">
+          <a
+            href="#"
+            class="block bg-black px-5 py-3 text-center text-xs font-bold uppercase text-gray-100 transition"
+          >
+            Read News
+          </a>
+        </div>
+      </div>
+    </article>
+  </NuxtLink>
 </template>

@@ -32,17 +32,17 @@ const sortedNews = computed(() => {
 })
 </script>
 <template>
-  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6"
+        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
       >
         Latest News
       </h1>
 
       <div v-if="!allNews.length">
         <section class="body-font overflow-hidden text-gray-600">
-          <p class="mb-4 text-center text-gray-800 dark:text-gray-200">
+          <p class="mb-4 text-center text-gray-800">
             No news yet
           </p>
         </section>
@@ -54,7 +54,7 @@ const sortedNews = computed(() => {
               <NewsPreview
                 v-for="news in sortedNews"
                 :key="news.id"
-                :img="img(news.Abstract_Image)"
+                :img="img(news.Abstract_Image, { format: 'webp' })"
                 :title="news.Title"
                 :abstract="news.Abstract"
                 :date="news.date_created"

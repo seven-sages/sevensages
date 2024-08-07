@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Navbar from "~/components/layout/Navbar.vue";
+import { useWindowScroll } from "@vueuse/core";
 
 const { getItems } = useDirectusItems();
 const { getThumbnail: img } = useDirectusFiles();
@@ -14,24 +15,27 @@ interface Hero {
 const hero = await getItems<Hero>({
   collection: "Hero",
 });
+
+const { x, y } = useWindowScroll()
 </script>
 
 <template>
-  <div class="h-screen group p-2 bg-white dark:bg-gray-800">
+  <div class="h-screen group p-2 bg-white">
     <section
       class="h-full relative shrink-0 overflow-hidden rounded-xl bg-gray-100"
     >
       <!-- image - start -->
       <img
-        :src="img(hero.Image)"
+        :src="img(hero.Image, { format: 'webp' })"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
-        class="absolute inset-0 h-full w-full object-cover object-left saturate-[.65]"
+        class="absolute inset-0 h-full w-full object-cover object-left saturate-[.85]"
+        :class="{ 'saturate-[.5]': y > 0 }"
       />
       <!-- image - end -->
 
       <!-- overlay - start -->
-      <div class="absolute inset-0 bg-gradient-to-t from-zinc-800/70 from-35% via-white to-zinc-700/70 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-800/70 from-35% via-white to-zinc-700/90 mix-blend-multiply"></div>
       <!-- overlay - end -->
 
       <!-- text start -->

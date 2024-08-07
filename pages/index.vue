@@ -3,6 +3,10 @@ import Hero from "~/components/Hero.vue";
 import Strands from "~/components/Strands.vue";
 import Funding from "~/components/Funding.vue";
 import LatestNews from "~/components/LatestNews.vue"
+
+definePageMeta({
+  layout: 'landing-page'
+})
 </script>
 
 <template>
