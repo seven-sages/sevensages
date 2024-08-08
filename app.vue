@@ -16,7 +16,7 @@ useHead({
 
 useServerSeoMeta({
   title: "The Seven Sages of Rome",
-  ogTitle: "The Seven Sages of Rome prorject website.",
+  ogTitle: "The Seven Sages of Rome project website.",
   description: "Project website of the DFG funded Seven Sages of Rome project.",
   ogDescription:
     "Project website of the DFG funded Seven Sages of Rome project.",

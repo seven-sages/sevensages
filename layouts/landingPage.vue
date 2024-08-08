@@ -13,8 +13,8 @@ function toggleDrawer(){
 <template>
   <main>
     <MobileNavbar ref="drawer" />
-    <Navbar :index="false" @toggleDrawer="toggleDrawer" />
-    <div ref="main" class="min-h-screen bg-white pt-16">
+    <Navbar index @toggleDrawer="toggleDrawer" />
+    <div ref="main" class="min-h-screen bg-white">
       <slot />
     </div>
     <Footer />

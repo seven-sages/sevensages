@@ -3,6 +3,7 @@ node_modules
 dist
 .output
 .nuxt
+.data
 .env
 coverage
 # Local Netlify folder

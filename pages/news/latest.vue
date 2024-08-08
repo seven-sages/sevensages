@@ -2,11 +2,13 @@
 import { NewsPreview } from "#components";
 
 const { getItems } = useDirectusItems();
+const { getThumbnail: img } = useDirectusFiles();
 
 interface INews {
   id?: string;
   Title: string;
   Abstract: string;
+  Abstract_Image: string;
   Content: string;
   date_created: string;
   date_updated: string;
@@ -28,19 +30,26 @@ const sortedNews = computed(() => {
     return new Date(b.date_created) - new Date(a.date_created);
   })
 })
+
+function getImage(image) {
+  if(image){
+    return img(image, { format: 'webp' })
+  }
+  return null
+}
 </script>
 <template>
-  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6"
+        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
       >
         Latest News
       </h1>
 
       <div v-if="!allNews.length">
         <section class="body-font overflow-hidden text-gray-600">
-          <p class="mb-4 text-center text-gray-800 dark:text-gray-200">
+          <p class="mb-4 text-center text-gray-800">
             No news yet
           </p>
         </section>
@@ -52,6 +61,7 @@ const sortedNews = computed(() => {
               <NewsPreview
                 v-for="news in sortedNews"
                 :key="news.id"
+                :img="getImage(news.Abstract_Image)"
                 :title="news.Title"
                 :abstract="news.Abstract"
                 :date="news.date_created"

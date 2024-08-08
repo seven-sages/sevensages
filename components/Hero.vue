@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Navbar from "~/components/layout/Navbar.vue";
+import { useWindowScroll } from "@vueuse/core";
+
 const { getItems } = useDirectusItems();
 const { getThumbnail: img } = useDirectusFiles();
 
@@ -12,35 +15,40 @@ interface Hero {
 const hero = await getItems<Hero>({
   collection: "Hero",
 });
+
+const { y } = useWindowScroll()
 </script>
 
 <template>
-  <div class="mx-auto max-w-screen-2xl bg-white px-4 pb-6 dark:bg-gray-800">
+  <div class="h-screen group p-2 bg-white">
     <section
-      class="min-h-90 relative flex flex-1 shrink-0 group items-center justify-center overflow-hidden rounded-3xl bg-gray-100 py-16 shadow-2xl md:py-20 xl:py-48"
+      class="h-full relative shrink-0 overflow-hidden rounded-xl bg-gray-100"
     >
       <!-- image - start -->
       <img
-        :src="img(hero.Image)"
+        :src="img(hero.Image, { format: 'webp' })"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
-        class="absolute group-hover:scale-125 transition-all duration-500 inset-0 h-full w-full object-cover object-center"
+        class="absolute inset-0 h-full w-full object-cover object-left saturate-[.85]"
+        :class="{ 'saturate-[.5]': y > 0 }"
       />
       <!-- image - end -->
 
       <!-- overlay - start -->
-      <div class="absolute inset-0 bg-slate-600 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-800/70 from-35% via-white to-zinc-700/90 mix-blend-multiply"></div>
       <!-- overlay - end -->
 
       <!-- text start -->
       <div
-        class="relative flex flex-col items-center p-4 sm:max-w-xl xl:max-w-5xl"
+        class="relative flex items-end h-full p-12"
       >
-        <span
-          class="mb-8 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl"
-          v-html="hero.Header"
-        />
-        <span class="text-center text-xl text-white" v-html="hero.Tagline" />
+        <div class="flex flex-col space-y-2">
+          <span
+            class="relax text-5xl font-bold text-white sm:text-6xl md:text-7xl max-w-lg self-begin"
+            v-html="hero.Header"
+          />
+          <span class="text-left w-full md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12 text-md md:text-xl text-white self-begin" v-html="hero.Tagline" />
+        </div>
       </div>
       <!-- text end -->
     </section>

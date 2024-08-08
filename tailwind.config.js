@@ -10,7 +10,7 @@ module.exports = {
     "./App.{js,ts,vue}",
     "./app.{js,ts,vue}",
   ],
-  darkMode: "class",
+  darkMode: "selector",
   theme: {
     extend: {
       height: {

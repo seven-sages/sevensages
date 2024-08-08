@@ -66,11 +66,11 @@ getItems<IPerson[]>({
 </script>
 
 <template>
-  <div class="bg-white py-6 dark:bg-gray-800 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl"
+          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
         >
           {{ team.Team_Member_Title }}
         </h2>
@@ -84,7 +84,7 @@ getItems<IPerson[]>({
           :name="item.Name"
           :title="item.Tagline"
           :description="item.Description"
-          :image="img(item.Image)"
+          :image="img(item.Image, { format: 'webp' })"
           :alt="item.Name"
           :mail="item.Mail_Address"
           :twitter="item.Twitter_Account"
@@ -92,7 +92,7 @@ getItems<IPerson[]>({
       </div>
       <div class="mb-10 mt-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:mb-6 lg:text-3xl"
+          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
         >
           {{ team.Advisory_Board_Members_Title }}
         </h2>
@@ -106,7 +106,7 @@ getItems<IPerson[]>({
           :name="item.Name"
           :title="item.Tagline"
           :description="item.Description"
-          :image="img(item.Image)"
+          :image="img(item.Image, { format: 'webp' })"
           :alt="item.Name"
           :mail="item.Mail_Address"
           :twitter="item.Twitter_Account"
