@@ -41,7 +41,7 @@ function getImage(image) {
     <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-center">
       <h2 class="font-bold text-3xl">Latest news</h2>
     </div>
-    <div class="block space-y-8 space-x-0 lg:flex lg:space-x-6">
+    <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex lg:flex-row lg:space-x-8">
       <NewsEntry v-for="news of sortedNews" :id="news.id" :abstract="news.Abstract" :date="news.date_created" :header="news.Title" :img="getImage(news.Abstract_Image)" />
     </div>
   </div>

@@ -7,12 +7,13 @@ defineProps<{
   index: boolean;
 }>();
 
-const { x, y } = useWindowScroll()
+const { y } = useWindowScroll()
+
+const emit = defineEmits(["toggleDrawer"]);
 </script>
 
 <template>
   <header
-    ref="header"
     class="fixed w-full z-50 top-0 px-8 py-6"
     :class="{ 'bg-white py-4 border-b': y > 0 }">
     <div
@@ -20,11 +21,11 @@ const { x, y } = useWindowScroll()
         <!-- logo - start -->
         <a
           href="/"
-          class="inline-flex items-center gap-2.5 text-2xl font-bold text-gray-50 dark:text-white md:text-3xl cursor-pointer"
+          class="text-lg md:text-2xl font-light tracking-widest text-white cursor-pointer"
           :class="{ 'text-zinc-800': y > 0 || !index }"
-          aria-label="Seven Sages of Rome"
+          aria-label="The Seven Sages of Rome"
         >
-          Seven Sages of Rome
+          The Seven Sages of Rome
         </a>
         <!-- logo - end -->
 
@@ -43,7 +44,7 @@ const { x, y } = useWindowScroll()
           type="button"
           aria-label="Open Navigation Drawer"
           class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base xl:hidden"
-          @click="visible = true"
+          @click="emit('toggleDrawer')"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

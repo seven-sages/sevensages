@@ -20,7 +20,7 @@ const newsLink = `/news/${props.id}`;
       <span class="mt-1 text-sm text-gray-400">{{ formattedDate }}</span>
     </div>
     <div class="md:flex-grow flex space-x-4">
-      <img :src="img" class="w-64 h-64 rounded-xl object-cover" alt="">
+      <img v-if="img" :src="img" class="w-64 h-64 rounded-xl object-cover" alt="">
       <div>
         <h2
           class="title-font mb-2 text-2xl font-medium text-gray-900"

@@ -16,7 +16,7 @@ const hero = await getItems<Hero>({
   collection: "Hero",
 });
 
-const { x, y } = useWindowScroll()
+const { y } = useWindowScroll()
 </script>
 
 <template>
@@ -44,10 +44,10 @@ const { x, y } = useWindowScroll()
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="w-full md:w-8/12 text-left text-6xl md:text-7xl font-bold text-white"
+            class="relax text-5xl font-bold text-white sm:text-6xl md:text-7xl max-w-lg self-begin"
             v-html="hero.Header"
           />
-          <span class="text-left w-full md:w-6/12 text-md md:text-xl text-white" v-html="hero.Tagline" />
+          <span class="text-left w-full md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12 text-md md:text-xl text-white self-begin" v-html="hero.Tagline" />
         </div>
       </div>
       <!-- text end -->

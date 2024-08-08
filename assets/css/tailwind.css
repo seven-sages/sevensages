@@ -9,6 +9,10 @@
   }
 }
 
+div {
+  font-family: Jost, sans-serif;
+}
+
 .router-link-active {
   @apply text-indigo-600;
 }

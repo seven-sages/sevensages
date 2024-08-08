@@ -11,7 +11,7 @@ const link = `/news/${props.id}`
 </script>
 <template>
   <NuxtLink :href="link">
-    <article class="flex bg-white w-full transition">
+    <article class="flex bg-white h-full w-full transition">
       <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
         <time
           :datetime="date"
@@ -23,11 +23,11 @@ const link = `/news/${props.id}`
         </time>
       </div>
 
-      <div v-show="img" class="hidden sm:block sm:basis-56">
+      <div v-if="img" class="hidden sm:block sm:basis-56">
         <img
           alt=""
           :src="img"
-          class="aspect-square object-cover rounded-xl"
+          class="aspect-square object-cover size-64 rounded-xl"
         />
       </div>
 

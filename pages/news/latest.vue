@@ -30,6 +30,13 @@ const sortedNews = computed(() => {
     return new Date(b.date_created) - new Date(a.date_created);
   })
 })
+
+function getImage(image) {
+  if(image){
+    return img(image, { format: 'webp' })
+  }
+  return null
+}
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -54,7 +61,7 @@ const sortedNews = computed(() => {
               <NewsPreview
                 v-for="news in sortedNews"
                 :key="news.id"
-                :img="img(news.Abstract_Image, { format: 'webp' })"
+                :img="getImage(news.Abstract_Image)"
                 :title="news.Title"
                 :abstract="news.Abstract"
                 :date="news.date_created"

@@ -42,7 +42,7 @@ for (const strandId of strandPage.Strands) {
         {{ strandPage.Tagline }}
       </p>
     </header>
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-2 md:gap-x-8 gap-y-2 auto-rows-fr justify-center ">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-2 md:gap-x-8 gap-y-2 auto-rows-fr justify-center ">
       <StrandCard
         v-for="strand in strands"
         :key="strand.id"

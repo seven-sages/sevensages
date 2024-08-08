@@ -2,6 +2,14 @@
 const visible = ref(false);
 
 import { navLinks } from "./sidebar"
+
+function toggle(value: boolean){
+  visible.value = value
+}
+
+defineExpose({
+  toggle
+})
 </script>
 <template>
   <Drawer v-model:visible="visible" class="!w-full md:!w-80 lg:!w-[30rem]">

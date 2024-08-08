@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import Navbar from "~/components/layout/Navbar.vue";
 import Footer from "~/components/layout/Footer.vue";
+import MobileNavbar from "~/components/layout/MobileNavbar.vue";
+
+const drawer = ref()
+
+function toggleDrawer(){
+  drawer.value.toggle(true)
+}
 </script>
 
 <template>
   <main>
-    <Navbar :index="false" />
+    <MobileNavbar ref="drawer" />
+    <Navbar :index="false" @toggleDrawer="toggleDrawer" />
     <div ref="main" class="min-h-screen bg-white pt-16">
       <slot />
     </div>
