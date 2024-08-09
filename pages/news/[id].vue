@@ -64,7 +64,11 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
   </div>
 </template>
 <style scoped>
-img {
-  @apply py-4 rounded-lg;
+:deep(img) {
+  @apply py-4
+}
+
+:deep(a) {
+  @apply text-blue-700
 }
 </style>

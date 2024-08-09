@@ -19,6 +19,7 @@ const filters = { status: "published" };
 const allNews = await getItems<INews>({
   collection: "News",
   params: {
+    limit: 9,
     filter: filters,
   },
 });
@@ -35,14 +36,39 @@ function getImage(image) {
   }
   return null
 }
+
+const responsiveOptions = ref([
+  {
+    breakpoint: '1600px',
+    numVisible: 2,
+    numScroll: 1
+  },
+  {
+    breakpoint: '1200px',
+    numVisible: 1,
+    numScroll: 1
+  }
+]);
 </script>
 <template>
-  <div class="max-w-screen-2xl flex flex-col px-4 mx-auto space-y-8">
-    <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-center">
-      <h2 class="font-bold text-3xl">Latest news</h2>
+  <div class="grid grid-cols-1 gap-y-8 px-4 xl:px-24">
+    <div class="flex mb-4 px-4 lg:px-0 items-center justify-between space-x-4">
+      <div class="hidden md:block" />
+      <h2 class="font-bold text-3xl pl-24">Latest news</h2>
+      <a
+        href="/news/latest"
+        class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
+      >All news</a>
     </div>
-    <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex lg:flex-row lg:space-x-8">
-      <NewsEntry v-for="news of sortedNews" :id="news.id" :abstract="news.Abstract" :date="news.date_created" :header="news.Title" :img="getImage(news.Abstract_Image)" />
-    </div>
+    <Carousel :value="sortedNews" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
+      <template #item="slotProps">
+        <NewsEntry
+          :id="slotProps.data.id"
+          :abstract="slotProps.data.Abstract"
+          :date="slotProps.data.date_created"
+          :header="slotProps.data.Title"
+          :img="getImage(slotProps.data.Abstract_Image)" />
+      </template>
+    </Carousel>
   </div>
 </template>

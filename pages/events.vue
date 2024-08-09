@@ -4,21 +4,25 @@ const { getItems } = useDirectusItems();
 interface IEvent {
   id?: string | number;
   Name: string;
+  Day: string;
   Month: string;
   Year: string;
   Link: string;
+  Location: string;
+  Short_Description: string;
   date?: Date;
 }
 
 const now = new Date();
-const forthcomingEvents = ref([]);
-const pastEvents = ref([]);
+const forthcomingEvents: Ref<IEvent[]> = ref([]);
+const pastEvents: Ref<IEvent[]> = ref([]);
 
 const items = await getItems<IEvent>({
   collection: "Event",
 });
 
 for (const item: IEvent of items) {
+  console.log(item)
   item.date = new Date(item.Year as Number, useMonthStringToNumber(item.Month));
   item.date.getTime() > now.getTime()
     ? forthcomingEvents.value.push(item)
@@ -29,48 +33,40 @@ for (const item: IEvent of items) {
   <div class="bg-white py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-screen-md px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
+        class="text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
       >
         Events
       </h1>
-
-      <h2
-        class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
-      >
-        Forthcoming events
-      </h2>
-
-      <ul
-        class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8"
-      >
-        <li
-          v-for="event in forthcomingEvents.sort((a, b) => a.time - b.time)"
-          :key="event.id"
-        >
-          <NuxtLink target="_blank" :to="event.Link">
-            {{ event.Name }} ({{ event.Month }} {{ event.Year }})
-          </NuxtLink>
-        </li>
-      </ul>
-
-      <h2
-        class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
-      >
-        Past events
-      </h2>
-      <ul
-        class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8"
-      >
-        <li v-for="event in pastEvents" :key="event.id">
-          <NuxtLink
-            target="_blank"
-            :to="event.Link"
-            :class="{ 'text-blue-600 hover:underline': event.Link }"
+      <div class="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16">
+        <div class="w-full max-w-3xl mx-auto">
+          <h2
+            class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
           >
-            {{ event.Name }} ({{ event.Month }} {{ event.Year }})
-          </NuxtLink>
-        </li>
-      </ul>
+            Forthcoming events
+          </h2>
+          <div class="-my-6">
+            <Event
+              v-for="event in forthcomingEvents"
+              :key="event.id"
+              :event="event"
+            />
+          </div>
+        </div>
+        <div class="w-full max-w-3xl mx-auto">
+          <h2
+            class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
+          >
+            Past events
+          </h2>
+          <div class="-my-6">
+            <Event
+              v-for="event in pastEvents"
+              :key="event.id"
+              :event="event"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
