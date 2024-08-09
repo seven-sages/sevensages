@@ -37,6 +37,10 @@ for (const item: IEvent of items) {
   item.date = new Date(item.Year as Number, useMonthStringToNumber(item.Month));
   if(item.date.getTime() > now.getTime()) forthcomingEvents.value.push(item)
 }
+
+forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
+  return new Date(b.date) - new Date(a.date);
+})
 </script>
 <template>
   <div class="flex flex-col px-4 xl:px-24 mx-auto space-y-8 w-full">
