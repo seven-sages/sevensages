@@ -11,14 +11,14 @@ const link = `/news/${props.id}`
 </script>
 <template>
   <NuxtLink :href="link">
-    <article class="flex bg-white h-full w-full transition">
+    <article class="flex bg-white h-full w-full transition pr-8">
       <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
         <time
           :datetime="date"
           class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
         >
           <span>{{ useDateFormat(date, 'YYYY', { locales: 'en-US' }) }}</span>
-          <span class="flex-1 bg-gray-900/10"></span>
+          <span class="w-px flex-1 bg-gray-900/10"></span>
           <span>{{ useDateFormat(date, 'MMM DD', { locales: 'en-US' }) }}</span>
         </time>
       </div>
