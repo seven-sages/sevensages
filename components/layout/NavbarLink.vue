@@ -13,7 +13,7 @@ const { y } = useWindowScroll()
 <template>
   <NuxtLink
     :to="link"
-    class="text-lg font-light text-zinc-50 transition duration-100"
+    class="text-lg text-zinc-50 transition duration-100"
     :class="{ 'text-zinc-800': y > 0 || !index }"
   >
     <span class="link link-underline" :class="[ y > 0 || !index ? 'link-underline-black' : 'link-underline-white' ]">{{ name }}</span>

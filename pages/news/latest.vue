@@ -39,10 +39,10 @@ function getImage(image) {
 }
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-white py-6 lg:py-12">
     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
+        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl"
       >
         Latest News
       </h1>
@@ -56,7 +56,7 @@ function getImage(image) {
       </div>
       <div v-else>
         <section class="body-font overflow-hidden text-gray-600">
-          <div class="container mx-auto px-5 py-24">
+          <div class="container mx-auto px-6 py-12">
             <div class="-my-8 divide-y-2 divide-gray-100">
               <NewsPreview
                 v-for="news in sortedNews"

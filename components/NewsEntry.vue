@@ -18,7 +18,7 @@ const link = `/news/${props.id}`
           class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
         >
           <span>{{ useDateFormat(date, 'YYYY', { locales: 'en-US' }) }}</span>
-          <span class="w-px flex-1 bg-gray-900/10"></span>
+          <span class="flex-1 bg-gray-900/10"></span>
           <span>{{ useDateFormat(date, 'MMM DD', { locales: 'en-US' }) }}</span>
         </time>
       </div>
@@ -46,7 +46,7 @@ const link = `/news/${props.id}`
         <div class="sm:flex sm:items-end sm:justify-end">
           <a
             href="#"
-            class="block bg-black px-5 py-3 text-center text-xs font-bold uppercase text-gray-100 transition"
+            class="rounded block px-5 py-3 text-center text-xs font-bold uppercase bg-white hover:bg-black border border-black text-black hover:text-white transition-colors duration-200"
           >
             Read News
           </a>

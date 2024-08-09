@@ -14,5 +14,5 @@ div {
 }
 
 .router-link-active {
-  @apply text-indigo-600;
+  @apply font-bold;
 }

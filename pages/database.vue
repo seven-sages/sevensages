@@ -27,3 +27,8 @@ const database = await getSingletonItem<IDatabase>({
     </div>
   </div>
 </template>
+<style scoped>
+:deep(a) {
+  @apply text-blue-700
+}
+</style>
