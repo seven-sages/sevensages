@@ -27,6 +27,14 @@ for (const item: IEvent of items) {
     ? forthcomingEvents.value.push(item)
     : pastEvents.value.push(item);
 }
+
+forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
+  return new Date(b.date) - new Date(a.date);
+})
+
+pastEvents.value = pastEvents.value.sort(function(a,b) {
+  return new Date(b.date) - new Date(a.date);
+})
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
