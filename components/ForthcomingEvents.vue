@@ -44,9 +44,9 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
 </script>
 <template>
   <div class="flex flex-col px-4 xl:px-24 mx-auto space-y-8 w-full">
-    <div class="flex mb-4 px-4 lg:px-0 items-center justify-between space-x-4">
+    <div class="flex flex-col md:flex-row mb-4 md:px-4 lg:px-0 items-center justify-center md:justify-between space-y-2 md:space-y-0 md:space-x-4">
       <div class="hidden md:block" />
-      <h2 class="font-bold text-3xl pl-24">Forthcoming Events</h2>
+      <h2 class="font-bold text-3xl md:pl-24">Forthcoming Events</h2>
       <a
         href="/events"
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
