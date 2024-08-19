@@ -33,7 +33,7 @@ const sortedNews = computed(() => {
 
 function getImage(image) {
   if(image){
-    return img(image, { format: 'webp' })
+    return img(image, { format: 'webp', quality: 40 })
   }
   return null
 }

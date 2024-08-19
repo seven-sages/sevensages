@@ -49,7 +49,7 @@ for (const strandId of strandPage.Strands) {
           :header="strand.Header"
           :content="strand.Content"
           :link="strand.Link"
-          :img="img(strand.Image, { format: 'webp' })"
+          :img="img(strand.Image, { format: 'webp', quality: 40 })"
         />
       </div>
     </section>

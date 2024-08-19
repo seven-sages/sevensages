@@ -26,7 +26,8 @@ const { y } = useWindowScroll()
     >
       <!-- image - start -->
       <img
-        :src="img(hero.Image, { format: 'webp' })"
+        :src="img(hero.Image,
+        { format: 'webp', quality: 40 })"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
         class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left saturate-[.85]"

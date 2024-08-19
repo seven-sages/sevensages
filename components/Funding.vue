@@ -27,10 +27,10 @@ const item = await getSingletonItem<Funding>({
         class="h-100 grid grid-cols-1 content-evenly gap-6 rounded-lg bg-gray-100 p-6 lg:h-40 lg:grid-cols-2"
       >
         <div class="flex justify-center text-gray-400">
-          <img :src="img(item.UKRI_light, { format: 'webp' })" alt="UKRI logo" />
+          <img :src="img(item.UKRI_light, { format: 'webp', quality: 40 })" alt="UKRI logo" />
         </div>
         <div class="flex justify-center text-gray-400">
-          <img :src="img(item.DFG_light, { format: 'webp' })" alt="DFG logo" />
+          <img :src="img(item.DFG_light, { format: 'webp', quality: 40 })" alt="DFG logo" />
         </div>
       </div>
     </div>
