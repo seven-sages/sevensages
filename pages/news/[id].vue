@@ -65,7 +65,7 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </template>
 <style scoped>
 :deep(img) {
-  @apply py-4
+  @apply my-4 rounded-lg
 }
 
 :deep(a) {
