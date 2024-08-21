@@ -20,7 +20,7 @@ const { y } = useWindowScroll()
 </script>
 
 <template>
-  <div class="h-screen group p-2 bg-white">
+  <div class="h-[100dvh] group p-2 bg-white">
     <section
       class="h-full relative shrink-0 overflow-hidden rounded-xl bg-gray-100"
     >
