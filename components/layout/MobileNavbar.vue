@@ -30,7 +30,7 @@ defineExpose({
                 <li v-for="link in navLinks" :key="link.name">
                   <NuxtLink
                     :to="link.link"
-                    class="group text-6xl lg:text-8 xl flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                    class="group text-5xl md:text-6xl lg:text-8 xl flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
                     @click="visible = false"
                   >
                     {{ link.name }}
