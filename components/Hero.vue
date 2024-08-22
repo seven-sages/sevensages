@@ -20,9 +20,9 @@ const { y } = useWindowScroll()
 </script>
 
 <template>
-  <div class="h-[100dvh] group p-2 bg-white">
+  <div class="h-[100dvh] group bg-white">
     <section
-      class="h-full relative shrink-0 overflow-hidden rounded-xl bg-gray-100"
+      class="h-full relative shrink-0 overflow-hidden bg-gray-100"
     >
       <!-- image - start -->
       <img
@@ -31,7 +31,7 @@ const { y } = useWindowScroll()
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
         class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left saturate-[.85]"
-        :class="{ 'saturate-[.5]': y > 0 }"
+        :class="{ 'saturate-[.70]': y > 0 }"
       />
       <!-- image - end -->
 
