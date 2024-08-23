@@ -18,11 +18,6 @@
             class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
             >Contact</NuxtLink
           >
-          <NuxtLink
-            to=""
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
-            >Blog</NuxtLink
-          >
         </nav>
         <!-- nav - end -->
 
