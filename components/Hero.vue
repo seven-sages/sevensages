@@ -16,7 +16,8 @@ const hero = await getItems<Hero>({
   collection: "Hero",
 });
 
-const { y } = useWindowScroll()
+const { y } = useWindowScroll({ behavior: 'smooth' })
+const { width, height } = useWindowSize()
 </script>
 
 <template>
@@ -52,6 +53,11 @@ const { y } = useWindowScroll()
         </div>
       </div>
       <!-- text end -->
+      <div @click="y = height" class="absolute bottom-4 left-0 right-0 cursor-pointer">
+        <span class="text-center flex flex-col w-full text-white font-bold">
+        <i class="pi pi-arrow-circle-down" style="font-size: 1.5rem"></i>
+        </span>
+      </div>
     </section>
   </div>
 </template>
