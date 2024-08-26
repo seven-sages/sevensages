@@ -54,8 +54,8 @@ const { width, height } = useWindowSize()
       </div>
       <!-- text end -->
       <!-- scroll down button start -->
-      <button @click="y = height" aria-label="scroll down" class="absolute z-10 left-[50%] bottom-5 animate-bounce duration-700">
-        <svg width="76" height="76" class="stroke-current text-white" fill="none" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><path d="m22.7998 30.3996 15.2 15.2 15.2-15.2" stroke-width="1.5"></path></svg>
+      <button @click="y = height" aria-label="scroll down" class="absolute z-10 left-2/4 right-2/4 bottom-5 animate-bounce duration-700">
+        <Icon name="ph:caret-down-light" class="text-white size-8" />
       </button>
       <!-- scroll down button end -->
     </section>
