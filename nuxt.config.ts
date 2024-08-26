@@ -68,7 +68,8 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     "@nuxt/devtools",
     "nuxt-directus",
-    "@nuxt/fonts"
+    "@nuxt/fonts",
+    "@nuxt/icon"
   ],
 
   primevue: {
