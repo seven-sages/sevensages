@@ -3,10 +3,7 @@ const visible = ref(false);
 
 import { navLinks } from "./sidebar"
 
-const rotate = ref(false)
-
 function toggle(value: boolean){
-  rotate.value = true
   visible.value = value
 }
 
@@ -24,8 +21,8 @@ defineExpose({
                 </span>
           <span>
             <button class="rtL:ml-6 ltr:mr-6 md:p-4" @click="closeCallback" tabindex="0" aria-label="menu">
-              <div class="w-10 h-1 rotate-0 transition-all bg-black mb-0 absolute" :class="{ 'rotate-45': rotate }"/>
-              <div class="w-10 h-1 rotate-0 transition-all bg-black" :class="{ '-rotate-45': rotate }" />
+              <div class="w-10 h-1 rotate-0 transition-all bg-black mb-0 absolute"/>
+              <div class="w-10 h-1 rotate-0 transition-all bg-black" />
             </button>
           </span>
         </div>
