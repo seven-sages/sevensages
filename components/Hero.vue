@@ -37,27 +37,27 @@ const { width, height } = useWindowSize()
       <!-- image - end -->
 
       <!-- overlay - start -->
-      <div class="absolute inset-0 bg-gradient-to-t from-zinc-800/70 from-35% via-white to-zinc-700/90 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-zinc-500 mix-blend-multiply"></div>
       <!-- overlay - end -->
 
       <!-- text start -->
       <div
-        class="relative flex items-end h-full p-12"
+        class="relative flex items-center h-full p-12"
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="relax text-5xl font-bold text-white sm:text-6xl md:text-7xl max-w-lg self-begin"
+            class="relax text-5xl font-bold text-white sm:text-6xl md:text-7xl max-w-xl self-center text-center"
             v-html="hero.Header"
           />
-          <span class="text-left w-full md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12 text-md md:text-xl text-white self-begin" v-html="hero.Tagline" />
+          <span class="w-full md:w-9/12 lg:w-7/12 xl:w-7/12 2xl:w-6/12 text-md text-center md:text-xl text-white self-center" v-html="hero.Tagline" />
         </div>
       </div>
       <!-- text end -->
-      <div @click="y = height" class="absolute bottom-4 left-0 right-0 cursor-pointer">
-        <span class="text-center flex flex-col w-full text-white font-bold">
-        <i class="pi pi-arrow-circle-down" style="font-size: 1.5rem"></i>
-        </span>
-      </div>
+      <!-- scroll down button start -->
+      <button @click="y = height" aria-label="scroll down" class="absolute z-10 left-[50%] bottom-5 animate-bounce duration-700">
+        <svg width="76" height="76" class="stroke-current text-white" fill="none" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><path d="m22.7998 30.3996 15.2 15.2 15.2-15.2" stroke-width="1.5"></path></svg>
+      </button>
+      <!-- scroll down button end -->
     </section>
   </div>
 </template>

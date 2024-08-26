@@ -3,7 +3,10 @@ const visible = ref(false);
 
 import { navLinks } from "./sidebar"
 
+const rotate = ref(false)
+
 function toggle(value: boolean){
+  rotate.value = true
   visible.value = value
 }
 
@@ -20,7 +23,10 @@ defineExpose({
                     <NuxtLink to="/" class="font-semibold text-3xl text-primary">Seven Sages of Rome</NuxtLink>
                 </span>
           <span>
-              <Button type="button" @click="closeCallback" icon="pi pi-times" rounded outlined></Button>
+            <button class="rtL:ml-6 ltr:mr-6 md:p-4" @click="closeCallback" tabindex="0" aria-label="menu">
+              <div class="w-10 h-1 rotate-0 transition-all bg-black mb-0 absolute" :class="{ 'rotate-45': rotate }"/>
+              <div class="w-10 h-1 rotate-0 transition-all bg-black" :class="{ '-rotate-45': rotate }" />
+            </button>
           </span>
         </div>
         <div class="overflow-y-auto">
