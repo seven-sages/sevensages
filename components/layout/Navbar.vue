@@ -41,8 +41,8 @@ const emit = defineEmits(["toggleDrawer"]);
         </nav>
         <!-- nav - end -->
       <button class="rtL:ml-6 ltr:mr-6 md:p-4 xl:hidden" @click="emit('toggleDrawer')" tabindex="0" aria-label="menu">
-        <div class="w-10 h-1 rotate-0 transition-all mb-2" :class="[ y > 0 ? 'bg-black' : 'bg-white']" />
-        <div class="w-10 h-1 rotate-0 transition-all" :class="[ y > 0 ? 'bg-black' : 'bg-white']" />
+        <div class="w-10 h-1 rotate-0 transition-all mb-2" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
+        <div class="w-10 h-1 rotate-0 transition-all" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
       </button>
       </div>
   </header>
