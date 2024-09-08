@@ -21,7 +21,7 @@ const emit = defineEmits(["toggleDrawer"]);
         <!-- logo - start -->
         <a
           href="/"
-          class="text-lg md:text-2xl tracking-widest text-white cursor-pointer"
+          class="text-2xl md:text-3xl tracking-widest text-white font-semibold cursor-pointer"
           :class="{ 'text-zinc-800': y > 0 || !index }"
           aria-label="The Seven Sages of Rome"
         >
