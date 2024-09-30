@@ -20,7 +20,7 @@ export const navLinks = [
     name: "Genre",
   },
   {
-    link: "/events",
+    link: "/events/overview",
     name: "Events",
   },
   {

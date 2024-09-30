@@ -33,6 +33,14 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
         <article
           class="format format-sm sm:format-base lg:format-lg format-blue mx-auto w-full max-w-2xl"
         >
+          <NuxtLink
+            to="/news/latest"
+            class="flex items-center space-x-2 pb-6 transition duration-100 !text-zinc-700 hover:!text-zinc-900 active:!text-zinc-900"
+          >
+            <Icon name="carbon:arrow-left" />
+            <p>All News</p>
+          </NuxtLink
+          >
           <header class="not-format mb-4 lg:mb-6">
             <address class="mb-6 flex items-center not-italic">
               <div

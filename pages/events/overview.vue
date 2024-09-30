@@ -9,7 +9,7 @@ interface IEvent {
   Year: string;
   Link: string;
   Location: string;
-  Short_Description: string;
+  Content?: string;
   date?: Date;
 }
 

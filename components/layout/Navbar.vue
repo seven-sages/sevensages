@@ -21,7 +21,7 @@ const emit = defineEmits(["toggleDrawer"]);
         <!-- logo - start -->
         <a
           href="/"
-          class="text-2xl md:text-3xl tracking-widest text-white font-semibold cursor-pointer"
+          class="text-xl md:text-3xl tracking-widest text-white font-semibold cursor-pointer"
           :class="{ 'text-zinc-800': y > 0 || !index }"
           aria-label="The Seven Sages of Rome"
         >
@@ -30,7 +30,7 @@ const emit = defineEmits(["toggleDrawer"]);
         <!-- logo - end -->
 
         <!-- nav - start -->
-        <nav class="hidden gap-12 xl:flex">
+        <nav class="hidden gap-12 desktop:flex">
           <NavbarLink
             v-for="link in navLinks"
             :index="index"
@@ -39,11 +39,11 @@ const emit = defineEmits(["toggleDrawer"]);
             :name="link.name"
           />
         </nav>
+        <button class="rtL:ml-6 ltr:mr-6 desktop:hidden" @click="emit('toggleDrawer')" tabindex="0" aria-label="menu">
+          <div class="w-10 h-1 rotate-0 transition-all mb-2" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
+          <div class="w-10 h-1 rotate-0 transition-all" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
+        </button>
         <!-- nav - end -->
-      <button class="rtL:ml-6 ltr:mr-6 md:p-4 xl:hidden" @click="emit('toggleDrawer')" tabindex="0" aria-label="menu">
-        <div class="w-10 h-1 rotate-0 transition-all mb-2" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
-        <div class="w-10 h-1 rotate-0 transition-all" :class="[ y > 0 || !index ? 'bg-black' : 'bg-white']" />
-      </button>
       </div>
   </header>
 </template>

@@ -46,10 +46,10 @@ const { width, height } = useWindowSize()
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="relax text-6xl font-bold text-white sm:text-7xl md:text-8xl max-w-3xl 2xl:max-w-7xl self-center text-center"
+            class="relax text-6xl font-bold text-white sm:text-7xl md:text-7xl 3xl:text-8xl max-w-4xl 2xl:max-w-7xl self-center text-center"
             v-html="hero.Header"
           />
-          <span class="w-full md:w-9/12 lg:w-7/12 xl:w-7/12 2xl:w-9/12 text-xl text-center md:text-2xl text-white self-center" v-html="hero.Tagline" />
+          <span class="w-full xl:w-9/12 2xl:w-7/12 3xl:w-6/12 text-xl text-justify md:text-2xl text-white self-center" v-html="hero.Tagline" />
         </div>
       </div>
       <!-- text end -->

@@ -48,7 +48,7 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
       <div class="hidden md:block" />
       <h2 class="font-bold text-3xl md:pl-24">Forthcoming Events</h2>
       <a
-        href="/events"
+        href="/events/overview"
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All events</a>
     </div>
@@ -58,7 +58,7 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
       </template>
       <template #empty>
         <p class="text-center">No upcoming events.</p>
-        <a id="past-event-text" class="text-center" href="/events">Have a look at our past events.</a>
+        <a id="past-event-text" class="text-center" href="/events/overview">Have a look at our past events.</a>
       </template>
     </Carousel>
   </div>

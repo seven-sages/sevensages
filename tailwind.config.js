@@ -18,6 +18,7 @@ module.exports = {
         128: "32rem",
       },
       screens: {
+        "desktop": "1400px",
         "3xl": "1920px",
       },
     },

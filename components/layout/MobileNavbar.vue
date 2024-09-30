@@ -17,7 +17,7 @@ defineExpose({
       <div class="flex flex-col h-full">
         <div class="flex items-center justify-between px-6 pt-4 shrink-0">
                 <span class="inline-flex items-center gap-2">
-                    <NuxtLink to="/" class="font-semibold text-3xl text-primary">Seven Sages of Rome</NuxtLink>
+                    <NuxtLink to="/" class="font-semibold text-6xl text-black">The Seven Sages of Rome</NuxtLink>
                 </span>
           <span>
             <button class="rtL:ml-6 ltr:mr-6 md:p-4" @click="closeCallback" tabindex="0" aria-label="menu">
