@@ -7,13 +7,15 @@ interface IEvent {
   Year: string;
   Link: string;
   Location: string;
-  Short_Description: string;
+  Content?: string;
   date?: Date;
 }
 
-defineProps<{
+const props = defineProps<{
   event: IEvent
 }>();
+
+const eventLink = `/events/${props.event.id}`;
 </script>
 <template>
     <div class="flex flex-col w-full">
@@ -25,12 +27,18 @@ defineProps<{
         </div>
         <div class="flex flex-col space-y-2 p-4 font-normal text-gray-800 md:w-3/4">
           <a :href="event.Link" target="_blank" class="text-2xl font-bold leading-none tracking-tight text-gray-800">{{ event.Name }}</a>
-          <p class="leading-normal">{{ event.Short_Description }}</p>
           <div class="flex flex-row items-center mt-4 text-gray-700">
             <div class="w-1/2 line-clamp-3">
               {{ event.Location }}
             </div>
           </div>
+          <NuxtLink
+            v-show="event.Content"
+            :to="eventLink"
+            class="rounded self-start block px-5 py-3 text-center text-xs font-bold uppercase bg-white hover:bg-black border border-black text-black hover:text-white transition-colors duration-200"
+          >
+            Read More
+          </NuxtLink>
         </div>
       </div>
     </div>

@@ -15,8 +15,6 @@ const props = defineProps<{
   event: IEvent
 }>();
 
-console.log(props.event.id)
-
 const eventLink = `/events/${props.event.id}`;
 </script>
 <template>

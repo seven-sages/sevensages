@@ -37,7 +37,7 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
             to="/news/latest"
             class="flex items-center space-x-2 pb-6 transition duration-100 !text-zinc-700 hover:!text-zinc-900 active:!text-zinc-900 group"
           >
-            <Icon name="carbon:arrow-left group-hover:font-bold" />
+            <Icon name="carbon:arrow-left" />
             <p class="group-hover:font-bold">All News</p>
           </NuxtLink
           >

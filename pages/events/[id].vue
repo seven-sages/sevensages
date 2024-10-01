@@ -35,7 +35,7 @@ const hasDate = computed(() => {
             to="/events/overview"
             class="flex items-center space-x-2 pb-6 transition duration-100 !text-zinc-700 hover:!text-zinc-900 active:!text-zinc-900 group"
           >
-            <Icon name="carbon:arrow-left group-hover:font-bold" />
+            <Icon name="fluent:arrow-left-24-filled" />
             <p class="group-hover:font-bold">All Events</p>
           </NuxtLink
           >
