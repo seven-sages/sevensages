@@ -28,6 +28,7 @@ interface ITeam {
 const team = ref();
 const teamMembers = ref();
 const advisoryBoardMembers = ref();
+const formerMembers = ref()
 
 team.value = await getSingletonItem<ITeam>({
   collection: "Team",
@@ -40,6 +41,9 @@ getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
+      Active: {
+        _eq: true,
+      },
       id: {
         _in: team.value.Team_Members.map((teamMember) => teamMember.Person_id),
       },
@@ -53,6 +57,9 @@ getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
+      Active: {
+        _eq: true,
+      },
       id: {
         _in: team.value.Advisory_Board_Members.map(
           (advisoryBoardMember) => advisoryBoardMember.Person_id,
@@ -62,6 +69,19 @@ getItems<IPerson[]>({
   },
 }).then((response) => {
   advisoryBoardMembers.value = response;
+});
+
+getItems<IPerson[]>({
+  collection: "Person",
+  params: {
+    filter: {
+      Active: {
+        _eq: false,
+      },
+    },
+  },
+}).then((response) => {
+  formerMembers.value = response;
 });
 </script>
 
@@ -102,6 +122,28 @@ getItems<IPerson[]>({
       >
         <TeamCard
           v-for="item in advisoryBoardMembers"
+          :key="item.id"
+          :name="item.Name"
+          :title="item.Tagline"
+          :description="item.Description"
+          :image="img(item.Image, { format: 'webp', quality: 40 })"
+          :alt="item.Name"
+          :mail="item.Mail_Address"
+          :twitter="item.Twitter_Account"
+        />
+      </div>
+      <div class="mb-10 mt-10 md:mb-16">
+        <h2
+          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
+        >
+          {{ team.Former_Members_Title }}
+        </h2>
+      </div>
+      <div
+        class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+      >
+        <TeamCard
+          v-for="item in formerMembers"
           :key="item.id"
           :name="item.Name"
           :title="item.Tagline"
