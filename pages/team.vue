@@ -11,6 +11,7 @@ interface IPerson {
   Twitter_Account: string;
   Mail_Address: string;
   Type: string;
+  Active: boolean;
 }
 
 interface ITeamPerson {
@@ -26,9 +27,12 @@ interface ITeam {
 }
 
 const team = ref();
-const teamMembers = ref();
-const advisoryBoardMembers = ref();
-const formerMembers = ref()
+
+const teamMembers = ref([]);
+const formerTeamMembers = ref([]);
+
+const advisoryBoardMembers = ref([]);
+const formerAdvisoryBoardMembers = ref([]);
 
 team.value = await getSingletonItem<ITeam>({
   collection: "Team",
@@ -41,25 +45,20 @@ getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
-      Active: {
-        _eq: true,
-      },
       id: {
         _in: team.value.Team_Members.map((teamMember) => teamMember.Person_id),
       },
     },
   },
 }).then((response) => {
-  teamMembers.value = response;
+  teamMembers.value = response.filter(member => member.Active === true);
+  formerTeamMembers.value = response.filter(member => member.Active === false);
 });
 
 getItems<IPerson[]>({
   collection: "Person",
   params: {
     filter: {
-      Active: {
-        _eq: true,
-      },
       id: {
         _in: team.value.Advisory_Board_Members.map(
           (advisoryBoardMember) => advisoryBoardMember.Person_id,
@@ -68,20 +67,8 @@ getItems<IPerson[]>({
     },
   },
 }).then((response) => {
-  advisoryBoardMembers.value = response;
-});
-
-getItems<IPerson[]>({
-  collection: "Person",
-  params: {
-    filter: {
-      Active: {
-        _eq: false,
-      },
-    },
-  },
-}).then((response) => {
-  formerMembers.value = response;
+  advisoryBoardMembers.value = response.filter(member => member.Active === true);
+  formerAdvisoryBoardMembers.value = response.filter(member => member.Active === false);
 });
 </script>
 
@@ -138,21 +125,50 @@ getItems<IPerson[]>({
         >
           {{ team.Former_Members_Title }}
         </h2>
-      </div>
-      <div
-        class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
-      >
-        <TeamCard
-          v-for="item in formerMembers"
-          :key="item.id"
-          :name="item.Name"
-          :title="item.Tagline"
-          :description="item.Description"
-          :image="img(item.Image, { format: 'webp', quality: 40 })"
-          :alt="item.Name"
-          :mail="item.Mail_Address"
-          :twitter="item.Twitter_Account"
-        />
+        <div v-show="formerTeamMembers.length">
+          <h3
+            class="mb-4 text-center text-xl font-bold text-gray-800 md:mb-6 lg:text-2xl"
+          >
+            Former Team Members
+          </h3>
+          <div
+            class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+          >
+            <TeamCard
+              v-for="item in formerTeamMembers"
+              :key="item.id"
+              :name="item.Name"
+              :title="item.Tagline"
+              :description="item.Description"
+              :image="img(item.Image, { format: 'webp', quality: 40 })"
+              :alt="item.Name"
+              :mail="item.Mail_Address"
+              :twitter="item.Twitter_Account"
+            />
+          </div>
+        </div>
+        <div v-show="formerAdvisoryBoardMembers.length">
+          <h3
+            class="mb-4 text-center text-xl font-bold text-gray-800 md:mb-6 lg:text-2xl"
+          >
+            Former Advisory Board Members
+          </h3>
+          <div
+            class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12"
+          >
+            <TeamCard
+              v-for="item in formerAdvisoryBoardMembers"
+              :key="item.id"
+              :name="item.Name"
+              :title="item.Tagline"
+              :description="item.Description"
+              :image="img(item.Image, { format: 'webp', quality: 40 })"
+              :alt="item.Name"
+              :mail="item.Mail_Address"
+              :twitter="item.Twitter_Account"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
