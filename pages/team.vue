@@ -119,7 +119,7 @@ getItems<IPerson[]>({
           :twitter="item.Twitter_Account"
         />
       </div>
-      <div class="mb-10 mt-10 md:mb-16">
+      <div class="mb-10 mt-10 md:mb-16" v-show="formerTeamMembers.length || formerAdvisoryBoardMembers.length">
         <h2
           class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
         >
