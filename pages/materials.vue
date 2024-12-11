@@ -35,7 +35,7 @@ for (const entry of Object.values(materials.Material)) {
         {{ materials.Header }}
       </h1>
 
-      <div v-if="material">
+      <div v-if="!material">
         <p class="mb-4 text-center text-gray-800">
           No research publication and material added yet
         </p>
@@ -54,3 +54,8 @@ for (const entry of Object.values(materials.Material)) {
     </div>
   </div>
 </template>
+<style scoped>
+:deep(a) {
+  @apply text-blue-700
+}
+</style>
