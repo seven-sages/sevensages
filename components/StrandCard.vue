@@ -27,7 +27,7 @@ const imageClasses = computed(() => {
     <div class="w-full flex flex-col md:w-1/2 px-4 mt-4 md:mt-0 space-y-2 md:space-y-4">
       <h2 class="text-2xl md:text-3xl font-bold">{{ header }}</h2>
       <p class="text-gray-600 leading-relaxed">{{ content }}</p>
-      <NuxtLink :to="link" class="self-start rounded-md border border-slate-300 py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+      <NuxtLink :to="link" class="self-start rounded-md border border-black py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-black hover:text-white hover:bg-black hover:border-black focus:text-white focus:bg-black focus:border-black active:border-black active:text-white active:bg-black disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
         More
       </NuxtLink>
     </div>
