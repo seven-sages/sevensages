@@ -73,6 +73,7 @@ export default defineNuxtConfig({
   ],
 
   primevue: {
+    autoImport: true,
     options: {
       theme: {
         preset: Noir,

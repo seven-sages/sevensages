@@ -1,23 +1,35 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   header?: string;
   content?: string;
   link?: string;
   img?: string;
+  position: number
 }>();
+
+console.log(props.position % 2 === 0)
+
+const imageClasses = computed(() => {
+  return props.position % 2 === 0
+    ? 'order-none md:order-0'
+    : 'order-none md:order-1';
+});
 </script>
 <template>
-  <a :href="link" class="block group">
-    <img
-      alt=""
-      :src="img"
-      class="h-64 w-full object-cover sm:h-80 lg:h-96 rounded-lg saturate-[0.9] group-hover:saturate-100"
-    />
-
-    <h3 class="mt-4 text-center md:text-left text-lg font-bold text-gray-900 sm:text-xl">{{ header }}</h3>
-
-    <p class="mt-2 max-w-sm text-center md:text-left text-gray-700">
-      {{ content }}
-    </p>
-  </a>
+  <div class="flex flex-col md:flex-row items-center justify-center my-8 md:my-32 gap-x-12">
+    <div class="w-full md:w-1/2 px-4" :class="imageClasses">
+      <img
+        :src="img"
+        :alt="header"
+        class="w-full h-auto rounded-lg object-cover sm:h-64 lg:h-96"
+      />
+    </div>
+    <div class="w-full flex flex-col md:w-1/2 px-4 mt-4 md:mt-0 space-y-2 md:space-y-4">
+      <h2 class="text-2xl md:text-3xl font-bold">{{ header }}</h2>
+      <p class="text-gray-600 leading-relaxed">{{ content }}</p>
+      <NuxtLink :to="link" class="self-start rounded-md border border-slate-300 py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+        More
+      </NuxtLink>
+    </div>
+  </div>
 </template>

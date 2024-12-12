@@ -42,14 +42,15 @@ for (const strandId of strandPage.Strands) {
           {{ strandPage.Tagline }}
         </p>
       </header>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-2 md:gap-x-8 gap-y-2 auto-rows-fr justify-center ">
+      <div class="grid-cols-1 md:grid-cols-2">
         <StrandCard
-          v-for="strand in strands"
+          v-for="(strand, index) in strands"
           :key="strand.id"
           :header="strand.Header"
           :content="strand.Content"
           :link="strand.Link"
-          :img="img(strand.Image, { format: 'webp', quality: 40 })"
+          :position="index"
+          :img="img(strand.Image, { format: 'webp', quality: 50 })"
         />
       </div>
     </section>

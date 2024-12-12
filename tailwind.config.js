@@ -21,6 +21,16 @@ module.exports = {
         "desktop": "1400px",
         "3xl": "1920px",
       },
+      animation: {
+        fade: 'fadeIn .5s ease-in-out',
+      },
+
+      keyframes: {
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+      },
     },
   },
   plugins: [
