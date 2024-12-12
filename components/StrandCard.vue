@@ -7,8 +7,6 @@ const props = defineProps<{
   position: number
 }>();
 
-console.log(props.position % 2 === 0)
-
 const imageClasses = computed(() => {
   return props.position % 2 === 0
     ? 'order-none md:order-0'
