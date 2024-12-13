@@ -29,7 +29,7 @@ defineProps<{
           class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
         >
           <div class="flex min-h-full flex-col items-center justify-center">
-            <p class="text-justify text-md">
+            <p class="text-justify text-md leading-5">
               {{ description }}
             </p>
           </div>
