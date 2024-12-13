@@ -24,6 +24,14 @@ interface ITeam {
   Team_Members: ITeamPerson[];
   Advisory_Board_Members_Title: string;
   Advisory_Board_Members: ITeamPerson[];
+  StudentAssistant: ITeamPerson[];
+}
+
+export interface IStudentAssistant {
+  id: number,
+  Name: string,
+  Role: string,
+  Affiliation: string,
 }
 
 const team = ref();
@@ -34,12 +42,16 @@ const formerTeamMembers = ref([]);
 const advisoryBoardMembers = ref([]);
 const formerAdvisoryBoardMembers = ref([]);
 
+const studentAssistants: Ref<IStudentAssistant[]> = ref([])
+
 team.value = await getSingletonItem<ITeam>({
   collection: "Team",
   params: {
-    fields: ["*.Person_id"],
+    fields: ["*.*"]
   },
 });
+
+console.log(team.value)
 
 getItems<IPerson[]>({
   collection: "Person",
@@ -70,6 +82,12 @@ getItems<IPerson[]>({
   advisoryBoardMembers.value = response.filter(member => member.Active === true);
   formerAdvisoryBoardMembers.value = response.filter(member => member.Active === false);
 });
+
+getItems<IStudentAssistant[]>({
+  collection: "Student_Assistant",
+}).then((response) => {
+  studentAssistants.value = response
+});
 </script>
 
 <template>
@@ -96,6 +114,21 @@ getItems<IPerson[]>({
           :mail="item.Mail_Address"
           :twitter="item.Twitter_Account"
         />
+      </div>
+      <div class="mb-10 mt-10 md:mb-16" v-show="studentAssistants.length">
+        <h3
+          class="mb-4 text-center text-lg font-bold text-gray-800 md:mb-6 lg:text-xl"
+        >
+          Student Assistants
+        </h3>
+        <div class="mx-auto">
+          <ul>
+            <StudentAssistantEntry
+              v-for="student of studentAssistants"
+              :key="student.id"
+              :student="student" />
+          </ul>
+        </div>
       </div>
       <div class="mb-10 mt-10 md:mb-16">
         <h2
