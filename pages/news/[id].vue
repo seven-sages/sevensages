@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { readItem, readUser } from "@directus/sdk";
+
 const router = useRoute();
-const { getItemById } = useDirectusItems();
-const { getUserById } = useDirectusUsers();
+const { $directus } = useNuxtApp();
+const newsId = Array.isArray(router.params.id) ? router.params.id[0] : router.params.id;
+
+if (!newsId) {
+  throw createError({ statusCode: 404, statusMessage: "News not found" });
+}
 
 interface INews {
   id?: string;
@@ -14,28 +20,23 @@ interface INews {
   user_updated: string;
 }
 
-const news = await getItemById<INews>({
-  collection: "News",
-  id: router.params.id,
-});
+const news = await $directus.request(readItem("News", newsId)) as INews;
 
-const authorName = await getUserById({
-  id: news.user_created,
-});
+const authorName = await $directus.request(readUser(news.user_created));
 
 const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </script>
 
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-md px-4 md:px-8">
-      <div class="mx-auto flex max-w-screen-xl justify-between px-4">
+    <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
+      <div class="mx-auto flex max-w-(--breakpoint-xl) justify-between px-4">
         <article
           class="format format-sm sm:format-base lg:format-lg format-blue mx-auto w-full max-w-2xl"
         >
           <NuxtLink
             to="/news/latest"
-            class="flex items-center space-x-2 pb-6 transition duration-100 !text-zinc-700 hover:!text-zinc-900 active:!text-zinc-900 group"
+            class="flex items-center space-x-2 pb-6 transition duration-100 text-zinc-700! hover:text-zinc-900! active:text-zinc-900! group"
           >
             <Icon name="carbon:arrow-left" />
             <p class="group-hover:font-bold">All News</p>
@@ -73,10 +74,12 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </template>
 <style scoped>
 :deep(img) {
-  @apply my-4 rounded-lg
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
 }
 
 :deep(a) {
-  @apply text-blue-700
+  color: #1d4ed8;
 }
 </style>

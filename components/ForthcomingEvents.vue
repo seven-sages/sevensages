@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { readItems } from "@directus/sdk";
 import EventCard from "~/components/EventCard.vue";
-const { getItems } = useDirectusItems();
+const { $directus } = useNuxtApp();
 
 interface IEvent {
   id?: string | number;
@@ -29,17 +30,15 @@ const responsiveOptions = ref([
 
 const now = new Date();
 const forthcomingEvents: Ref<IEvent[]> = ref([]);
-const items = await getItems<IEvent>({
-  collection: "Event",
-});
+const items = await $directus.request(readItems("Event")) as IEvent[];
 
-for (const item: IEvent of items) {
-  item.date = new Date(item.Year as Number, useMonthStringToNumber(item.Month));
-  if(item.date.getTime() > now.getTime()) forthcomingEvents.value.push(item)
+for (const item of items) {
+  item.date = new Date(Number(item.Year), useMonthStringToNumber(item.Month));
+  if (item.date.getTime() > now.getTime()) forthcomingEvents.value.push(item)
 }
 
 forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
-  return new Date(b.date) - new Date(a.date);
+  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
 })
 </script>
 <template>
@@ -65,6 +64,6 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
 </template>
 <style scoped>
 #past-event-text {
-  @apply text-blue-700
+  color: #1d4ed8;
 }
 </style>

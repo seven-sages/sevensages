@@ -1,34 +1,34 @@
 <script setup lang="ts">
-const { getSingletonItem, getItemById } = useDirectusItems();
+import { readItem, readSingleton } from "@directus/sdk";
+
+const { $directus } = useNuxtApp();
 interface IMaterials {
   id?: string;
   Header: string;
-  Material: object[];
+  Material: Array<{ Material_id: string | number }>;
 }
 
 interface IMaterial {
+  id?: string | number;
   Content: string;
   Link: string;
 }
 
-const materials = await getSingletonItem<IMaterials>({
-  collection: "Materials",
-  params: {
+const materials = await $directus.request(
+  readSingleton("Materials", {
     fields: ["Header", "Material.Material_id"],
-  },
-});
-const material = [];
+  }),
+) as IMaterials;
+
+const material: IMaterial[] = [];
 for (const entry of Object.values(materials.Material)) {
-  const item = await getItemById<IMaterial[]>({
-    collection: "Material",
-    id: entry.Material_id,
-  });
+  const item = await $directus.request(readItem("Material", entry.Material_id)) as IMaterial;
   material.push(item);
 }
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-md px-4 md:px-8">
+    <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
       >
@@ -56,6 +56,6 @@ for (const entry of Object.values(materials.Material)) {
 </template>
 <style scoped>
 :deep(a) {
-  @apply text-blue-700
+  color: #1d4ed8;
 }
 </style>

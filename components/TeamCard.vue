@@ -13,10 +13,10 @@ defineProps<{
 <template>
   <div>
     <div
-      class="group mb-2 h-110 overflow-hidden rounded-xl bg-gray-100 shadow-lg [perspective:1000px]"
+      class="group mb-2 h-110 overflow-hidden rounded-xl bg-gray-100 shadow-lg perspective-[1000px]"
     >
       <div
-        class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+        class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 transform-3d group-hover:transform-[rotateY(180deg)]"
       >
         <div class="absolute inset-0">
           <img
@@ -26,7 +26,7 @@ defineProps<{
           />
         </div>
         <div
-          class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          class="rounded-sxl absolute inset-0 h-full w-full bg-black/80 px-4 text-center text-slate-200 backface-hidden transform-[rotateY(180deg)]"
         >
           <div class="flex min-h-full flex-col items-center justify-center">
             <p class="text-justify text-md leading-5">

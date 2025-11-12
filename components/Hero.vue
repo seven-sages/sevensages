@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { readItems } from "@directus/sdk";
 import { useWindowScroll } from "@vueuse/core";
 
-const { getItems } = useDirectusItems();
-const { getThumbnail: img } = useDirectusFiles();
+const { $directus } = useNuxtApp();
+const { getAssetUrl: img } = useDirectusAssetUrl();
 
 interface Hero {
   id?: string | number;
@@ -11,23 +12,22 @@ interface Hero {
   Image: string;
 }
 
-const hero = await getItems<Hero>({
-  collection: "Hero",
-});
+const heroItems = await $directus.request(readItems("Hero")) as Hero[];
+const hero = heroItems[0];
 
-const { y } = useWindowScroll({ behavior: 'smooth' })
-const { width, height } = useWindowSize()
+const { y } = useWindowScroll({ behavior: 'smooth' });
+const { width, height } = useWindowSize();
 </script>
 
 <template>
-  <div class="h-[100dvh] group bg-white p-2">
+  <div v-if="hero" class="h-dvh group bg-white p-2">
     <section
       class="h-full relative shrink-0 overflow-hidden bg-gray-100"
     >
       <!-- image - start -->
       <img
         :src="img(hero.Image,
-        { format: 'webp', quality: 40 })"
+        { format: 'webp', quality: 40 }) ?? undefined"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
         class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left saturate-[.0.9]"
@@ -45,7 +45,7 @@ const { width, height } = useWindowSize()
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="relax text-6xl font-bold text-white sm:text-7xl md:text-7xl 3xl:text-8xl max-w-4xl 2xl:max-w-[100%] self-center text-center font-prata"
+            class="relax text-6xl font-bold text-white sm:text-7xl md:text-7xl 3xl:text-8xl max-w-4xl 2xl:max-w-full self-center text-center font-prata"
             v-html="hero.Header"
           />
           <span class="w-full xl:w-9/12 2xl:w-7/12 3xl:w-6/12 text-xl text-justify md:text-2xl text-white self-center" v-html="hero.Tagline" />

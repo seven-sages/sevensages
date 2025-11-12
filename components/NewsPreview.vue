@@ -1,26 +1,25 @@
 <script setup lang="ts">
+import { readUser } from "@directus/sdk";
 import { useDateFormat } from "../.nuxt/imports";
-const { getUserById } = useDirectusUsers();
+const { $directus } = useNuxtApp();
 
 const props = defineProps(["author", "date", "title", "abstract", "img", "id"]);
 
 const formattedDate = useDateFormat(props.date, "DD.MM.YYYY");
-const authorName = await getUserById({
-  id: props.author,
-});
+const authorName = await $directus.request(readUser(props.author));
 const newsLink = `/news/${props.id}`;
 </script>
 
 <template>
   <div class="flex flex-wrap py-8 md:flex-nowrap">
-    <div class="mb-6 flex flex-shrink-0 flex-col md:mb-0 md:w-64">
+    <div class="mb-6 flex shrink-0 flex-col md:mb-0 md:w-64">
       <span class="title-font font-semibold text-gray-700"
         >{{ authorName.first_name }} {{ authorName.last_name }}</span
       >
       <span class="mt-1 text-sm text-gray-400">{{ formattedDate }}</span>
     </div>
-    <div class="md:flex-grow flex-col md:flex-row flex space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-      <img v-if="img" :src="img" class="w-128 md:w-64 h-64 rounded-lg object-cover" alt="">
+    <div class="md:grow flex-col md:flex-row flex space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+      <img v-if="img" :src="img" class="w-lg md:w-64 h-64 rounded-lg object-cover" alt="">
       <div class="flex flex-col justify-between space-y-6 md:space-y-0">
         <div>
           <h2

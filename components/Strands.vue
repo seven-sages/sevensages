@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { readItem, readSingleton } from "@directus/sdk";
 import StrandCard from "~/components/StrandCard.vue";
 
-const { getSingletonItem, getItemById } = useDirectusItems();
-const { getThumbnail: img } = useDirectusFiles();
+const { $directus } = useNuxtApp();
+const { getAssetUrl: img } = useDirectusAssetUrl();
 interface Strands {
   id?: string;
   Header: string;
@@ -18,16 +19,11 @@ interface Strand {
   Image: string;
 }
 
-const strandPage = await getSingletonItem<Strands>({
-  collection: "Strands",
-});
+const strandPage = await $directus.request(readSingleton("Strands")) as Strands;
 
-const strands = [];
+const strands: Strand[] = [];
 for (const strandId of strandPage.Strands) {
-  const item = await getItemById<Strand[]>({
-    collection: "Strand",
-    id: strandId,
-  });
+  const item = await $directus.request(readItem("Strand", strandId)) as Strand;
   strands.push(item);
 }
 </script>
@@ -50,9 +46,8 @@ for (const strandId of strandPage.Strands) {
           :content="strand.Content"
           :link="strand.Link"
           :position="index"
-          :img="img(strand.Image, { format: 'webp', quality: 50 })"
+          :img="img(strand.Image, { format: 'webp', quality: 50 }) ?? undefined"
         />
       </div>
     </section>
 </template>
-

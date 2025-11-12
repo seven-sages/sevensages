@@ -1,6 +1,13 @@
 <script setup lang="ts">
+import { readItem } from "@directus/sdk";
+
 const router = useRoute();
-const { getItemById } = useDirectusItems();
+const { $directus } = useNuxtApp();
+const eventId = Array.isArray(router.params.id) ? router.params.id[0] : router.params.id;
+
+if (!eventId) {
+  throw createError({ statusCode: 404, statusMessage: "Event not found" });
+}
 
 interface IEvent {
   id?: string | number;
@@ -14,14 +21,11 @@ interface IEvent {
   date?: Date;
 }
 
-const event = await getItemById<IEvent>({
-  collection: "Event",
-  id: router.params.id,
-});
+const event = await $directus.request(readItem("Event", eventId)) as IEvent;
 
 const hasDate = computed(() => {
-  return event.Day || event.Month || event.Year
-})
+  return event.Day || event.Month || event.Year;
+});
 </script>
 
 <template>
@@ -29,11 +33,11 @@ const hasDate = computed(() => {
     <div class="mx-auto max-w-screen-3xl px-4 md:px-8">
       <div class="mx-auto flex max-w-screen-3xl justify-between px-4">
         <article
-          class="format format-sm sm:format-base lg:format-lg format-blue mx-auto w-full max-w-screen-md"
+          class="format format-sm sm:format-base lg:format-lg format-blue mx-auto w-full max-w-(--breakpoint-md)"
         >
           <NuxtLink
             to="/events/overview"
-            class="flex items-center space-x-2 pb-6 transition duration-100 !text-zinc-700 hover:!text-zinc-900 active:!text-zinc-900 group"
+            class="flex items-center space-x-2 pb-6 transition duration-100 text-zinc-700! hover:text-zinc-900! active:text-zinc-900! group"
           >
             <Icon name="fluent:arrow-left-24-filled" />
             <p class="group-hover:font-bold">All Events</p>
@@ -78,10 +82,12 @@ const hasDate = computed(() => {
 </template>
 <style scoped>
 :deep(img) {
-  @apply my-4 rounded-lg
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
 }
 
 :deep(a) {
-  @apply text-blue-700
+  color: #1d4ed8;
 }
 </style>

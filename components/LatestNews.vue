@@ -1,6 +1,8 @@
 <script setup lang="ts">
-const { getItems } = useDirectusItems();
-const { getThumbnail: img } = useDirectusFiles();
+import { readItems } from "@directus/sdk";
+
+const { $directus } = useNuxtApp();
+const { getAssetUrl: img } = useDirectusAssetUrl();
 
 interface INews {
   id: number;
@@ -16,21 +18,20 @@ interface INews {
 
 const filters = { status: "published" };
 
-const allNews = await getItems<INews>({
-  collection: "News",
-  params: {
+const allNews = await $directus.request(
+  readItems("News", {
     limit: 9,
     filter: filters,
-  },
-});
+  }),
+) as INews[];
 
 const sortedNews = computed(() => {
   return allNews.sort(function(a,b) {
-    return new Date(b.date_created) - new Date(a.date_created);
+    return new Date(b.date_created).getTime() - new Date(a.date_created).getTime();
   })
 })
 
-function getImage(image) {
+function getImage(image: string | null | undefined) {
   if(image){
     return img(image, { format: 'webp', quality: 40 })
   }

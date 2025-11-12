@@ -12,7 +12,7 @@ const link = `/news/${props.id}`
 <template>
   <NuxtLink :href="link">
     <article class="flex bg-white h-full w-full transition pr-8">
-      <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+      <div class="rotate-180 p-2 [writing-mode:vertical-lr]">
         <time
           :datetime="date"
           class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"

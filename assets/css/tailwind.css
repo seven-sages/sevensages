@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @layer base {
   ul,
@@ -24,5 +22,5 @@ div {
 }
 
 .router-link-active {
-  @apply font-bold;
+  font-weight: 700;
 }

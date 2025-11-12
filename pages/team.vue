@@ -1,6 +1,8 @@
 <script setup lang="ts">
-const { getSingletonItem, getItems } = useDirectusItems();
-const { getThumbnail: img } = useDirectusFiles();
+import { readItems, readSingleton } from "@directus/sdk";
+
+const { $directus } = useNuxtApp();
+const { getAssetUrl: img } = useDirectusAssetUrl();
 
 interface IPerson {
   id?: string | number;
@@ -25,6 +27,7 @@ interface ITeam {
   Advisory_Board_Members_Title: string;
   Advisory_Board_Members: ITeamPerson[];
   StudentAssistant: ITeamPerson[];
+  Former_Members_Title: string;
 }
 
 export interface IStudentAssistant {
@@ -34,42 +37,38 @@ export interface IStudentAssistant {
   Affiliation: string,
 }
 
-const team = ref();
+const team = ref<ITeam>({} as ITeam);
 
-const teamMembers = ref([]);
-const formerTeamMembers = ref([]);
+const teamMembers = ref<IPerson[]>([]);
+const formerTeamMembers = ref<IPerson[]>([]);
 
-const advisoryBoardMembers = ref([]);
-const formerAdvisoryBoardMembers = ref([]);
+const advisoryBoardMembers = ref<IPerson[]>([]);
+const formerAdvisoryBoardMembers = ref<IPerson[]>([]);
 
 const studentAssistants: Ref<IStudentAssistant[]> = ref([])
 
-team.value = await getSingletonItem<ITeam>({
-  collection: "Team",
-  params: {
-    fields: ["*.*"]
-  },
-});
+team.value = await $directus.request(
+  readSingleton("Team", {
+    fields: ["*.*"],
+  }),
+) as ITeam;
 
-console.log(team.value)
-
-getItems<IPerson[]>({
-  collection: "Person",
-  params: {
+$directus.request(
+  readItems("Person", {
     filter: {
       id: {
         _in: team.value.Team_Members.map((teamMember) => teamMember.Person_id),
       },
     },
-  },
-}).then((response) => {
-  teamMembers.value = response.filter(member => member.Active === true);
-  formerTeamMembers.value = response.filter(member => member.Active === false);
+  }),
+).then((response) => {
+  const people = response as IPerson[];
+  teamMembers.value = people.filter(member => member.Active === true);
+  formerTeamMembers.value = people.filter(member => member.Active === false);
 });
 
-getItems<IPerson[]>({
-  collection: "Person",
-  params: {
+$directus.request(
+  readItems("Person", {
     filter: {
       id: {
         _in: team.value.Advisory_Board_Members.map(
@@ -77,22 +76,21 @@ getItems<IPerson[]>({
         ),
       },
     },
-  },
-}).then((response) => {
-  advisoryBoardMembers.value = response.filter(member => member.Active === true);
-  formerAdvisoryBoardMembers.value = response.filter(member => member.Active === false);
+  }),
+).then((response) => {
+  const people = response as IPerson[];
+  advisoryBoardMembers.value = people.filter(member => member.Active === true);
+  formerAdvisoryBoardMembers.value = people.filter(member => member.Active === false);
 });
 
-getItems<IStudentAssistant[]>({
-  collection: "Student_Assistant",
-}).then((response) => {
-  studentAssistants.value = response
+$directus.request(readItems("Student_Assistant")).then((response) => {
+  studentAssistants.value = response as IStudentAssistant[];
 });
 </script>
 
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+    <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
           class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
@@ -109,7 +107,7 @@ getItems<IStudentAssistant[]>({
           :name="item.Name"
           :title="item.Tagline"
           :description="item.Description"
-          :image="img(item.Image, { format: 'webp', quality: 40 })"
+          :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
           :alt="item.Name"
           :mail="item.Mail_Address"
           :twitter="item.Twitter_Account"
@@ -146,7 +144,7 @@ getItems<IStudentAssistant[]>({
           :name="item.Name"
           :title="item.Tagline"
           :description="item.Description"
-          :image="img(item.Image, { format: 'webp', quality: 40 })"
+          :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
           :alt="item.Name"
           :mail="item.Mail_Address"
           :twitter="item.Twitter_Account"
@@ -173,7 +171,7 @@ getItems<IStudentAssistant[]>({
               :name="item.Name"
               :title="item.Tagline"
               :description="item.Description"
-              :image="img(item.Image, { format: 'webp', quality: 40 })"
+              :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
               :alt="item.Name"
               :mail="item.Mail_Address"
               :twitter="item.Twitter_Account"
@@ -195,7 +193,7 @@ getItems<IStudentAssistant[]>({
               :name="item.Name"
               :title="item.Tagline"
               :description="item.Description"
-              :image="img(item.Image, { format: 'webp', quality: 40 })"
+              :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
               :alt="item.Name"
               :mail="item.Mail_Address"
               :twitter="item.Twitter_Account"

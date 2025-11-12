@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { getItems } = useDirectusItems();
+import { readItems } from "@directus/sdk";
+
+const { $directus } = useNuxtApp();
 
 interface IEvent {
   id?: string | number;
@@ -9,7 +11,7 @@ interface IEvent {
   Year: string;
   Link: string;
   Location: string;
-  Content?: string;
+  Content: string;
   date?: Date;
 }
 
@@ -17,35 +19,33 @@ const now = new Date();
 const forthcomingEvents: Ref<IEvent[]> = ref([]);
 const pastEvents: Ref<IEvent[]> = ref([]);
 
-const items = await getItems<IEvent>({
-  collection: "Event",
-});
+const items = await $directus.request(readItems("Event")) as IEvent[];
 
-for (const item: IEvent of items) {
-  item.date = new Date(item.Year as Number, useMonthStringToNumber(item.Month));
+for (const item of items) {
+  item.date = new Date(Number(item.Year), useMonthStringToNumber(item.Month));
   item.date.getTime() > now.getTime()
     ? forthcomingEvents.value.push(item)
     : pastEvents.value.push(item);
 }
 
 forthcomingEvents.value = forthcomingEvents.value.sort(function (a, b) {
-  return new Date(b.date) - new Date(a.date);
+  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
 });
 
 pastEvents.value = pastEvents.value.sort(function (a, b) {
-  return new Date(b.date) - new Date(a.date);
+  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
 });
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-md px-4 md:px-8">
+    <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
       >
         Events
       </h1>
       <div
-        class="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16"
+        class="flex flex-col justify-center divide-y divide-slate-200 *:py-16"
       >
         <div class="mx-auto w-full max-w-3xl">
           <h2

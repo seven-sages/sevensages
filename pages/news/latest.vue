@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { readItems } from "@directus/sdk";
 import { NewsPreview } from "#components";
 
-const { getItems } = useDirectusItems();
-const { getThumbnail: img } = useDirectusFiles();
+const { $directus } = useNuxtApp();
+const { getAssetUrl: img } = useDirectusAssetUrl();
 
 interface INews {
   id?: string;
@@ -18,29 +19,28 @@ interface INews {
 
 const filters = { status: "published" };
 
-const allNews = await getItems<INews>({
-  collection: "News",
-  params: {
+const allNews = await $directus.request(
+  readItems("News", {
     filter: filters,
-  },
-});
+  }),
+) as INews[];
 
 const sortedNews = computed(() => {
-  return allNews.sort(function(a,b) {
-    return new Date(b.date_created) - new Date(a.date_created);
-  })
-})
+  return allNews.sort(function (a, b) {
+    return new Date(b.date_created).getTime() - new Date(a.date_created).getTime();
+  });
+});
 
-function getImage(image) {
-  if(image){
-    return img(image, { format: 'webp', quality: 40 })
+function getImage(image: string | null | undefined) {
+  if (image) {
+    return img(image, { format: "webp", quality: 40 });
   }
-  return null
+  return null;
 }
 </script>
 <template>
   <div class="bg-white py-6 lg:py-12">
-    <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+    <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl"
       >

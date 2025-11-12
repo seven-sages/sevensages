@@ -1,4 +1,4 @@
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+import tailwindcss from "@tailwindcss/vite";
 import { definePreset } from '@primevue/themes';
 import Aura from '@primevue/themes/aura';
 
@@ -44,6 +44,12 @@ export default defineNuxtConfig({
     },
   },
 
+  vite: {
+    plugins: [
+      tailwindcss()
+    ],
+  },
+
   ssr: false,
   css: ["~/assets/css/tailwind.css", "primeicons/primeicons.css"],
 
@@ -56,7 +62,7 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    preference: 'light'
+    preference: "light",
   },
 
   modules: [
@@ -65,11 +71,10 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-headlessui",
     "@nuxt/test-utils/module",
-    '@primevue/nuxt-module',
+    "@primevue/nuxt-module",
     "@nuxt/devtools",
-    "nuxt-directus",
     "@nuxt/fonts",
-    "@nuxt/icon"
+    "@nuxt/icon",
   ],
 
   primevue: {
@@ -78,21 +83,16 @@ export default defineNuxtConfig({
       theme: {
         preset: Noir,
         options: {
-          darkModeSelector: '.dark-selector',
+          darkModeSelector: ".dark-selector",
         },
-      }
-    }
+      },
+    },
   },
 
-  directus: {
-    url: process.env.NUXT_CMS_URL,
-    autoFetch: true,
-  },
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+  runtimeConfig: {
+    public: {
+      directusUrl:
+        process.env.NUXT_PUBLIC_DIRECTUS_URL || process.env.NUXT_CMS_URL || "",
     },
   },
 

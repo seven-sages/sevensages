@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const { getSingletonItem } = useDirectusItems();
+import { readSingleton } from "@directus/sdk";
+
+const { $directus } = useNuxtApp();
 interface IDatabase {
   id?: string;
   Content: string;
   Heading: string;
 }
 
-const database = await getSingletonItem<IDatabase>({
-  collection: "Database",
-});
+const database = await $directus.request(readSingleton("Database")) as IDatabase;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-md px-4 md:px-8">
+    <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-900 sm:text-3xl md:mb-6"
       >
@@ -29,6 +29,6 @@ const database = await getSingletonItem<IDatabase>({
 </template>
 <style scoped>
 :deep(a) {
-  @apply text-blue-700;
+  color: #1d4ed8;
 }
 </style>
