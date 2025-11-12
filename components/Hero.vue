@@ -30,7 +30,7 @@ const { width, height } = useWindowSize()
         { format: 'webp', quality: 40 })"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
-        class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left"
+        class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left saturate-[.0.9]"
         :class="{ 'saturate-[.70]': y > 0 }"
       />
       <!-- image - end -->
