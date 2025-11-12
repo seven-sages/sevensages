@@ -20,7 +20,7 @@ const database = await getSingletonItem<IDatabase>({
       </h1>
       <ClientOnly>
         <span
-          class="mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+          class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
           v-html="database.Content"
         />
       </ClientOnly>
@@ -29,6 +29,6 @@ const database = await getSingletonItem<IDatabase>({
 </template>
 <style scoped>
 :deep(a) {
-  @apply text-blue-700
+  @apply text-blue-700;
 }
 </style>

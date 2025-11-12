@@ -63,7 +63,7 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
             </h1>
           </header>
           <span
-            class="mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+            class="mb-6 prose list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
             v-html="news.Content"
           />
         </article>

@@ -28,13 +28,13 @@ for (const item: IEvent of items) {
     : pastEvents.value.push(item);
 }
 
-forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
+forthcomingEvents.value = forthcomingEvents.value.sort(function (a, b) {
   return new Date(b.date) - new Date(a.date);
-})
+});
 
-pastEvents.value = pastEvents.value.sort(function(a,b) {
+pastEvents.value = pastEvents.value.sort(function (a, b) {
   return new Date(b.date) - new Date(a.date);
-})
+});
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -44,33 +44,34 @@ pastEvents.value = pastEvents.value.sort(function(a,b) {
       >
         Events
       </h1>
-      <div class="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16">
-        <div class="w-full max-w-3xl mx-auto">
+      <div
+        class="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16"
+      >
+        <div class="mx-auto w-full max-w-3xl">
           <h2
             class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
           >
             Forthcoming events
           </h2>
-          <div class="-my-6">
+          <div class="-my-6" v-if="forthcomingEvents.length > 0">
             <Event
               v-for="event in forthcomingEvents"
               :key="event.id"
               :event="event"
             />
           </div>
+          <div v-else>
+            <p class="text-center">No upcoming events.</p>
+          </div>
         </div>
-        <div class="w-full max-w-3xl mx-auto">
+        <div class="mx-auto w-full max-w-3xl">
           <h2
             class="mb-4 text-center text-lg font-bold text-gray-800 sm:text-2xl md:mb-6"
           >
             Past events
           </h2>
           <div class="-my-6">
-            <Event
-              v-for="event in pastEvents"
-              :key="event.id"
-              :event="event"
-            />
+            <Event v-for="event in pastEvents" :key="event.id" :event="event" />
           </div>
         </div>
       </div>

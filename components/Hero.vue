@@ -22,7 +22,7 @@ const { width, height } = useWindowSize()
 <template>
   <div class="h-[100dvh] group bg-white p-2">
     <section
-      class="h-full relative shrink-0 overflow-hidden bg-gray-100 rounded-lg"
+      class="h-full relative shrink-0 overflow-hidden bg-gray-100"
     >
       <!-- image - start -->
       <img
@@ -30,7 +30,7 @@ const { width, height } = useWindowSize()
         { format: 'webp', quality: 40 })"
         loading="eager"
         alt="The Seven Sages and the emperor’s son, with the rubric, Incipit liber septem philosophorum cuiusda[m] Imperatoris Romani, Italy, N. (Venice), 1440s, Add MS 15685, f. 83r"
-        class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left rounded-lg"
+        class="absolute inset-0 h-full w-full object-cover object-[10%] md:object-left"
         :class="{ 'saturate-[.70]': y > 0 }"
       />
       <!-- image - end -->
@@ -45,7 +45,7 @@ const { width, height } = useWindowSize()
       >
         <div class="flex flex-col space-y-2">
           <span
-            class="relax text-6xl font-bold text-white sm:text-7xl md:text-7xl 3xl:text-8xl max-w-4xl 2xl:max-w-7xl self-center text-center"
+            class="relax text-6xl font-bold text-white sm:text-7xl md:text-7xl 3xl:text-8xl max-w-4xl 2xl:max-w-[100%] self-center text-center font-prata"
             v-html="hero.Header"
           />
           <span class="w-full xl:w-9/12 2xl:w-7/12 3xl:w-6/12 text-xl text-justify md:text-2xl text-white self-center" v-html="hero.Tagline" />

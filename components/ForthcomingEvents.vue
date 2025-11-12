@@ -52,7 +52,7 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All events</a>
     </div>
-    <Carousel :value="forthcomingEvents" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
+    <Carousel :value="forthcomingEvents" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions" v-if="forthcomingEvents">
       <template #item="slotProps">
         <EventCard :event="slotProps.data" />
       </template>

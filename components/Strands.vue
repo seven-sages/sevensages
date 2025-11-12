@@ -34,11 +34,11 @@ for (const strandId of strandPage.Strands) {
 <template>
   <section class="space-y-12 px-4 xl:px-24">
     <header class="text-center">
-      <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 sm:text-5xl font-prata">
         {{ strandPage.Header }}
       </h2>
 
-        <p class="mx-auto mt-4 max-w-2xl text-xl text-gray-800">
+        <p class="mx-auto mt-4 max-w-5xl text-xl text-gray-800">
           {{ strandPage.Tagline }}
         </p>
       </header>
