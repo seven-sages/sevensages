@@ -19,7 +19,7 @@ const imageClasses = computed(() => {
       <img
         :src="img"
         :alt="header"
-        class="w-full h-auto rounded-lg object-cover sm:h-64 lg:h-96"
+        class="w-full h-auto rounded-lg object-cover sm:h-64 lg:h-96 saturate-[0.8]"
       />
     </div>
     <div class="w-full flex flex-col md:w-1/2 px-4 mt-4 md:mt-0 space-y-2 md:space-y-4">
