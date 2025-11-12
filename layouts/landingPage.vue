@@ -14,7 +14,7 @@ function toggleDrawer(){
   <main>
     <MobileNavbar ref="drawer" />
     <Navbar index @toggleDrawer="toggleDrawer" />
-    <div ref="main" class="min-h-[calc(100dvh-12rem)] bg-white">
+    <div ref="main" class="bg-white">
       <slot />
     </div>
     <Footer />

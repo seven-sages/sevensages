@@ -10,7 +10,13 @@
 }
 
 div {
-    font-family: "Urban", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: normal;
+}
+
+#logo {
+  font-family: "Prata", 'serif';
+  line-height: 1.4rem;
 }
 
 .router-link-active {

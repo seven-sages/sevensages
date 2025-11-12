@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useWindowScroll } from "@vueuse/core";
-
 defineProps<{
   name?: string;
   link?: string;
@@ -13,10 +11,9 @@ const { y } = useWindowScroll()
 <template>
   <NuxtLink
     :to="link"
-    class="text-xl text-zinc-50 transition duration-100"
-    :class="{ 'text-zinc-800': y > 0 || !index }"
+    class="text-xl text-black transition duration-100"
   >
-    <span class="link link-underline" :class="[ y > 0 || !index ? 'link-underline-black' : 'link-underline-white' ]">{{ name }}</span>
+    <span class="link link-underline link-underline-black">{{ name }}</span>
   </NuxtLink>
 </template>
 <style scoped>
