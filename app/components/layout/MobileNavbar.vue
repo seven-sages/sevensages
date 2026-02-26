@@ -1,22 +1,31 @@
 <script setup lang="ts">
 const visible = ref(false);
 
-import { navLinks } from "~/constants/navigation"
+import { navLinks } from "~/constants/navigation";
 
-function toggle(value: boolean){
-  visible.value = value
+function toggle(value: boolean) {
+  visible.value = value;
+}
+
+function closeDrawer() {
+  visible.value = false;
 }
 
 defineExpose({
-  toggle
-})
+  toggle,
+});
 </script>
 <template>
-  <CompatDrawer v-model:visible="visible" class="w-full!">
-    <template #container="{ closeCallback }">
-      <div class="flex flex-col h-full">
-        <div class="flex items-center justify-between px-6 pt-4 shrink-0">
-          <span class="inline-flex items-center gap-2 min-w-0">
+  <UDrawer
+    v-model:open="visible"
+    direction="left"
+    :handle="false"
+    :content="{ class: 'w-full max-w-none rounded-none h-full p-0' }"
+  >
+    <template #content>
+      <div class="flex h-full flex-col">
+        <div class="flex shrink-0 items-center justify-between px-6 pt-4">
+          <span class="inline-flex min-w-0 items-center gap-2">
             <NuxtLink
               to="/"
               class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
@@ -26,20 +35,27 @@ defineExpose({
             </NuxtLink>
           </span>
           <span>
-            <button class="rtL:ml-6 ltr:mr-6 md:p-4" @click="closeCallback" tabindex="0" aria-label="menu">
-              <div class="w-10 h-1 rotate-45 transition-all bg-black mb-0 absolute"/>
-              <div class="w-10 h-1 -rotate-45 transition-all bg-black" />
+            <button
+              class="rtL:ml-6 md:p-4 ltr:mr-6"
+              @click="closeDrawer"
+              tabindex="0"
+              aria-label="menu"
+            >
+              <div
+                class="absolute mb-0 h-1 w-10 rotate-45 bg-black transition-all"
+              />
+              <div class="h-1 w-10 -rotate-45 bg-black transition-all" />
             </button>
           </span>
         </div>
         <div class="overflow-y-auto">
-          <ul class="list-none p-4 m-0">
+          <ul class="m-0 list-none p-4">
             <li>
-              <ul class="list-none p-0 m-0 overflow-hidden">
+              <ul class="m-0 list-none overflow-hidden p-0">
                 <li v-for="link in navLinks" :key="link.name">
                   <NuxtLink
                     :to="link.link"
-                    class="group text-5xl md:text-6xl lg:text-8 xl flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+                    class="group lg:text-8 xl flex items-center rounded-lg p-2 text-5xl text-gray-900 hover:bg-gray-100 md:text-6xl"
                     @click="visible = false"
                   >
                     {{ link.name }}
@@ -51,5 +67,5 @@ defineExpose({
         </div>
       </div>
     </template>
-  </CompatDrawer>
+  </UDrawer>
 </template>
