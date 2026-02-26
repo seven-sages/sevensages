@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { readItems } from "@directus/sdk";
+import { readSingleton } from "@directus/sdk";
 import { useWindowScroll } from "@vueuse/core";
 
 const { $directus } = useNuxtApp();
@@ -12,8 +12,7 @@ interface Hero {
   Image: string;
 }
 
-const heroItems = await $directus.request(readItems("Hero")) as Hero[];
-const hero = heroItems[0];
+const hero = await $directus.request(readSingleton("Hero")) as Hero;
 
 const { y } = useWindowScroll({ behavior: 'smooth' });
 const { width, height } = useWindowSize();
