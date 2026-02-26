@@ -6,30 +6,11 @@ defineProps<{
 }>();
 
 const emit = defineEmits(["toggleDrawer"]);
-
-const { y } = useWindowScroll();
-const showDesktopTopTier = ref(true);
-
-watch(y, (currentY, previousY = 0) => {
-  if (currentY <= 0) {
-    showDesktopTopTier.value = true;
-    return;
-  }
-
-  if (currentY < previousY) {
-    showDesktopTopTier.value = true;
-    return;
-  }
-
-  if (currentY > previousY) {
-    showDesktopTopTier.value = false;
-  }
-});
 </script>
 
 <template>
-  <header>
-    <div class="fixed top-0 z-50 w-full border-b bg-white px-4 py-2 xl:hidden">
+  <header class="sticky top-0 z-50">
+    <div class="w-full border-b bg-white px-4 py-2 xl:hidden">
       <div class="flex items-center justify-between">
         <NuxtLink
           to="/"
@@ -61,10 +42,9 @@ watch(y, (currentY, previousY = 0) => {
       </div>
     </div>
 
-    <div class="hidden xl:block">
-      <divp
-        class="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white px-4 transition-transform duration-200"
-        :class="showDesktopTopTier ? 'translate-y-0' : '-translate-y-full'"
+    <div class="hidden bg-white xl:block">
+      <div
+        class="border-b border-gray-200 bg-white px-4"
       >
         <div class="mx-auto flex h-16 items-center justify-between">
           <NuxtLink
@@ -98,11 +78,10 @@ watch(y, (currentY, previousY = 0) => {
             </template>
           </nav>
         </div>
-      </divp>
+      </div>
 
       <div
-        class="fixed inset-x-0 z-40 border-b border-gray-200 bg-white px-4 transition-all duration-200"
-        :class="showDesktopTopTier ? 'top-16' : 'top-0'"
+        class="border-b border-gray-200 bg-white px-4"
       >
         <div class="mx-auto flex h-14 items-center">
           <nav class="flex items-center gap-10">
