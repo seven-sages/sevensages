@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useScroll } from "@vueuse/core";
 import { internalNavLinks, projectTierLinks } from "~/constants/navigation";
 
 defineProps<{
@@ -6,18 +7,46 @@ defineProps<{
 }>();
 
 const emit = defineEmits(["toggleDrawer"]);
+const scrollTarget = import.meta.client ? window : undefined;
+const { y } = useScroll(scrollTarget);
+const showDesktopTopTier = ref(true);
+const ignoreNextScrollChange = ref(false);
+
+watch(y, (currentY, previousY = 0) => {
+  if (currentY <= 0) {
+    ignoreNextScrollChange.value = false;
+    showDesktopTopTier.value = true;
+    return;
+  }
+
+  if (ignoreNextScrollChange.value) {
+    ignoreNextScrollChange.value = false;
+    return;
+  }
+
+  if (currentY === previousY) {
+    return;
+  }
+
+  const nextShowDesktopTopTier = currentY < previousY;
+
+  if (nextShowDesktopTopTier !== showDesktopTopTier.value) {
+    showDesktopTopTier.value = nextShowDesktopTopTier;
+    ignoreNextScrollChange.value = true;
+  }
+});
 </script>
 
 <template>
   <header class="sticky top-0 z-50">
-    <div class="w-full border-b bg-white px-4 py-2 xl:hidden">
+    <div class="w-full border-b bg-white px-8 py-1 xl:hidden">
       <div class="flex items-center justify-between">
         <NuxtLink
           to="/"
           class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
           aria-label="The Seven Sages of Rome"
         >
-          <LayoutProjectLogo class="h-10 w-auto md:h-12" />
+          <LayoutProjectLogo class="h-10 w-auto md:h-10" />
         </NuxtLink>
 
         <button
@@ -44,15 +73,16 @@ const emit = defineEmits(["toggleDrawer"]);
 
     <div class="hidden bg-white xl:block">
       <div
-        class="border-b border-gray-200 bg-white px-4"
+        v-show="showDesktopTopTier"
+        class="border-b border-gray-200 bg-white px-8"
       >
-        <div class="mx-auto flex h-16 items-center justify-between">
+        <div class="mx-auto flex h-14 items-center justify-between">
           <NuxtLink
             to="/"
             class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
             aria-label="The Seven Sages of Rome"
           >
-            <LayoutProjectLogo class="h-12 w-auto" />
+            <LayoutProjectLogo class="h-10 w-auto" />
           </NuxtLink>
 
           <nav class="flex items-center gap-8">
@@ -81,7 +111,7 @@ const emit = defineEmits(["toggleDrawer"]);
       </div>
 
       <div
-        class="border-b border-gray-200 bg-white px-4"
+        class="border-b border-gray-200 bg-white px-8"
       >
         <div class="mx-auto flex h-14 items-center">
           <nav class="flex items-center gap-10">

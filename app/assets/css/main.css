@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+body {
+    background-color: #FCFCFA;
+}
+
 div {
     font-family: "Inter", sans-serif;
     font-weight: normal;

@@ -19,7 +19,7 @@ const { height } = useWindowSize();
 </script>
 
 <template>
-  <div v-if="hero" class="group bg-white p-8">
+  <div v-if="hero" class="group bg-white py-6 px-8">
     <section
       class="relative flex h-[calc(100dvh-150px)] w-full shrink-0 items-center justify-center overflow-hidden rounded bg-gray-100 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-transform duration-300"
     >
