@@ -44,14 +44,22 @@ const hasDate = computed(() => {
           </NuxtLink
           >
           <header class="not-format mb-4 lg:mb-6">
-            <accordion
+            <a
+              v-if="event.Link"
               :href="event.Link"
               target="_blank"
+              rel="noopener noreferrer"
               class="mb-4 text-xl font-bold leading-tight text-gray-900 lg:mb-6 lg:text-2xl"
               :class="{ 'text-blue-800': event.Link }"
             >
               {{ event.Name }}
-            </accordion>
+            </a>
+            <h1
+              v-else
+              class="mb-4 text-xl font-bold leading-tight text-gray-900 lg:mb-6 lg:text-2xl"
+            >
+              {{ event.Name }}
+            </h1>
             <address class="mb-6 flex items-center not-italic text-gray-700">
               <div
                 class="flex flex-col sm:flex-row w-full justify-between"

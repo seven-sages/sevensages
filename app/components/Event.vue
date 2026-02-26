@@ -23,7 +23,7 @@ const eventLink = `/events/${props.event.id}`;
       <div class="flex w-full justify-between">
         <time class="translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-30 h-6 text-zinc-700">{{ event.Day }} {{ event.Month }} {{ event.Year }}</time>
         <div v-show="event.Location" class="text-zinc-700 flex items-end space-x-2">
-          <i class="pi pi-map-marker pt-0.5" />
+          <Icon name="carbon:location" class="size-4 translate-y-[1px]" />
           <p class="text-xs font-semibold">{{ event.Location }}</p>
         </div>
       </div>

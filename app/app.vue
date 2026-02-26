@@ -1,11 +1,27 @@
 <script setup lang="ts">
-import "~/assets/css/tailwind.css";
-
 useHead({
   title: "The Seven Sages of Rome",
   htmlAttrs: {
     lang: "en",
   },
+  link: [
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      href: "/favicon-light.svg",
+      media: "(prefers-color-scheme: light)",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      href: "/favicon-dark.svg",
+      media: "(prefers-color-scheme: dark)",
+    },
+    {
+      rel: "icon",
+      href: "/favicon.ico",
+    },
+  ],
   meta: [
     {
       name: "description",
@@ -24,9 +40,9 @@ useServerSeoMeta({
 </script>
 
 <template>
-  <main>
+  <UApp>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </main>
+  </UApp>
 </template>

@@ -1,11 +1,5 @@
-@import 'tailwindcss';
-
-@layer base {
-  ul,
-  ol {
-    list-style: revert;
-  }
-}
+@import "tailwindcss";
+@import "@nuxt/ui";
 
 div {
     font-family: "Inter", sans-serif;

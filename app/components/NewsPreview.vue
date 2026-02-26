@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { readUser } from "@directus/sdk";
-import { useDateFormat } from "../.nuxt/imports";
 const { $directus } = useNuxtApp();
 
 const props = defineProps(["author", "date", "title", "abstract", "img", "id"]);

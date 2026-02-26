@@ -13,7 +13,7 @@ const { y } = useWindowScroll()
 <template>
   <NuxtLink
     :to="link"
-    class="text-xl text-black transition duration-100"
+    class="text-base text-black transition duration-100"
   >
     <CenterUnderline>
       {{ name }}

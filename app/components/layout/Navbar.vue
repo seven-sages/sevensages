@@ -10,20 +10,16 @@ const emit = defineEmits(["toggleDrawer"]);
 </script>
 
 <template>
-  <header class="fixed top-0 z-50 w-full border-b bg-white px-8 py-2">
+  <header class="fixed top-0 z-50 w-full border-b bg-white px-4 py-2">
     <div class="flex items-center justify-between">
-      <!-- logo - start -->
-      <a
-        href="/"
-        class="cursor-pointer text-lg tracking-widest leading-none text-black md:text-2xl"
-        id="logo"
+      <NuxtLink
+        to="/"
+        class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
         aria-label="The Seven Sages of Rome"
       >
-        <i>the</i> <b>Seven <br />Sages</b> <i>of</i> <br /><b>Rome</b>
-      </a>
-      <!-- logo - end -->
+        <LayoutProjectLogo class="h-10 w-auto md:h-12" />
+      </NuxtLink>
 
-      <!-- nav - start -->
       <nav class="hidden gap-12 xl:flex">
         <NavbarLink
           v-for="link in navLinks"
