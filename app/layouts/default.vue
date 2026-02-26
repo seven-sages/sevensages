@@ -10,7 +10,7 @@ function toggleDrawer(){
   <main>
     <LayoutMobileNavbar ref="drawer" />
     <LayoutNavbar :index="false" @toggleDrawer="toggleDrawer" />
-    <div ref="main" class="min-h-[calc(100dvh-12rem)] bg-white pt-16 xl:pt-[7.5rem]">
+    <div ref="main" class="min-h-[calc(100dvh-12rem)] bg-white">
       <slot />
     </div>
     <LayoutFooter />
