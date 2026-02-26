@@ -21,7 +21,16 @@ interface IEvent {
   date?: Date;
 }
 
-const event = await $directus.request(readItem("Event", eventId)) as IEvent;
+const { data: pageData } = await useAsyncData(`page:event:${eventId}`, async () => {
+  const event = await $directus.request(readItem("Event", eventId)) as IEvent;
+  return { event };
+});
+
+if (!pageData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load event" });
+}
+
+const { event } = pageData.value;
 
 const hasDate = computed(() => {
   return event.Day || event.Month || event.Year;

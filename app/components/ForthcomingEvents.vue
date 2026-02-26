@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { readItems } from "@directus/sdk";
 import EventCard from "~/components/EventCard.vue";
-const { $directus } = useNuxtApp();
 
 interface IEvent {
   id?: string | number;
@@ -11,9 +9,13 @@ interface IEvent {
   Year: string;
   Link: string;
   Location: string;
-  Short_Description: string;
-  date?: Date;
+  Short_Description?: string;
+  Content?: string;
 }
+
+defineProps<{
+  events: IEvent[];
+}>();
 
 const responsiveOptions = ref([
   {
@@ -28,18 +30,6 @@ const responsiveOptions = ref([
   }
 ]);
 
-const now = new Date();
-const forthcomingEvents: Ref<IEvent[]> = ref([]);
-const items = await $directus.request(readItems("Event")) as IEvent[];
-
-for (const item of items) {
-  item.date = new Date(Number(item.Year), useMonthStringToNumber(item.Month));
-  if (item.date.getTime() > now.getTime()) forthcomingEvents.value.push(item)
-}
-
-forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
-  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
-})
 </script>
 <template>
   <div class="flex flex-col px-4 xl:px-24 mx-auto space-y-8 w-full">
@@ -51,7 +41,7 @@ forthcomingEvents.value = forthcomingEvents.value.sort(function(a,b) {
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All events</a>
     </div>
-    <Carousel :value="forthcomingEvents" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions" v-if="forthcomingEvents">
+    <Carousel :value="events" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
       <template #item="slotProps">
         <EventCard :event="slotProps.data" />
       </template>

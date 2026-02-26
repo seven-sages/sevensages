@@ -8,7 +8,16 @@ interface IImprint {
   Heading: string;
 }
 
-const imprint = await $directus.request(readSingleton("Imprint")) as IImprint;
+const { data: imprintData } = await useAsyncData(
+  "page:imprint",
+  () => $directus.request(readSingleton("Imprint")) as Promise<IImprint>,
+);
+
+if (!imprintData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load imprint page" });
+}
+
+const imprint = imprintData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -19,12 +28,10 @@ const imprint = await $directus.request(readSingleton("Imprint")) as IImprint;
         {{ imprint.Heading }}
       </h1>
 
-      <ClientOnly>
-        <span
-          class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
-          v-html="imprint.Content"
-        />
-      </ClientOnly>
+      <span
+        class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
+        v-html="imprint.Content"
+      />
 
     </div>
   </div>

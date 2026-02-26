@@ -8,7 +8,16 @@ interface IDatabase {
   Heading: string;
 }
 
-const database = await $directus.request(readSingleton("Database")) as IDatabase;
+const { data: databaseData } = await useAsyncData(
+  "page:database",
+  () => $directus.request(readSingleton("Database")) as Promise<IDatabase>,
+);
+
+if (!databaseData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load database page" });
+}
+
+const database = databaseData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -18,12 +27,10 @@ const database = await $directus.request(readSingleton("Database")) as IDatabase
       >
         {{ database.Heading }}
       </h1>
-      <ClientOnly>
-        <span
-          class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
-          v-html="database.Content"
-        />
-      </ClientOnly>
+      <span
+        class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+        v-html="database.Content"
+      />
     </div>
   </div>
 </template>

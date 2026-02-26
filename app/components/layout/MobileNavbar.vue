@@ -22,7 +22,7 @@ defineExpose({
               class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
               aria-label="The Seven Sages of Rome"
             >
-              <ProjectLogo class="h-12 w-auto md:h-14" />
+              <LayoutProjectLogo class="h-12 w-auto md:h-14" />
             </NuxtLink>
           </span>
           <span>

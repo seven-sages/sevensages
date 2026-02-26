@@ -38,9 +38,7 @@ const link = `/news/${props.id}`
               {{ header }}
             </h3>
           </a>
-          <ClientOnly>
-            <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700" v-html="abstract" />
-          </ClientOnly>
+          <div class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700 [&_p]:m-0 [&_p]:inline" v-html="abstract" />
         </div>
 
         <div class="sm:flex sm:items-end sm:justify-end">

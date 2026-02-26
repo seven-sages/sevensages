@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { readSingleton } from "@directus/sdk";
 import { useWindowScroll } from "@vueuse/core";
 
-const { $directus } = useNuxtApp();
 const { getAssetUrl: img } = useDirectusAssetUrl();
 
-interface Hero {
+interface HeroData {
   id?: string | number;
   Header: string;
   Tagline: string;
   Image: string;
 }
 
-const hero = await $directus.request(readSingleton("Hero")) as Hero;
+defineProps<{
+  hero?: HeroData | null;
+}>();
 
 const { y } = useWindowScroll({ behavior: 'smooth' });
 const { width, height } = useWindowSize();

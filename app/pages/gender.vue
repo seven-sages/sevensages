@@ -8,7 +8,16 @@ interface IGender {
   Heading: string;
 }
 
-const gender = await $directus.request(readSingleton("Gender")) as IGender;
+const { data: genderData } = await useAsyncData(
+  "page:gender",
+  () => $directus.request(readSingleton("Gender")) as Promise<IGender>,
+);
+
+if (!genderData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load gender page" });
+}
+
+const gender = genderData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -18,12 +27,10 @@ const gender = await $directus.request(readSingleton("Gender")) as IGender;
       >
         {{ gender.Heading }}
       </h1>
-      <ClientOnly>
-        <p
-          class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
-          v-html="gender.Content"
-        />
-      </ClientOnly>
+      <p
+        class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
+        v-html="gender.Content"
+      />
     </div>
   </div>
 </template>

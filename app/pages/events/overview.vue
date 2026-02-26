@@ -12,29 +12,32 @@ interface IEvent {
   Link: string;
   Location: string;
   Content: string;
-  date?: Date;
 }
 
-const now = new Date();
-const forthcomingEvents: Ref<IEvent[]> = ref([]);
-const pastEvents: Ref<IEvent[]> = ref([]);
-
-const items = await $directus.request(readItems("Event")) as IEvent[];
-
-for (const item of items) {
-  item.date = new Date(Number(item.Year), useMonthStringToNumber(item.Month));
-  item.date.getTime() > now.getTime()
-    ? forthcomingEvents.value.push(item)
-    : pastEvents.value.push(item);
+function eventTimestamp(item: IEvent) {
+  return new Date(Number(item.Year), useMonthStringToNumber(item.Month)).getTime();
 }
 
-forthcomingEvents.value = forthcomingEvents.value.sort(function (a, b) {
-  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
+const { data: pageData } = await useAsyncData("page:events-overview", async () => {
+  const items = await $directus.request(readItems("Event")) as IEvent[];
+  const now = Date.now();
+
+  const forthcomingEvents = items
+    .filter((item) => eventTimestamp(item) > now)
+    .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
+
+  const pastEvents = items
+    .filter((item) => eventTimestamp(item) <= now)
+    .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
+
+  return { forthcomingEvents, pastEvents };
 });
 
-pastEvents.value = pastEvents.value.sort(function (a, b) {
-  return (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0);
-});
+if (!pageData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load events overview" });
+}
+
+const { forthcomingEvents, pastEvents } = pageData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">

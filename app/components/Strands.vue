@@ -1,31 +1,25 @@
 <script setup lang="ts">
-import { readItem, readSingleton } from "@directus/sdk";
 import StrandCard from "~/components/StrandCard.vue";
 
-const { $directus } = useNuxtApp();
 const { getAssetUrl: img } = useDirectusAssetUrl();
-interface Strands {
+interface StrandsPage {
   id?: string;
   Header: string;
   Tagline: string;
-  Strands: string[];
 }
 
 interface Strand {
-  id?: string;
+  id?: string | number;
   Header: string;
   Content: string;
   Link: string;
   Image: string;
 }
 
-const strandPage = await $directus.request(readSingleton("Strands")) as Strands;
-
-const strands: Strand[] = [];
-for (const strandId of strandPage.Strands) {
-  const item = await $directus.request(readItem("Strand", strandId)) as Strand;
-  strands.push(item);
-}
+defineProps<{
+  strandPage: StrandsPage;
+  strands: Strand[];
+}>();
 </script>
 <template>
   <section class="space-y-12 px-4 xl:px-24">

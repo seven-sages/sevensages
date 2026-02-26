@@ -1,35 +1,17 @@
 <script setup lang="ts">
-import { readItems } from "@directus/sdk";
-
-const { $directus } = useNuxtApp();
 const { getAssetUrl: img } = useDirectusAssetUrl();
 
 interface INews {
-  id: number;
+  id: number | string;
   Title: string;
   Abstract: string;
   Abstract_Image: string;
-  Content: string;
   date_created: string;
-  date_updated: string;
-  user_created: string;
-  user_updated: string;
 }
 
-const filters = { status: "published" };
-
-const allNews = await $directus.request(
-  readItems("News", {
-    limit: 9,
-    filter: filters,
-  }),
-) as INews[];
-
-const sortedNews = computed(() => {
-  return allNews.sort(function(a,b) {
-    return new Date(b.date_created).getTime() - new Date(a.date_created).getTime();
-  })
-})
+defineProps<{
+  items: INews[];
+}>();
 
 function getImage(image: string | null | undefined) {
   if(image){
@@ -61,7 +43,7 @@ const responsiveOptions = ref([
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All news</a>
     </div>
-    <Carousel :value="sortedNews" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
+    <Carousel :value="items" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
       <template #item="slotProps">
         <NewsEntry
           :id="slotProps.data.id"

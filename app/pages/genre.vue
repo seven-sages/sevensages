@@ -8,7 +8,16 @@ interface IGenre {
   Heading: string;
 }
 
-const genre = await $directus.request(readSingleton("Genre")) as IGenre;
+const { data: genreData } = await useAsyncData(
+  "page:genre",
+  () => $directus.request(readSingleton("Genre")) as Promise<IGenre>,
+);
+
+if (!genreData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load genre page" });
+}
+
+const genre = genreData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -18,12 +27,10 @@ const genre = await $directus.request(readSingleton("Genre")) as IGenre;
       >
         {{ genre.Heading }}
       </h1>
-      <ClientOnly>
-        <span
-          class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
-          v-html="genre.Content"
-        />
-      </ClientOnly>
+      <span
+        class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
+        v-html="genre.Content"
+      />
     </div>
   </div>
 </template>

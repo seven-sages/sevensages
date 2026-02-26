@@ -20,9 +20,18 @@ interface INews {
   user_updated: string;
 }
 
-const news = await $directus.request(readItem("News", newsId)) as INews;
+const { data: pageData } = await useAsyncData(`page:news:${newsId}`, async () => {
+  const news = await $directus.request(readItem("News", newsId)) as INews;
+  const authorName = await $directus.request(readUser(news.user_created));
 
-const authorName = await $directus.request(readUser(news.user_created));
+  return { news, authorName };
+});
+
+if (!pageData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load news article" });
+}
+
+const { news, authorName } = pageData.value;
 
 const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </script>

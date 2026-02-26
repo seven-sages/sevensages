@@ -8,7 +8,16 @@ interface IDutchEdition {
   Heading: string;
 }
 
-const dutchEdition = await $directus.request(readSingleton("Dutch_Edition")) as IDutchEdition;
+const { data: dutchEditionData } = await useAsyncData(
+  "page:edition",
+  () => $directus.request(readSingleton("Dutch_Edition")) as Promise<IDutchEdition>,
+);
+
+if (!dutchEditionData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load edition page" });
+}
+
+const dutchEdition = dutchEditionData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">

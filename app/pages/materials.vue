@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { readItem, readSingleton } from "@directus/sdk";
+import { readItems, readSingleton } from "@directus/sdk";
 
 const { $directus } = useNuxtApp();
 interface IMaterials {
@@ -14,17 +14,44 @@ interface IMaterial {
   Link: string;
 }
 
-const materials = await $directus.request(
-  readSingleton("Materials", {
-    fields: ["Header", "Material.Material_id"],
-  }),
-) as IMaterials;
+const { data: pageData } = await useAsyncData("page:materials", async () => {
+  const materials = await $directus.request(
+    readSingleton("Materials", {
+      fields: ["Header", "Material.Material_id"],
+    }),
+  ) as IMaterials;
 
-const material: IMaterial[] = [];
-for (const entry of Object.values(materials.Material)) {
-  const item = await $directus.request(readItem("Material", entry.Material_id)) as IMaterial;
-  material.push(item);
+  const materialIds = materials.Material.map((entry) => entry.Material_id);
+  let material: IMaterial[] = [];
+
+  if (materialIds.length) {
+    const fetchedMaterials = await $directus.request(
+      readItems("Material", {
+        filter: {
+          id: {
+            _in: materialIds,
+          },
+        },
+      }),
+    ) as IMaterial[];
+
+    const materialsById = new Map(
+      fetchedMaterials.map((item) => [String(item.id), item]),
+    );
+
+    material = materialIds
+      .map((id) => materialsById.get(String(id)))
+      .filter((item): item is IMaterial => Boolean(item));
+  }
+
+  return { materials, material };
+});
+
+if (!pageData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load materials page" });
 }
+
+const { materials, material } = pageData.value;
 </script>
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -35,7 +62,7 @@ for (const entry of Object.values(materials.Material)) {
         {{ materials.Header }}
       </h1>
 
-      <div v-if="!material">
+      <div v-if="!material.length">
         <p class="mb-4 text-center text-gray-800">
           No research publication and material added yet
         </p>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { readSingleton } from "@directus/sdk";
-
-const { $directus } = useNuxtApp();
 const { getAssetUrl: img } = useDirectusAssetUrl();
 interface Funding {
   id?: string;
@@ -12,11 +9,13 @@ interface Funding {
   DFG_dark: string;
 }
 
-const item = await $directus.request(readSingleton("Funding")) as Funding;
+defineProps<{
+  item?: Funding | null;
+}>();
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div v-if="item" class="bg-white py-6 sm:py-8 lg:py-12">
     <div class="px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl"

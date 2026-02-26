@@ -1,19 +1,30 @@
 <script setup lang="ts">
-import { readUser } from "@directus/sdk";
-const { $directus } = useNuxtApp();
+interface NewsAuthor {
+  first_name?: string | null;
+  last_name?: string | null;
+}
 
-const props = defineProps(["author", "date", "title", "abstract", "img", "id"]);
+const props = defineProps<{
+  author?: NewsAuthor | null;
+  date: string;
+  title: string;
+  abstract: string;
+  img: string | null;
+  id: string | number;
+}>();
 
 const formattedDate = useDateFormat(props.date, "DD.MM.YYYY");
-const authorName = await $directus.request(readUser(props.author));
 const newsLink = `/news/${props.id}`;
+const authorDisplayName = computed(() => {
+  return [props.author?.first_name, props.author?.last_name].filter(Boolean).join(" ");
+});
 </script>
 
 <template>
   <div class="flex flex-wrap py-8 md:flex-nowrap">
     <div class="mb-6 flex shrink-0 flex-col md:mb-0 md:w-64">
       <span class="title-font font-semibold text-gray-700"
-        >{{ authorName.first_name }} {{ authorName.last_name }}</span
+        >{{ authorDisplayName }}</span
       >
       <span class="mt-1 text-sm text-gray-400">{{ formattedDate }}</span>
     </div>
@@ -26,9 +37,7 @@ const newsLink = `/news/${props.id}`;
           >
             {{ title }}
           </h2>
-          <ClientOnly>
-            <p class="leading-relaxed" v-html="abstract" />
-          </ClientOnly>
+          <div class="leading-relaxed [&_p]:m-0" v-html="abstract" />
         </div>
           <div class="sm:flex sm:items-end sm:justify-end align-bottom">
             <NuxtLink

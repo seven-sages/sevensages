@@ -37,55 +37,61 @@ export interface IStudentAssistant {
   Affiliation: string,
 }
 
-const team = ref<ITeam>({} as ITeam);
+async function fetchPeopleByIds(ids: number[]) {
+  if (!ids.length) {
+    return [] as IPerson[];
+  }
 
-const teamMembers = ref<IPerson[]>([]);
-const formerTeamMembers = ref<IPerson[]>([]);
-
-const advisoryBoardMembers = ref<IPerson[]>([]);
-const formerAdvisoryBoardMembers = ref<IPerson[]>([]);
-
-const studentAssistants: Ref<IStudentAssistant[]> = ref([])
-
-team.value = await $directus.request(
-  readSingleton("Team", {
-    fields: ["*.*"],
-  }),
-) as ITeam;
-
-$directus.request(
-  readItems("Person", {
-    filter: {
-      id: {
-        _in: team.value.Team_Members.map((teamMember) => teamMember.Person_id),
+  return await $directus.request(
+    readItems("Person", {
+      filter: {
+        id: {
+          _in: ids,
+        },
       },
-    },
-  }),
-).then((response) => {
-  const people = response as IPerson[];
-  teamMembers.value = people.filter(member => member.Active === true);
-  formerTeamMembers.value = people.filter(member => member.Active === false);
+    }),
+  ) as IPerson[];
+}
+
+const { data: pageData } = await useAsyncData("page:team", async () => {
+  const team = await $directus.request(
+    readSingleton("Team", {
+      fields: ["*.*"],
+    }),
+  ) as ITeam;
+
+  const [teamPeople, advisoryPeople, studentAssistants] = await Promise.all([
+    fetchPeopleByIds(team.Team_Members.map((teamMember) => teamMember.Person_id)),
+    fetchPeopleByIds(
+      team.Advisory_Board_Members.map(
+        (advisoryBoardMember) => advisoryBoardMember.Person_id,
+      ),
+    ),
+    $directus.request(readItems("Student_Assistant")) as Promise<IStudentAssistant[]>,
+  ]);
+
+  return {
+    team,
+    teamMembers: teamPeople.filter((member) => member.Active === true),
+    formerTeamMembers: teamPeople.filter((member) => member.Active === false),
+    advisoryBoardMembers: advisoryPeople.filter((member) => member.Active === true),
+    formerAdvisoryBoardMembers: advisoryPeople.filter((member) => member.Active === false),
+    studentAssistants,
+  };
 });
 
-$directus.request(
-  readItems("Person", {
-    filter: {
-      id: {
-        _in: team.value.Advisory_Board_Members.map(
-          (advisoryBoardMember) => advisoryBoardMember.Person_id,
-        ),
-      },
-    },
-  }),
-).then((response) => {
-  const people = response as IPerson[];
-  advisoryBoardMembers.value = people.filter(member => member.Active === true);
-  formerAdvisoryBoardMembers.value = people.filter(member => member.Active === false);
-});
+if (!pageData.value) {
+  throw createError({ statusCode: 500, statusMessage: "Failed to load team page" });
+}
 
-$directus.request(readItems("Student_Assistant")).then((response) => {
-  studentAssistants.value = response as IStudentAssistant[];
-});
+const {
+  team,
+  teamMembers,
+  formerTeamMembers,
+  advisoryBoardMembers,
+  formerAdvisoryBoardMembers,
+  studentAssistants,
+} = pageData.value;
 </script>
 
 <template>
