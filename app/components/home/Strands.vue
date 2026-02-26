@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import StrandCard from "~/components/StrandCard.vue";
-
 const { getAssetUrl: img } = useDirectusAssetUrl();
 interface StrandsPage {
   id?: string;
@@ -33,7 +31,7 @@ defineProps<{
         </p>
       </header>
       <div class="grid-cols-1 md:grid-cols-2">
-        <StrandCard
+        <HomeStrandCard
           v-for="(strand, index) in strands"
           :key="strand.id"
           :header="strand.Header"

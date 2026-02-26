@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import EventCard from "~/components/EventCard.vue";
-
 interface IEvent {
   id?: string | number;
   Name: string;
@@ -41,15 +39,15 @@ const responsiveOptions = ref([
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All events</a>
     </div>
-    <Carousel :value="events" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
+    <CompatCarousel :value="events" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
       <template #item="slotProps">
-        <EventCard :event="slotProps.data" />
+        <EventsCard :event="slotProps.data" />
       </template>
       <template #empty>
         <p class="text-center">No upcoming events.</p>
         <a id="past-event-text" class="text-center" href="/events/overview">Have a look at our past events.</a>
       </template>
-    </Carousel>
+    </CompatCarousel>
   </div>
 </template>
 <style scoped>

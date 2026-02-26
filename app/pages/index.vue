@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import { readItems, readSingleton } from "@directus/sdk";
-import Hero from "~/components/Hero.vue";
-import Strands from "~/components/Strands.vue";
-import Funding from "~/components/Funding.vue";
-import LatestNews from "~/components/LatestNews.vue"
-import ForthcomingEvents from "~/components/ForthcomingEvents.vue";
 
 const { $directus } = useNuxtApp();
 
@@ -223,10 +218,10 @@ definePageMeta({
 
 <template>
   <div class="grid grid-cols-1 justify-center gap-y-24">
-    <Hero :hero="hero" />
-    <Strands :strand-page="strandPage" :strands="strands" />
-    <LatestNews :items="latestNews" />
-    <ForthcomingEvents :events="forthcomingEvents" />
-    <Funding :item="funding" />
+    <HomeHero :hero="hero" />
+    <HomeStrands :strand-page="strandPage" :strands="strands" />
+    <HomeLatestNews :items="latestNews" />
+    <HomeForthcomingEvents :events="forthcomingEvents" />
+    <HomeFunding :item="funding" />
   </div>
 </template>

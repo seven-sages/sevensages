@@ -43,7 +43,7 @@ const responsiveOptions = ref([
         class="rounded whitespace-nowrap border border-zinc-500 px-2.5 py-0.5 text-sm text-zinc-700 hover:bg-black hover:text-white hover:border-white transition-colors duration-400"
       >All news</a>
     </div>
-    <Carousel :value="items" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
+    <CompatCarousel :value="items" :numVisible="3" :numScroll="3" :responsive-options="responsiveOptions">
       <template #item="slotProps">
         <NewsEntry
           :id="slotProps.data.id"
@@ -52,6 +52,6 @@ const responsiveOptions = ref([
           :header="slotProps.data.Title"
           :img="getImage(slotProps.data.Abstract_Image)" />
       </template>
-    </Carousel>
+    </CompatCarousel>
   </div>
 </template>

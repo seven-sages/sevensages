@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import CenterUnderline from "~/components/CenterUnderline.vue";
-
 defineProps<{
   name?: string;
   link?: string;
@@ -15,9 +13,9 @@ const { y } = useWindowScroll()
     :to="link"
     class="text-base text-black transition duration-100"
   >
-    <CenterUnderline>
+    <LayoutCenterUnderline>
       {{ name }}
-    </CenterUnderline>
+    </LayoutCenterUnderline>
   </NuxtLink>
 </template>
 <style scoped>

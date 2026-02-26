@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import Navbar from "~/components/layout/Navbar.vue";
-import Footer from "~/components/layout/Footer.vue";
-import MobileNavbar from "~/components/layout/MobileNavbar.vue";
-
 const drawer = ref()
 
 function toggleDrawer(){
@@ -12,12 +8,12 @@ function toggleDrawer(){
 
 <template>
   <main>
-    <MobileNavbar ref="drawer" />
-    <Navbar index @toggleDrawer="toggleDrawer" />
+    <LayoutMobileNavbar ref="drawer" />
+    <LayoutNavbar index @toggleDrawer="toggleDrawer" />
     <div ref="main" class="bg-white">
       <slot />
     </div>
-    <Footer />
+    <LayoutFooter />
   </main>
 </template>
 

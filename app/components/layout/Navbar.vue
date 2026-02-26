@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import NavbarLink from "~/components/layout/NavbarLink.vue";
-import { navLinks } from "./sidebar";
+import { navLinks } from "~/constants/navigation";
 
 defineProps<{
   index: boolean;
@@ -21,7 +20,7 @@ const emit = defineEmits(["toggleDrawer"]);
       </NuxtLink>
 
       <nav class="hidden gap-12 xl:flex">
-        <NavbarLink
+        <LayoutNavbarLink
           v-for="link in navLinks"
           :index="index"
           :key="link.name"

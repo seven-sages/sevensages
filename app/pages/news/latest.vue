@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { readItems, readUser } from "@directus/sdk";
-import { NewsPreview } from "#components";
 
 const { $directus } = useNuxtApp();
 const { getAssetUrl: img } = useDirectusAssetUrl();

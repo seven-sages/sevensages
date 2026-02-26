@@ -57,7 +57,7 @@ const { forthcomingEvents, pastEvents } = pageData.value;
             Forthcoming events
           </h2>
           <div class="-my-6" v-if="forthcomingEvents.length > 0">
-            <Event
+            <EventsTimelineItem
               v-for="event in forthcomingEvents"
               :key="event.id"
               :event="event"
@@ -74,7 +74,7 @@ const { forthcomingEvents, pastEvents } = pageData.value;
             Past events
           </h2>
           <div class="-my-6">
-            <Event v-for="event in pastEvents" :key="event.id" :event="event" />
+            <EventsTimelineItem v-for="event in pastEvents" :key="event.id" :event="event" />
           </div>
         </div>
       </div>

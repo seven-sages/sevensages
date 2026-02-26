@@ -127,7 +127,7 @@ const {
         </h3>
         <div class="mx-auto">
           <ul>
-            <StudentAssistantEntry
+            <TeamStudentAssistantEntry
               v-for="student of studentAssistants"
               :key="student.id"
               :student="student" />

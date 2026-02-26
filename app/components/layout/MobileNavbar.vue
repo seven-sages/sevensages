@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const visible = ref(false);
 
-import { navLinks } from "./sidebar"
+import { navLinks } from "~/constants/navigation"
 
 function toggle(value: boolean){
   visible.value = value
@@ -12,7 +12,7 @@ defineExpose({
 })
 </script>
 <template>
-  <Drawer v-model:visible="visible" class="w-full!">
+  <CompatDrawer v-model:visible="visible" class="w-full!">
     <template #container="{ closeCallback }">
       <div class="flex flex-col h-full">
         <div class="flex items-center justify-between px-6 pt-4 shrink-0">
@@ -51,5 +51,5 @@ defineExpose({
         </div>
       </div>
     </template>
-  </Drawer>
+  </CompatDrawer>
 </template>
