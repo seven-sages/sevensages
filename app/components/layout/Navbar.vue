@@ -39,7 +39,7 @@ watch(y, (currentY, previousY = 0) => {
 
 <template>
   <header class="sticky top-0 z-50">
-    <div class="w-full border-b bg-white px-8 py-1 sm:hidden">
+    <div class="w-full border-b bg-[#FCFCFA] px-8 py-1 sm:hidden">
       <div class="flex items-center justify-between">
         <NuxtLink
           to="/"
@@ -71,10 +71,10 @@ watch(y, (currentY, previousY = 0) => {
       </div>
     </div>
 
-    <div class="hidden bg-white sm:block">
+    <div class="hidden bg-[#FCFCFA] sm:block">
       <div
         v-show="showDesktopTopTier"
-        class="border-b border-gray-200 bg-white px-8"
+        class="border-b border-gray-200 bg-[#FCFCFA] px-8"
       >
         <div class="mx-auto flex h-14 items-center justify-between">
           <NuxtLink
@@ -95,7 +95,11 @@ watch(y, (currentY, previousY = 0) => {
                 class="inline-flex items-center gap-1 py-1 font-sans text-base text-black transition-colors hover:text-gray-700"
               >
                 <span>{{ link.name }}</span>
-                <Icon name="ph:arrow-up-right" class="size-4 text-gray-500" aria-hidden="true" />
+                <Icon
+                  name="ph:arrow-up-right"
+                  class="size-4 text-gray-500"
+                  aria-hidden="true"
+                />
               </a>
               <NuxtLink
                 v-else
@@ -110,9 +114,7 @@ watch(y, (currentY, previousY = 0) => {
         </div>
       </div>
 
-      <div
-        class="border-b border-gray-200 bg-white px-8"
-      >
+      <div class="border-b border-gray-200 bg-[#FCFCFA] px-8">
         <div class="mx-auto flex h-14 items-center">
           <nav class="flex items-center gap-10">
             <LayoutNavbarLink

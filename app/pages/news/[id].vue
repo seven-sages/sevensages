@@ -3,7 +3,9 @@ import { readItem, readUser } from "@directus/sdk";
 
 const router = useRoute();
 const { $directus } = useNuxtApp();
-const newsId = Array.isArray(router.params.id) ? router.params.id[0] : router.params.id;
+const newsId = Array.isArray(router.params.id)
+  ? router.params.id[0]
+  : router.params.id;
 
 if (!newsId) {
   throw createError({ statusCode: 404, statusMessage: "News not found" });
@@ -20,15 +22,21 @@ interface INews {
   user_updated: string;
 }
 
-const { data: pageData } = await useAsyncData(`page:news:${newsId}`, async () => {
-  const news = await $directus.request(readItem("News", newsId)) as INews;
-  const authorName = await $directus.request(readUser(news.user_created));
+const { data: pageData } = await useAsyncData(
+  `page:news:${newsId}`,
+  async () => {
+    const news = (await $directus.request(readItem("News", newsId))) as INews;
+    const authorName = await $directus.request(readUser(news.user_created));
 
-  return { news, authorName };
-});
+    return { news, authorName };
+  },
+);
 
 if (!pageData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load news article" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load news article",
+  });
 }
 
 const { news, authorName } = pageData.value;
@@ -37,7 +45,7 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <div class="mx-auto flex max-w-(--breakpoint-xl) justify-between px-4">
         <article
@@ -45,17 +53,14 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
         >
           <NuxtLink
             to="/news/latest"
-            class="flex items-center space-x-2 pb-6 transition duration-100 text-zinc-700! hover:text-zinc-900! active:text-zinc-900! group"
+            class="group flex items-center space-x-2 pb-6 text-zinc-700! transition duration-100 hover:text-zinc-900! active:text-zinc-900!"
           >
             <Icon name="carbon:arrow-left" />
             <p class="group-hover:font-bold">All News</p>
-          </NuxtLink
-          >
+          </NuxtLink>
           <header class="not-format mb-4 lg:mb-6">
             <address class="mb-6 flex items-center not-italic">
-              <div
-                class="mr-3 inline-flex items-center text-sm text-gray-900"
-              >
+              <div class="mr-3 inline-flex items-center text-sm text-gray-900">
                 <div>
                   <p class="text-xl font-bold text-gray-900">
                     {{ authorName.first_name }} {{ authorName.last_name }}
@@ -67,13 +72,13 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
               </div>
             </address>
             <h1
-              class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl"
+              class="mb-4 text-3xl leading-tight font-extrabold text-gray-900 lg:mb-6 lg:text-4xl"
             >
               {{ news.Title }}
             </h1>
           </header>
           <span
-            class="mb-6 prose list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+            class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
             v-html="news.Content"
           />
         </article>

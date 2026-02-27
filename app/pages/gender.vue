@@ -14,13 +14,16 @@ const { data: genderData } = await useAsyncData(
 );
 
 if (!genderData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load gender page" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load gender page",
+  });
 }
 
 const gender = genderData.value;
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-900 sm:text-3xl md:mb-6"

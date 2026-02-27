@@ -4,30 +4,137 @@ const props = defineProps<{
   content?: string;
   link?: string;
   img?: string;
-  position: number
+  position: number;
 }>();
 
-const imageClasses = computed(() => {
-  return props.position % 2 === 0
-    ? 'order-0 md:order-0'
-    : 'order-0 md:order-1';
+const imageColumnClasses = computed(() => {
+  return props.position % 2 === 0 ? "order-1 md:order-1" : "order-1 md:order-2";
+});
+
+const cardColumnClasses = computed(() => {
+  return props.position % 2 === 0 ? "order-2 md:order-2" : "order-2 md:order-1";
+});
+
+const cardIsLeft = computed(() => {
+  return props.position % 2 !== 0;
+});
+
+const cardTone = computed(() => {
+  const tones = ["#EFECDF", "#E5EDE3", "#ECE7D9", "#E3ECE8"];
+  return tones[props.position % tones.length];
+});
+
+const headerAlignmentClasses = computed(() => {
+  return cardIsLeft.value
+    ? "md:self-end md:text-right"
+    : "md:self-start md:text-left";
+});
+
+const moreAlignmentClasses = computed(() => {
+  return cardIsLeft.value ? "md:self-start" : "md:self-end";
 });
 </script>
 <template>
-  <div class="flex flex-col md:flex-row items-center justify-center my-8 md:my-32 gap-x-12">
-    <div class="w-full md:w-1/2 px-4" :class="imageClasses">
-      <img
-        :src="img"
-        :alt="header"
-        class="w-full h-auto rounded-lg object-cover sm:h-64 lg:h-96 saturate-[0.8]"
-      />
+  <article class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div :class="imageColumnClasses">
+      <div
+        class="halftone h-88 overflow-hidden rounded-lg md:h-full md:min-h-136"
+      >
+        <img
+          :src="img"
+          :alt="header"
+          class="h-full w-full object-cover object-center"
+        />
+      </div>
     </div>
-    <div class="w-full flex flex-col md:w-1/2 px-4 mt-4 md:mt-0 space-y-2 md:space-y-4">
-      <h2 class="text-2xl md:text-5xl font-bold font-prata">{{ header }}</h2>
-      <p class="text-gray-600 leading-relaxed">{{ content }}</p>
-      <NuxtLink :to="link" class="self-start rounded-md border border-black py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-black hover:text-white hover:bg-black hover:border-black focus:text-white focus:bg-black focus:border-black active:border-black active:text-white active:bg-black disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-        More
-      </NuxtLink>
+    <div :class="cardColumnClasses">
+      <div
+        class="relative flex h-full min-h-88 flex-col rounded-lg p-6 md:min-h-136 md:p-10"
+        :style="{ backgroundColor: cardTone }"
+      >
+        <h2
+          class="font-prata z-10 text-3xl leading-tight text-[#1f3052] md:text-5xl"
+          :class="headerAlignmentClasses"
+        >
+          {{ header }}
+        </h2>
+        <p
+          class="pointer-events-none absolute top-1/2 left-1/2 w-[calc(100%-3rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 text-center text-lg leading-relaxed text-[#7f7c74] md:text-3xl"
+        >
+          {{ content }}
+        </p>
+        <NuxtLink
+          :to="link"
+          class="z-10 mt-auto self-end rounded-md border border-[#1f3052] px-5 py-2 text-sm text-[#1f3052] transition-colors hover:bg-[#1f3052] hover:text-[#efecdf]"
+          :class="moreAlignmentClasses"
+          type="button"
+        >
+          More
+        </NuxtLink>
+      </div>
     </div>
-  </div>
+  </article>
 </template>
+
+<style scoped>
+.halftone {
+  position: relative;
+  isolation: isolate;
+}
+
+.halftone img {
+  filter: brightness(88%) contrast(130%) saturate(105%);
+}
+
+.halftone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(28, 28, 28, 0.05) 0 1px,
+      transparent 1px 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(245, 245, 245, 0.04) 0 1px,
+      transparent 1px 2px
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+
+.halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 255, 255, 0.34) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 2px 1px,
+      rgba(255, 0, 255, 0.34) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 1px 2px,
+      rgba(255, 220, 0, 0.3) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 2px 2px,
+      rgba(24, 27, 32, 0.22) 0 1px,
+      transparent 1px
+    );
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.48;
+  filter: blur(1px);
+}
+</style>

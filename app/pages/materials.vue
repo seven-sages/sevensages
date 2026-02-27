@@ -15,17 +15,17 @@ interface IMaterial {
 }
 
 const { data: pageData } = await useAsyncData("page:materials", async () => {
-  const materials = await $directus.request(
+  const materials = (await $directus.request(
     readSingleton("Materials", {
       fields: ["Header", "Material.Material_id"],
     }),
-  ) as IMaterials;
+  )) as IMaterials;
 
   const materialIds = materials.Material.map((entry) => entry.Material_id);
   let material: IMaterial[] = [];
 
   if (materialIds.length) {
-    const fetchedMaterials = await $directus.request(
+    const fetchedMaterials = (await $directus.request(
       readItems("Material", {
         filter: {
           id: {
@@ -33,7 +33,7 @@ const { data: pageData } = await useAsyncData("page:materials", async () => {
           },
         },
       }),
-    ) as IMaterial[];
+    )) as IMaterial[];
 
     const materialsById = new Map(
       fetchedMaterials.map((item) => [String(item.id), item]),
@@ -48,13 +48,16 @@ const { data: pageData } = await useAsyncData("page:materials", async () => {
 });
 
 if (!pageData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load materials page" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load materials page",
+  });
 }
 
 const { materials, material } = pageData.value;
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
@@ -68,9 +71,7 @@ const { materials, material } = pageData.value;
         </p>
       </div>
       <div v-else>
-        <ul
-          class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8"
-        >
+        <ul class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8">
           <li v-for="event in material" :key="event.id">
             <a :href="event.Link" target="_blank">
               {{ event.Content }}

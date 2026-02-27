@@ -26,22 +26,28 @@ interface INewsWithAuthor extends INews {
 }
 
 const { data: pageData } = await useAsyncData("page:news-latest", async () => {
-  const allNews = await $directus.request(
+  const allNews = (await $directus.request(
     readItems("News", {
       filter: { status: "published" },
     }),
-  ) as INews[];
+  )) as INews[];
 
   const sortedNews = [...allNews].sort((a, b) => {
-    return new Date(b.date_created).getTime() - new Date(a.date_created).getTime();
+    return (
+      new Date(b.date_created).getTime() - new Date(a.date_created).getTime()
+    );
   });
 
-  const authorIds = [...new Set(sortedNews.map((news) => news.user_created).filter(Boolean))];
+  const authorIds = [
+    ...new Set(sortedNews.map((news) => news.user_created).filter(Boolean)),
+  ];
 
   const authorEntries = await Promise.all(
     authorIds.map(async (authorId) => {
       try {
-        const author = await $directus.request(readUser(authorId)) as IUserSummary;
+        const author = (await $directus.request(
+          readUser(authorId),
+        )) as IUserSummary;
         return [authorId, author] as const;
       } catch {
         return [authorId, null] as const;
@@ -49,7 +55,10 @@ const { data: pageData } = await useAsyncData("page:news-latest", async () => {
     }),
   );
 
-  const authorsById = Object.fromEntries(authorEntries) as Record<string, IUserSummary | null>;
+  const authorsById = Object.fromEntries(authorEntries) as Record<
+    string,
+    IUserSummary | null
+  >;
 
   const newsItems: INewsWithAuthor[] = sortedNews.map((news) => ({
     ...news,
@@ -69,19 +78,15 @@ function getImage(image: string | null | undefined) {
 }
 </script>
 <template>
-  <div class="bg-white py-6 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
-      <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl"
-      >
+      <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl">
         Latest News
       </h1>
 
       <div v-if="!newsItems.length">
         <section class="body-font overflow-hidden text-gray-600">
-          <p class="mb-4 text-center text-gray-800">
-            No news yet
-          </p>
+          <p class="mb-4 text-center text-gray-800">No news yet</p>
         </section>
       </div>
       <div v-else>

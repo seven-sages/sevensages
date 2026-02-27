@@ -31,10 +31,10 @@ interface ITeam {
 }
 
 export interface IStudentAssistant {
-  id: number,
-  Name: string,
-  Role: string,
-  Affiliation: string,
+  id: number;
+  Name: string;
+  Role: string;
+  Affiliation: string;
 }
 
 async function fetchPeopleByIds(ids: number[]) {
@@ -42,7 +42,7 @@ async function fetchPeopleByIds(ids: number[]) {
     return [] as IPerson[];
   }
 
-  return await $directus.request(
+  return (await $directus.request(
     readItems("Person", {
       filter: {
         id: {
@@ -50,24 +50,28 @@ async function fetchPeopleByIds(ids: number[]) {
         },
       },
     }),
-  ) as IPerson[];
+  )) as IPerson[];
 }
 
 const { data: pageData } = await useAsyncData("page:team", async () => {
-  const team = await $directus.request(
+  const team = (await $directus.request(
     readSingleton("Team", {
       fields: ["*.*"],
     }),
-  ) as ITeam;
+  )) as ITeam;
 
   const [teamPeople, advisoryPeople, studentAssistants] = await Promise.all([
-    fetchPeopleByIds(team.Team_Members.map((teamMember) => teamMember.Person_id)),
+    fetchPeopleByIds(
+      team.Team_Members.map((teamMember) => teamMember.Person_id),
+    ),
     fetchPeopleByIds(
       team.Advisory_Board_Members.map(
         (advisoryBoardMember) => advisoryBoardMember.Person_id,
       ),
     ),
-    $directus.request(readItems("Student_Assistant")) as Promise<IStudentAssistant[]>,
+    $directus.request(readItems("Student_Assistant")) as Promise<
+      IStudentAssistant[]
+    >,
   ]);
 
   return {
@@ -75,13 +79,18 @@ const { data: pageData } = await useAsyncData("page:team", async () => {
     teamMembers: teamPeople.filter((member) => member.Active),
     formerTeamMembers: teamPeople.filter((member) => !member.Active),
     advisoryBoardMembers: advisoryPeople.filter((member) => member.Active),
-    formerAdvisoryBoardMembers: advisoryPeople.filter((member) => !member.Active),
+    formerAdvisoryBoardMembers: advisoryPeople.filter(
+      (member) => !member.Active,
+    ),
     studentAssistants,
   };
 });
 
 if (!pageData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load team page" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load team page",
+  });
 }
 
 const {
@@ -95,7 +104,7 @@ const {
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
@@ -119,7 +128,7 @@ const {
           :twitter="item.Twitter_Account"
         />
       </div>
-      <div class="mb-10 mt-10 md:mb-16" v-show="studentAssistants.length">
+      <div class="mt-10 mb-10 md:mb-16" v-show="studentAssistants.length">
         <h3
           class="mb-4 text-center text-lg font-bold text-gray-800 md:mb-6 lg:text-xl"
         >
@@ -130,11 +139,12 @@ const {
             <TeamStudentAssistantEntry
               v-for="student of studentAssistants"
               :key="student.id"
-              :student="student" />
+              :student="student"
+            />
           </ul>
         </div>
       </div>
-      <div class="mb-10 mt-10 md:mb-16">
+      <div class="mt-10 mb-10 md:mb-16">
         <h2
           class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
         >
@@ -156,7 +166,10 @@ const {
           :twitter="item.Twitter_Account"
         />
       </div>
-      <div class="mb-10 mt-10 md:mb-16" v-show="formerTeamMembers.length || formerAdvisoryBoardMembers.length">
+      <div
+        class="mt-10 mb-10 md:mb-16"
+        v-show="formerTeamMembers.length || formerAdvisoryBoardMembers.length"
+      >
         <h2
           class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
         >
@@ -177,7 +190,9 @@ const {
               :name="item.Name"
               :title="item.Tagline"
               :description="item.Description"
-              :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
+              :image="
+                img(item.Image, { format: 'webp', quality: 40 }) ?? undefined
+              "
               :alt="item.Name"
               :mail="item.Mail_Address"
               :twitter="item.Twitter_Account"
@@ -199,7 +214,9 @@ const {
               :name="item.Name"
               :title="item.Tagline"
               :description="item.Description"
-              :image="img(item.Image, { format: 'webp', quality: 40 }) ?? undefined"
+              :image="
+                img(item.Image, { format: 'webp', quality: 40 }) ?? undefined
+              "
               :alt="item.Name"
               :mail="item.Mail_Address"
               :twitter="item.Twitter_Account"

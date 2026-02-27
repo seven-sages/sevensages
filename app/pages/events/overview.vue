@@ -15,32 +15,41 @@ interface IEvent {
 }
 
 function eventTimestamp(item: IEvent) {
-  return new Date(Number(item.Year), useMonthStringToNumber(item.Month)).getTime();
+  return new Date(
+    Number(item.Year),
+    useMonthStringToNumber(item.Month),
+  ).getTime();
 }
 
-const { data: pageData } = await useAsyncData("page:events-overview", async () => {
-  const items = await $directus.request(readItems("Event")) as IEvent[];
-  const now = Date.now();
+const { data: pageData } = await useAsyncData(
+  "page:events-overview",
+  async () => {
+    const items = (await $directus.request(readItems("Event"))) as IEvent[];
+    const now = Date.now();
 
-  const forthcomingEvents = items
-    .filter((item) => eventTimestamp(item) > now)
-    .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
+    const forthcomingEvents = items
+      .filter((item) => eventTimestamp(item) > now)
+      .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
 
-  const pastEvents = items
-    .filter((item) => eventTimestamp(item) <= now)
-    .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
+    const pastEvents = items
+      .filter((item) => eventTimestamp(item) <= now)
+      .sort((a, b) => eventTimestamp(b) - eventTimestamp(a));
 
-  return { forthcomingEvents, pastEvents };
-});
+    return { forthcomingEvents, pastEvents };
+  },
+);
 
 if (!pageData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load events overview" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load events overview",
+  });
 }
 
 const { forthcomingEvents, pastEvents } = pageData.value;
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6"
@@ -74,7 +83,11 @@ const { forthcomingEvents, pastEvents } = pageData.value;
             Past events
           </h2>
           <div class="-my-6">
-            <EventsTimelineItem v-for="event in pastEvents" :key="event.id" :event="event" />
+            <EventsTimelineItem
+              v-for="event in pastEvents"
+              :key="event.id"
+              :event="event"
+            />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white pt-4 sm:pt-10 lg:pt-12">
+  <div class="bg-[#FCFCFA] pt-4 sm:pt-10 lg:pt-12">
     <footer class="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-8">
       <div
-        class="flex flex-col items-center justify-between gap-4 border-b border-t py-6 md:flex-row"
+        class="flex flex-col items-center justify-between gap-4 border-t border-b py-6 md:flex-row"
       >
         <nav
           class="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6"

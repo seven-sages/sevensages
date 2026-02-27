@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const drawer = ref()
+const drawer = ref();
 
-function toggleDrawer(){
-  drawer.value.toggle(true)
+function toggleDrawer() {
+  drawer.value.toggle(true);
 }
 </script>
 
@@ -10,7 +10,7 @@ function toggleDrawer(){
   <main>
     <LayoutMobileNavbar ref="drawer" />
     <LayoutNavbar :index="false" @toggleDrawer="toggleDrawer" />
-    <div ref="main" class="min-h-[calc(100dvh-12rem)] bg-white">
+    <div ref="main" class="min-h-[calc(100dvh-12rem)] bg-[#FCFCFA]">
       <slot />
     </div>
     <LayoutFooter />

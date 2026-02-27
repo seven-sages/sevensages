@@ -3,7 +3,9 @@ import { readItem } from "@directus/sdk";
 
 const router = useRoute();
 const { $directus } = useNuxtApp();
-const eventId = Array.isArray(router.params.id) ? router.params.id[0] : router.params.id;
+const eventId = Array.isArray(router.params.id)
+  ? router.params.id[0]
+  : router.params.id;
 
 if (!eventId) {
   throw createError({ statusCode: 404, statusMessage: "Event not found" });
@@ -21,10 +23,15 @@ interface IEvent {
   date?: Date;
 }
 
-const { data: pageData } = await useAsyncData(`page:event:${eventId}`, async () => {
-  const event = await $directus.request(readItem("Event", eventId)) as IEvent;
-  return { event };
-});
+const { data: pageData } = await useAsyncData(
+  `page:event:${eventId}`,
+  async () => {
+    const event = (await $directus.request(
+      readItem("Event", eventId),
+    )) as IEvent;
+    return { event };
+  },
+);
 
 if (!pageData.value) {
   throw createError({ statusCode: 500, statusMessage: "Failed to load event" });
@@ -38,54 +45,54 @@ const hasDate = computed(() => {
 </script>
 
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-3xl px-4 md:px-8">
-      <div class="mx-auto flex max-w-screen-3xl justify-between px-4">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
+    <div class="max-w-screen-3xl mx-auto px-4 md:px-8">
+      <div class="max-w-screen-3xl mx-auto flex justify-between px-4">
         <article
           class="format format-sm sm:format-base lg:format-lg format-blue mx-auto w-full max-w-(--breakpoint-md)"
         >
           <NuxtLink
             to="/events/overview"
-            class="flex items-center space-x-2 pb-6 transition duration-100 text-zinc-700! hover:text-zinc-900! active:text-zinc-900! group"
+            class="group flex items-center space-x-2 pb-6 text-zinc-700! transition duration-100 hover:text-zinc-900! active:text-zinc-900!"
           >
             <Icon name="fluent:arrow-left-24-filled" />
             <p class="group-hover:font-bold">All Events</p>
-          </NuxtLink
-          >
+          </NuxtLink>
           <header class="not-format mb-4 lg:mb-6">
             <a
               v-if="event.Link"
               :href="event.Link"
               target="_blank"
               rel="noopener noreferrer"
-              class="mb-4 text-xl font-bold leading-tight text-gray-900 lg:mb-6 lg:text-2xl"
+              class="mb-4 text-xl leading-tight font-bold text-gray-900 lg:mb-6 lg:text-2xl"
               :class="{ 'text-blue-800': event.Link }"
             >
               {{ event.Name }}
             </a>
             <h1
               v-else
-              class="mb-4 text-xl font-bold leading-tight text-gray-900 lg:mb-6 lg:text-2xl"
+              class="mb-4 text-xl leading-tight font-bold text-gray-900 lg:mb-6 lg:text-2xl"
             >
               {{ event.Name }}
             </h1>
-            <address class="mb-6 flex items-center not-italic text-gray-700">
-              <div
-                class="flex flex-col sm:flex-row w-full justify-between"
-              >
-                  <div v-show="hasDate" class="flex space-x-2 items-center">
-                    <Icon name="carbon:calendar" class="size-6" />
-                    <p class="text-lg text-gray-700">
-                      {{ event.Day }} {{ event.Month }} {{ event.Year }}
-                    </p>
-                  </div>
-                  <div v-show="event.Location" class="flex space-x-2 items-center">
-                    <Icon name="carbon:location" class="size-6" />
-                    <p class="text-lg text-gray-700">
-                      {{ event.Location }}
-                    </p>
-                  </div>
+            <address class="mb-6 flex items-center text-gray-700 not-italic">
+              <div class="flex w-full flex-col justify-between sm:flex-row">
+                <div v-show="hasDate" class="flex items-center space-x-2">
+                  <Icon name="carbon:calendar" class="size-6" />
+                  <p class="text-lg text-gray-700">
+                    {{ event.Day }} {{ event.Month }} {{ event.Year }}
+                  </p>
                 </div>
+                <div
+                  v-show="event.Location"
+                  class="flex items-center space-x-2"
+                >
+                  <Icon name="carbon:location" class="size-6" />
+                  <p class="text-lg text-gray-700">
+                    {{ event.Location }}
+                  </p>
+                </div>
+              </div>
             </address>
           </header>
           <span

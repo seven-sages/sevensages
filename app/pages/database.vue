@@ -14,13 +14,16 @@ const { data: databaseData } = await useAsyncData(
 );
 
 if (!databaseData.value) {
-  throw createError({ statusCode: 500, statusMessage: "Failed to load database page" });
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Failed to load database page",
+  });
 }
 
 const database = databaseData.value;
 </script>
 <template>
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
         class="mb-4 text-center text-2xl font-bold text-gray-900 sm:text-3xl md:mb-6"
