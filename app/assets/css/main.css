@@ -1,6 +1,47 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@theme {
+    --color-neutral-50:  #FCFCFA;
+    --color-neutral-100: #F6F6F2;
+    --color-neutral-200: #E9E9E4;
+    --color-neutral-300: #D6D6CF;
+    --color-neutral-400: #B8B8AF;
+    --color-neutral-500: #8F8F87;
+    --color-neutral-600: #6F6F68;
+    --color-neutral-700: #52524D;
+    --color-neutral-800: #383835;
+    --color-neutral-900: #1F1F1D;
+    --color-neutral-950: #121211;
+
+    --color-primary-50:  #FAF8F6;
+    --color-primary-100: #F1ECE6;
+    --color-primary-200: #E1D6CB;
+    --color-primary-300: #C9B7A6;
+    --color-primary-400: #AA8E76;
+    --color-primary-500: #8B6A54;
+    --color-primary-600: #6F5140;
+    --color-primary-700: #543D31;
+    --color-primary-800: #3B2A22;
+    --color-primary-900: #241A14;
+    --color-primary-950: #160F0B;
+
+    --color-bg: var(--color-neutral-50);
+    --color-surface: var(--color-neutral-100);
+    --color-border: var(--color-neutral-200);
+    --color-text: var(--color-neutral-800);
+    --color-text-strong: var(--color-neutral-900);
+    --color-accent: var(--color-primary-800);
+
+    --color-strand-1: #EFECDF;
+    --color-strand-2: #E5EDE3;
+    --color-strand-3: #ECE7D9;
+    --color-strand-4: #E3ECE8;
+
+    --font-sans: "Inter", sans-serif;
+    --font-serif: "Prata", serif;
+}
+
 body {
     background-color: #FCFCFA;
 }

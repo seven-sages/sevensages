@@ -21,6 +21,13 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
+  ui: {
+    colors: {
+      primary: 'primary',
+      neutral: 'neutral'
+    }
+  },
+
   devtools: {
     vscode: {},
   },

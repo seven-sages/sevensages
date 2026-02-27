@@ -20,7 +20,13 @@ const cardIsLeft = computed(() => {
 });
 
 const cardTone = computed(() => {
-  const tones = ["#EFECDF", "#E5EDE3", "#ECE7D9", "#E3ECE8"];
+  const tones = [
+    "bg-strand-1",
+    "bg-strand-2",
+    "bg-strand-3",
+    "bg-strand-4",
+  ];
+
   return tones[props.position % tones.length];
 });
 
@@ -50,7 +56,7 @@ const moreAlignmentClasses = computed(() => {
     <div :class="cardColumnClasses">
       <div
         class="relative flex h-full min-h-88 flex-col rounded-lg p-6 md:min-h-136 md:p-10"
-        :style="{ backgroundColor: cardTone }"
+        :class="cardTone"
       >
         <h2
           class="font-prata z-10 text-3xl leading-tight text-[#1f3052] md:text-5xl"
