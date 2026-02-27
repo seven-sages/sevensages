@@ -27,13 +27,13 @@ const dutchEdition = dutchEditionData.value;
   <div class="bg-[#FCFCFA] py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-md) px-4 md:px-8">
       <h1
-        class="mb-4 text-center text-2xl font-bold text-gray-900 sm:text-3xl md:mb-6"
+        class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 sm:text-3xl md:mb-6"
       >
         {{ dutchEdition.Heading }}
       </h1>
 
       <div
-        class="mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+        class="rich-text mb-6 text-justify text-primary-900 sm:text-lg md:mb-8"
         v-html="dutchEdition.Content"
       ></div>
     </div>

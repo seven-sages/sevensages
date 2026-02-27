@@ -53,7 +53,7 @@ const hasDate = computed(() => {
         >
           <NuxtLink
             to="/events/overview"
-            class="group flex items-center space-x-2 pb-6 text-zinc-700! transition duration-100 hover:text-zinc-900! active:text-zinc-900!"
+            class="group flex items-center space-x-2 pb-6 text-primary-800! transition duration-100 hover:text-primary-900! active:text-primary-900!"
           >
             <Icon name="fluent:arrow-left-24-filled" />
             <p class="group-hover:font-bold">All Events</p>
@@ -64,22 +64,22 @@ const hasDate = computed(() => {
               :href="event.Link"
               target="_blank"
               rel="noopener noreferrer"
-              class="mb-4 text-xl leading-tight font-bold text-gray-900 lg:mb-6 lg:text-2xl"
-              :class="{ 'text-blue-800': event.Link }"
+              class="mb-4 text-xl leading-tight font-bold text-primary-900 lg:mb-6 lg:text-2xl"
+              :class="{ 'text-[var(--color-link)]': event.Link }"
             >
               {{ event.Name }}
             </a>
             <h1
               v-else
-              class="mb-4 text-xl leading-tight font-bold text-gray-900 lg:mb-6 lg:text-2xl"
+              class="font-prata mb-4 text-xl leading-tight font-bold text-primary-900 lg:mb-6 lg:text-2xl"
             >
               {{ event.Name }}
             </h1>
-            <address class="mb-6 flex items-center text-gray-700 not-italic">
+            <address class="mb-6 flex items-center text-primary-800 not-italic">
               <div class="flex w-full flex-col justify-between sm:flex-row">
                 <div v-show="hasDate" class="flex items-center space-x-2">
                   <Icon name="carbon:calendar" class="size-6" />
-                  <p class="text-lg text-gray-700">
+                  <p class="text-lg text-primary-800">
                     {{ event.Day }} {{ event.Month }} {{ event.Year }}
                   </p>
                 </div>
@@ -88,17 +88,17 @@ const hasDate = computed(() => {
                   class="flex items-center space-x-2"
                 >
                   <Icon name="carbon:location" class="size-6" />
-                  <p class="text-lg text-gray-700">
+                  <p class="text-lg text-primary-800">
                     {{ event.Location }}
                   </p>
                 </div>
               </div>
             </address>
           </header>
-          <span
-            class="mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+          <div
+            class="rich-text mb-6 text-justify text-primary-900 sm:text-lg md:mb-8"
             v-html="event.Content"
-          />
+          ></div>
         </article>
       </div>
     </div>
@@ -112,6 +112,6 @@ const hasDate = computed(() => {
 }
 
 :deep(a) {
-  color: #1d4ed8;
+  color: var(--color-link);
 }
 </style>

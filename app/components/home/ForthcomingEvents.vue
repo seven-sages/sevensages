@@ -46,10 +46,10 @@ const carouselBreakpoints = {
       class="mb-4 flex flex-col items-center justify-center space-y-2 md:flex-row md:justify-between md:space-y-0 md:space-x-4 md:px-4 lg:px-0"
     >
       <div class="hidden md:block" />
-      <h2 class="text-3xl font-bold md:pl-24">Forthcoming Events</h2>
+      <h2 class="font-prata text-3xl font-bold md:pl-24">Forthcoming Events</h2>
       <a
         href="/events/overview"
-        class="rounded border border-zinc-500 px-2.5 py-0.5 text-sm whitespace-nowrap text-zinc-700 transition-colors duration-400 hover:border-white hover:bg-black hover:text-white"
+        class="rounded border border-zinc-500 px-2.5 py-0.5 text-sm whitespace-nowrap text-primary-800 transition-colors duration-400 hover:border-white hover:bg-black hover:text-white"
         >All events</a
       >
     </div>
@@ -85,6 +85,6 @@ const carouselBreakpoints = {
 }
 
 #past-event-text {
-  color: #1d4ed8;
+  color: var(--color-link);
 }
 </style>

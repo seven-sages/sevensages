@@ -9,12 +9,12 @@
         >
           <NuxtLink
             to="/imprint"
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+            class="text-primary-900 transition duration-100 hover:text-primary-900 active:text-primary-900"
             >Imprint</NuxtLink
           >
           <NuxtLink
             to="/contact"
-            class="text-gray-700 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+            class="text-primary-900 transition duration-100 hover:text-primary-900 active:text-primary-900"
             >Contact</NuxtLink
           >
         </nav>
@@ -23,7 +23,7 @@
             href="https://x.com/7SagesResearch"
             :disabled="true"
             target="_blank"
-            class="text-gray-700 transition duration-100 hover:text-gray-500 active:text-gray-600"
+            class="text-primary-800 transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="py-8 text-center text-sm text-gray-700">
+      <div class="py-8 text-center text-sm text-primary-800">
         ©2023 - Present Seven Sages of Rome. All rights reserved.
       </div>
     </footer>

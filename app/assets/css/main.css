@@ -29,8 +29,10 @@
     --color-bg: var(--color-neutral-50);
     --color-surface: var(--color-neutral-100);
     --color-border: var(--color-neutral-200);
-    --color-text: var(--color-neutral-800);
-    --color-text-strong: var(--color-neutral-900);
+    --color-text: var(--color-primary-900);
+    --color-text-strong: var(--color-primary-900);
+    --color-text-secondary: var(--color-primary-800);
+    --color-link: #1D4ED8;
     --color-accent: var(--color-primary-800);
 
     --color-strand-1: #EFECDF;
@@ -43,7 +45,8 @@
 }
 
 body {
-    background-color: #FCFCFA;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 div {
@@ -58,6 +61,35 @@ div {
 
 .font-prata {
     font-family: "Prata", 'serif';
+}
+
+.rich-text ul,
+.rich-text ol {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+    list-style-position: outside;
+}
+
+.rich-text ul {
+    list-style-type: disc;
+}
+
+.rich-text ol {
+    list-style-type: decimal;
+}
+
+.rich-text li {
+    margin: 0.25rem 0;
+}
+
+.rich-text ul ul,
+.rich-text ol ul {
+    list-style-type: circle;
+}
+
+.rich-text ul ol,
+.rich-text ol ol {
+    list-style-type: lower-alpha;
 }
 
 .router-link-active {

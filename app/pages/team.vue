@@ -108,7 +108,7 @@ const {
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
+          class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 md:mb-6 lg:text-3xl"
         >
           {{ team.Team_Member_Title }}
         </h2>
@@ -130,7 +130,7 @@ const {
       </div>
       <div class="mt-10 mb-10 md:mb-16" v-show="studentAssistants.length">
         <h3
-          class="mb-4 text-center text-lg font-bold text-gray-800 md:mb-6 lg:text-xl"
+          class="font-prata mb-4 text-center text-lg font-bold text-primary-900 md:mb-6 lg:text-xl"
         >
           Student Assistants
         </h3>
@@ -146,7 +146,7 @@ const {
       </div>
       <div class="mt-10 mb-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
+          class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 md:mb-6 lg:text-3xl"
         >
           {{ team.Advisory_Board_Members_Title }}
         </h2>
@@ -171,13 +171,13 @@ const {
         v-show="formerTeamMembers.length || formerAdvisoryBoardMembers.length"
       >
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
+          class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 md:mb-6 lg:text-3xl"
         >
           {{ team.Former_Members_Title }}
         </h2>
         <div v-show="formerTeamMembers.length">
           <h3
-            class="mb-4 text-center text-xl font-bold text-gray-800 md:mb-6 lg:text-2xl"
+            class="font-prata mb-4 text-center text-xl font-bold text-primary-900 md:mb-6 lg:text-2xl"
           >
             Former Team Members
           </h3>
@@ -201,7 +201,7 @@ const {
         </div>
         <div v-show="formerAdvisoryBoardMembers.length">
           <h3
-            class="mb-4 text-center text-xl font-bold text-gray-800 md:mb-6 lg:text-2xl"
+            class="font-prata mb-4 text-center text-xl font-bold text-primary-900 md:mb-6 lg:text-2xl"
           >
             Former Advisory Board Members
           </h3>

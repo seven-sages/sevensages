@@ -37,11 +37,11 @@ defineProps<{
       </div>
     </div>
     <div>
-      <div class="font-bold text-indigo-500 md:text-lg">
+      <div class="font-bold text-[var(--color-link)] md:text-lg">
         {{ name }}
       </div>
       <p
-        class="mb-3 text-sm text-gray-500 md:mb-4 md:text-base"
+        class="mb-3 text-sm text-primary-800 md:mb-4 md:text-base"
       >
         {{ title }}
       </p>
@@ -51,7 +51,7 @@ defineProps<{
             v-show="twitter"
             :href="twitter"
             target="_blank"
-            class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600"
+            class="text-primary-800 transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
           >
             <svg
               class="h-5 w-5"
@@ -70,7 +70,7 @@ defineProps<{
             v-show="mail"
             :href="`mailto:${mail}`"
             target="_blank"
-            class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600"
+            class="text-primary-800 transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
           >
             <svg
               class="h-5 w-5"

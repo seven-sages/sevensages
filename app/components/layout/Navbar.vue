@@ -52,7 +52,7 @@ watch(y, (currentY, previousY = 0) => {
         <button
           type="button"
           aria-label="Open Navigation Drawer"
-          class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base"
+          class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-primary-800 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-primary-800 md:text-base"
           @click="emit('toggleDrawer')"
         >
           <svg
@@ -92,20 +92,20 @@ watch(y, (currentY, previousY = 0) => {
                 :href="link.link"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 py-1 font-sans text-base text-black transition-colors hover:text-gray-700"
+                class="inline-flex items-center gap-1 py-1 font-sans text-base text-primary-900 transition-colors hover:text-primary-800"
               >
                 <span>{{ link.name }}</span>
                 <Icon
                   name="ph:arrow-up-right"
-                  class="size-4 text-gray-500"
+                  class="size-4 text-primary-800"
                   aria-hidden="true"
                 />
               </a>
               <NuxtLink
                 v-else
                 :to="link.link"
-                class="inline-flex items-center py-1 font-sans text-base text-black"
-                :class="link.active ? 'font-semibold' : 'hover:text-gray-700'"
+                class="inline-flex items-center py-1 font-sans text-base text-primary-900"
+                :class="link.active ? 'font-semibold' : 'hover:text-primary-900'"
               >
                 {{ link.name }}
               </NuxtLink>

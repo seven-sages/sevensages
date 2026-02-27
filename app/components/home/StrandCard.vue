@@ -59,19 +59,19 @@ const moreAlignmentClasses = computed(() => {
         :class="cardTone"
       >
         <h2
-          class="font-prata z-10 text-3xl leading-tight text-[#1f3052] md:text-5xl"
+          class="z-10 text-3xl leading-tight text-primary-900 md:text-5xl"
           :class="headerAlignmentClasses"
         >
           {{ header }}
         </h2>
         <p
-          class="pointer-events-none absolute top-1/2 left-1/2 w-[calc(100%-3rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 text-center text-lg leading-relaxed text-[#7f7c74] md:text-3xl"
+          class="pointer-events-none absolute top-1/2 left-1/2 w-[calc(100%-3rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 text-center text-base leading-relaxed text-primary-800 md:text-2xl"
         >
           {{ content }}
         </p>
         <NuxtLink
           :to="link"
-          class="z-10 mt-auto self-end rounded-md border border-[#1f3052] px-5 py-2 text-sm text-[#1f3052] transition-colors hover:bg-[#1f3052] hover:text-[#efecdf]"
+          class="z-10 mt-auto self-end rounded-md border border-primary-900 px-5 py-2 text-sm text-primary-900 transition-colors hover:bg-primary-900 hover:text-neutral-50"
           :class="moreAlignmentClasses"
           type="button"
         >

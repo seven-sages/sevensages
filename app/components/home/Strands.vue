@@ -22,11 +22,11 @@ defineProps<{
 <template>
   <section class="space-y-12 px-4 md:px-8 xl:px-24">
     <header class="text-center">
-      <h2 class="font-prata text-2xl font-bold text-gray-900 sm:text-5xl">
+      <h2 class="font-prata text-2xl font-bold text-primary-900 sm:text-5xl">
         {{ strandPage.Header }}
       </h2>
 
-      <p class="mx-auto mt-4 max-w-5xl text-xl text-gray-800">
+      <p class="mx-auto mt-4 max-w-5xl text-xl text-primary-900">
         {{ strandPage.Tagline }}
       </p>
     </header>

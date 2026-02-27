@@ -53,34 +53,34 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
         >
           <NuxtLink
             to="/news/latest"
-            class="group flex items-center space-x-2 pb-6 text-zinc-700! transition duration-100 hover:text-zinc-900! active:text-zinc-900!"
+            class="group flex items-center space-x-2 pb-6 text-primary-800! transition duration-100 hover:text-primary-900! active:text-primary-900!"
           >
             <Icon name="carbon:arrow-left" />
             <p class="group-hover:font-bold">All News</p>
           </NuxtLink>
           <header class="not-format mb-4 lg:mb-6">
             <address class="mb-6 flex items-center not-italic">
-              <div class="mr-3 inline-flex items-center text-sm text-gray-900">
+              <div class="mr-3 inline-flex items-center text-sm text-primary-900">
                 <div>
-                  <p class="text-xl font-bold text-gray-900">
+                  <p class="text-xl font-bold text-primary-900">
                     {{ authorName.first_name }} {{ authorName.last_name }}
                   </p>
-                  <p class="text-base text-gray-500">
+                  <p class="text-base text-primary-800">
                     <time>{{ formattedDateCreated }}</time>
                   </p>
                 </div>
               </div>
             </address>
             <h1
-              class="mb-4 text-3xl leading-tight font-extrabold text-gray-900 lg:mb-6 lg:text-4xl"
+              class="font-prata mb-4 text-3xl leading-tight font-extrabold text-primary-900 lg:mb-6 lg:text-4xl"
             >
               {{ news.Title }}
             </h1>
           </header>
-          <span
-            class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
+          <div
+            class="rich-text prose mb-6 text-justify text-primary-900 sm:text-lg md:mb-8"
             v-html="news.Content"
-          />
+          ></div>
         </article>
       </div>
     </div>
@@ -94,6 +94,6 @@ const formattedDateCreated = useDateFormat(news.date_created, "DD.MM.YYYY");
 }
 
 :deep(a) {
-  color: #1d4ed8;
+  color: var(--color-link);
 }
 </style>

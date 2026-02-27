@@ -11,7 +11,7 @@ const { y } = useWindowScroll()
 <template>
   <NuxtLink
     :to="link"
-    class="text-base text-black transition duration-100"
+    class="text-base text-primary-900 transition duration-100 hover:text-primary-900"
   >
     <LayoutCenterUnderline>
       {{ name }}

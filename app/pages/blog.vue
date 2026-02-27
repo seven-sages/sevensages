@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-8">
       <div class="mb-10 md:mb-16">
         <h2
-          class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
+          class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 md:mb-6 lg:text-3xl"
         >
           Blog
         </h2>
@@ -26,15 +26,15 @@
           </a>
 
           <div class="flex flex-1 flex-col p-4 sm:p-6">
-            <h2 class="mb-2 text-lg font-semibold text-gray-800">
+            <h2 class="mb-2 text-lg font-semibold text-primary-900">
               <a
                 href="#"
-                class="transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+                class="transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
                 >Blog Entry 1</a
               >
             </h2>
 
-            <p class="mb-8 text-gray-500">
+            <p class="mb-8 text-primary-800">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque efficitur laoreet eros tincidunt laoreet. Nullam a
               pretium tellus, id tempor ex. Ut commodo lectus sit amet volutpat
@@ -55,12 +55,12 @@
                 </div>
 
                 <div>
-                  <span class="block text-indigo-500">Author</span>
-                  <span class="block text-sm text-gray-400">July 19, 2023</span>
+                  <span class="block text-[var(--color-link)]">Author</span>
+                  <span class="block text-sm text-primary-800">July 19, 2023</span>
                 </div>
               </div>
 
-              <span class="rounded border px-2 py-1 text-sm text-gray-500"
+              <span class="rounded border px-2 py-1 text-sm text-primary-800"
                 >Article</span
               >
             </div>
@@ -80,15 +80,15 @@
           </a>
 
           <div class="flex flex-1 flex-col p-4 sm:p-6">
-            <h2 class="mb-2 text-lg font-semibold text-gray-800">
+            <h2 class="mb-2 text-lg font-semibold text-primary-900">
               <a
                 href="#"
-                class="transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+                class="transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
                 >Blog Entry 2</a
               >
             </h2>
 
-            <p class="mb-8 text-gray-500">
+            <p class="mb-8 text-primary-800">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque efficitur laoreet eros tincidunt laoreet. Nullam a
               pretium tellus, id tempor ex. Ut commodo lectus sit amet volutpat
@@ -109,12 +109,12 @@
                 </div>
 
                 <div>
-                  <span class="block text-indigo-500">Author</span>
-                  <span class="block text-sm text-gray-400">July 19, 2023</span>
+                  <span class="block text-[var(--color-link)]">Author</span>
+                  <span class="block text-sm text-primary-800">July 19, 2023</span>
                 </div>
               </div>
 
-              <span class="rounded border px-2 py-1 text-sm text-gray-500"
+              <span class="rounded border px-2 py-1 text-sm text-primary-800"
                 >Article</span
               >
             </div>
@@ -134,15 +134,15 @@
           </a>
 
           <div class="flex flex-1 flex-col p-4 sm:p-6">
-            <h2 class="mb-2 text-lg font-semibold text-gray-800">
+            <h2 class="mb-2 text-lg font-semibold text-primary-900">
               <a
                 href="#"
-                class="transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+                class="transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
                 >Blog Entry 3</a
               >
             </h2>
 
-            <p class="mb-8 text-gray-500">
+            <p class="mb-8 text-primary-800">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque efficitur laoreet eros tincidunt laoreet. Nullam a
               pretium tellus, id tempor ex. Ut commodo lectus sit amet volutpat
@@ -163,12 +163,12 @@
                 </div>
 
                 <div>
-                  <span class="block text-indigo-500">Author</span>
-                  <span class="block text-sm text-gray-400">July 19, 2023</span>
+                  <span class="block text-[var(--color-link)]">Author</span>
+                  <span class="block text-sm text-primary-800">July 19, 2023</span>
                 </div>
               </div>
 
-              <span class="rounded border px-2 py-1 text-sm text-gray-500"
+              <span class="rounded border px-2 py-1 text-sm text-primary-800"
                 >Article</span
               >
             </div>
@@ -188,15 +188,15 @@
           </a>
 
           <div class="flex flex-1 flex-col p-4 sm:p-6">
-            <h2 class="mb-2 text-lg font-semibold text-gray-800">
+            <h2 class="mb-2 text-lg font-semibold text-primary-900">
               <a
                 href="#"
-                class="transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+                class="transition duration-100 hover:text-[var(--color-link)] active:text-[var(--color-link)]"
                 >Blog Entry 4</a
               >
             </h2>
 
-            <p class="mb-8 text-gray-500">
+            <p class="mb-8 text-primary-800">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque efficitur laoreet eros tincidunt laoreet. Nullam a
               pretium tellus, id tempor ex. Ut commodo lectus sit amet volutpat
@@ -217,12 +217,12 @@
                 </div>
 
                 <div>
-                  <span class="block text-indigo-500">Author</span>
-                  <span class="block text-sm text-gray-400">July 19, 2023</span>
+                  <span class="block text-[var(--color-link)]">Author</span>
+                  <span class="block text-sm text-primary-800">July 19, 2023</span>
                 </div>
               </div>
 
-              <span class="rounded border px-2 py-1 text-sm text-gray-500"
+              <span class="rounded border px-2 py-1 text-sm text-primary-800"
                 >Article</span
               >
             </div>

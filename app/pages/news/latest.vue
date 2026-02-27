@@ -80,17 +80,17 @@ function getImage(image: string | null | undefined) {
 <template>
   <div class="bg-[#FCFCFA] py-6 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
-      <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl">
+      <h1 class="font-prata mb-4 text-center text-2xl font-bold text-primary-900 sm:text-3xl">
         Latest News
       </h1>
 
       <div v-if="!newsItems.length">
-        <section class="body-font overflow-hidden text-gray-600">
-          <p class="mb-4 text-center text-gray-800">No news yet</p>
+        <section class="body-font overflow-hidden text-primary-800">
+          <p class="mb-4 text-center text-primary-900">No news yet</p>
         </section>
       </div>
       <div v-else>
-        <section class="body-font overflow-hidden text-gray-600">
+        <section class="body-font overflow-hidden text-primary-800">
           <div class="container mx-auto px-6 py-12">
             <div class="-my-8 divide-y-2 divide-gray-100">
               <NewsPreview

@@ -14,12 +14,10 @@ export const projectTierLinks: NavLink[] = [
   {
     link: "/database",
     name: "Database",
-    external: true,
   },
   {
     link: "/edition",
     name: "Edition",
-    external: true,
   },
 ];
 
