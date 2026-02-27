@@ -4,7 +4,6 @@
       <div
         class="flex flex-col items-center justify-between gap-4 border-b border-t py-6 md:flex-row"
       >
-        <!-- nav - start -->
         <nav
           class="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6"
         >
@@ -19,9 +18,6 @@
             >Contact</NuxtLink
           >
         </nav>
-        <!-- nav - end -->
-
-        <!-- social - start -->
         <div class="flex gap-4">
           <NuxtLink
             href="https://x.com/7SagesResearch"
@@ -42,7 +38,6 @@
             </svg>
           </NuxtLink>
         </div>
-        <!-- social - end -->
       </div>
 
       <div class="py-8 text-center text-sm text-gray-700">

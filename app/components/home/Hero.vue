@@ -23,7 +23,6 @@ const { height } = useWindowSize();
     <section
       class="relative flex h-[calc(100dvh-150px)] w-full shrink-0 items-center justify-center overflow-hidden rounded bg-gray-100 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-transform duration-300"
     >
-      <!-- image - start -->
       <img
         :src="img(hero.Image,
         { format: 'webp', quality: 40 }) ?? undefined"
@@ -32,13 +31,9 @@ const { height } = useWindowSize();
         class="absolute inset-0 h-full w-full object-cover object-center saturate-[.9] transition-transform duration-300 ease-in-out group-hover:scale-105"
         :class="{ 'saturate-[.7]': y > 0 }"
       />
-      <!-- image - end -->
 
-      <!-- overlay - start -->
       <div class="absolute inset-0 bg-black opacity-70 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-75"></div>
-      <!-- overlay - end -->
 
-      <!-- text start -->
       <div
         class="relative flex h-full w-full items-center justify-center p-4"
       >
@@ -53,8 +48,6 @@ const { height } = useWindowSize();
           />
         </div>
       </div>
-      <!-- text end -->
-      <!-- scroll down button start -->
       <button
         @click="y = height"
         aria-label="scroll down"
@@ -62,7 +55,6 @@ const { height } = useWindowSize();
       >
         <Icon name="ph:caret-down-light" class="size-8 text-white" />
       </button>
-      <!-- scroll down button end -->
     </section>
   </div>
 </template>

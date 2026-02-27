@@ -72,10 +72,10 @@ const { data: pageData } = await useAsyncData("page:team", async () => {
 
   return {
     team,
-    teamMembers: teamPeople.filter((member) => member.Active === true),
-    formerTeamMembers: teamPeople.filter((member) => member.Active === false),
-    advisoryBoardMembers: advisoryPeople.filter((member) => member.Active === true),
-    formerAdvisoryBoardMembers: advisoryPeople.filter((member) => member.Active === false),
+    teamMembers: teamPeople.filter((member) => member.Active),
+    formerTeamMembers: teamPeople.filter((member) => !member.Active),
+    advisoryBoardMembers: advisoryPeople.filter((member) => member.Active),
+    formerAdvisoryBoardMembers: advisoryPeople.filter((member) => !member.Active),
     studentAssistants,
   };
 });

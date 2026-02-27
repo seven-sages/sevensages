@@ -50,7 +50,6 @@ export const internalNavLinks: NavLink[] = [
   },
 ];
 
-// Mobile drawer still lists the cross-project destinations together with internal links.
 export const navLinks: NavLink[] = [
   ...internalNavLinks,
   ...projectTierLinks.filter((link) => link.name !== "Project"),

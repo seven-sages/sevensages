@@ -2,39 +2,11 @@
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 
 interface Props {
-  /**
-   * HTML Tag to render the component as
-   * @default 'span'
-   */
   as?: string;
-
-  /**
-   * Optional class name for styling
-   */
   className?: string;
-
-  /**
-   * Animation duration in seconds
-   * @default 0.25
-   */
   duration?: number;
-
-  /**
-   * Animation easing function
-   * @default 'ease-in-out'
-   */
   easing?: string;
-
-  /**
-   * Height of the underline as a ratio of font size
-   * @default 0.1
-   */
   underlineHeightRatio?: number;
-
-  /**
-   * Padding of the underline as a ratio of font size
-   * @default 0.01
-   */
   underlinePaddingRatio?: number;
 }
 

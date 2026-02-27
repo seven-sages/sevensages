@@ -6,6 +6,5 @@ dist
 .data
 .env
 coverage
-# Local Netlify folder
 .netlify
 /.idea/
