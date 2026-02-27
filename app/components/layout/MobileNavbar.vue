@@ -28,7 +28,7 @@ defineExpose({
           <span class="inline-flex min-w-0 items-center gap-2">
             <NuxtLink
               to="/"
-              class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
+              class="items-center"
               aria-label="The Seven Sages of Rome"
             >
               <LayoutProjectLogo class="h-12 w-auto md:h-14" />

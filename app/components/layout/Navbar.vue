@@ -39,11 +39,11 @@ watch(y, (currentY, previousY = 0) => {
 
 <template>
   <header class="sticky top-0 z-50">
-    <div class="w-full border-b bg-white px-8 py-1 xl:hidden">
+    <div class="w-full border-b bg-white px-8 py-1 sm:hidden">
       <div class="flex items-center justify-between">
         <NuxtLink
           to="/"
-          class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
+          class="items-center"
           aria-label="The Seven Sages of Rome"
         >
           <LayoutProjectLogo class="h-10 w-auto md:h-10" />
@@ -71,7 +71,7 @@ watch(y, (currentY, previousY = 0) => {
       </div>
     </div>
 
-    <div class="hidden bg-white xl:block">
+    <div class="hidden bg-white sm:block">
       <div
         v-show="showDesktopTopTier"
         class="border-b border-gray-200 bg-white px-8"
@@ -79,7 +79,7 @@ watch(y, (currentY, previousY = 0) => {
         <div class="mx-auto flex h-14 items-center justify-between">
           <NuxtLink
             to="/"
-            class="inline-flex items-center rounded-md p-1 hover:bg-gray-100"
+            class="items-center"
             aria-label="The Seven Sages of Rome"
           >
             <LayoutProjectLogo class="h-10 w-auto" />
