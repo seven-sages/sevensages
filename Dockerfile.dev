@@ -1,10 +1,8 @@
 FROM node:current
 ENV HOST=0.0.0.0
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /app
-RUN corepack enable
+RUN npm install -g pnpm@latest
 COPY package.json pnpm-lock.yaml ./
 
 RUN pnpm install --frozen-lockfile
