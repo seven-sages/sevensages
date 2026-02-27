@@ -30,10 +30,10 @@ const genre = genreData.value;
       >
         {{ genre.Heading }}
       </h1>
-      <span
+      <div
         class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
         v-html="genre.Content"
-      />
+      ></div>
     </div>
   </div>
 </template>

@@ -32,10 +32,10 @@ const dutchEdition = dutchEditionData.value;
         {{ dutchEdition.Heading }}
       </h1>
 
-      <span
+      <div
         class="mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
         v-html="dutchEdition.Content"
-      />
+      ></div>
     </div>
   </div>
 </template>

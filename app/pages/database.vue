@@ -30,10 +30,10 @@ const database = databaseData.value;
       >
         {{ database.Heading }}
       </h1>
-      <span
+      <div
         class="prose mb-6 list-inside text-justify text-gray-800 sm:text-lg md:mb-8"
         v-html="database.Content"
-      />
+      ></div>
     </div>
   </div>
 </template>

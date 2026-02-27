@@ -30,10 +30,10 @@ const gender = genderData.value;
       >
         {{ gender.Heading }}
       </h1>
-      <p
+      <div
         class="mb-6 text-justify text-gray-800 sm:text-lg md:mb-8"
         v-html="gender.Content"
-      />
+      ></div>
     </div>
   </div>
 </template>
