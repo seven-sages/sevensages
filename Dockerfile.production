@@ -1,12 +1,15 @@
-FROM node:20 as build-stage
+FROM node:current as build-stage
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
-COPY package.json .
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
 
-RUN yarn
+RUN pnpm install --frozen-lockfile
 COPY ./ .
-RUN yarn build
+RUN pnpm build
 
-FROM node:20 as prod-stage
+FROM node:current as prod-stage
 WORKDIR /app
 COPY --from=build-stage /app/.output ./.output
 CMD [ "node", ".output/server/index.mjs" ]
